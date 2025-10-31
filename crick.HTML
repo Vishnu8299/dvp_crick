@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DVP Cricket Tournament 2026</title>
+  <style>
+    /* ---------- General Styles ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: white;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-image: url('/assets/ground.png');
+      background-size: cover;
+    }
+
+    /* ---------- Header Section ---------- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 60px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      animation: slideDown 1s ease-in-out;
+    }
+
+    header img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-section h1 {
+      font-size: 26px;
+      color: #00e0ff;
+      text-shadow: 0px 0px 10px #00e0ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    /* ---------- Navbar ---------- */
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #00e0ff;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------- Intro Section ---------- */
+    .intro {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 100px 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .intro h2 {
+      font-size: 48px;
+      color: #00e0ff;
+      margin-bottom: 15px;
+      animation: slideUp 1.2s ease-in-out;
+    }
+
+    .intro p {
+      font-size: 20px;
+      max-width: 800px;
+      line-height: 1.8;
+      animation: slideUp 1.5s ease-in-out;
+    }
+
+    .intro button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background-color: #00e0ff;
+      color: #000;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .intro button:hover {
+      transform: scale(1.05);
+      background-color: #02b8d7;
+    }
+
+    /* ---------- Registration Section ---------- */
+    .registration {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 80px 20px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .registration h2 {
+      font-size: 42px;
+      color: #00e0ff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .registration img {
+      max-width: 600px;
+      width: 90%;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+    }
+
+    .download-btn {
+      padding: 15px 40px;
+      font-size: 18px;
+      background: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: #02b8d7;
+      transform: scale(1.05);
+    }
+
+    /* ---------- History Section ---------- */
+    .history {
+      min-height: 100vh;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .history h2 {
+      font-size: 42px;
+      color: #00e0ff;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+    }
+
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .video-card {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-info {
+      padding: 15px;
+    }
+
+    .video-info h3 {
+      color: #00e0ff;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .video-info p {
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ---------- Sponsors Section ---------- */
+    .sponsors {
+      min-height: 100vh;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .sponsors h2 {
+      font-size: 42px;
+      color: #00e0ff;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+    }
+
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .sponsor-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+
+    .sponsor-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .sponsor-logo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      overflow: hidden;
+      border: 3px solid #00e0ff;
+    }
+
+    .sponsor-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sponsor-info h3 {
+      color: #00e0ff;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .sponsor-info p {
+      color: #fff;
+      font-size: 14px;
+    }
+
+    /* ---------- Committee Section ---------- */
+    .committee {
+      min-height: 100vh;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .committee h2 {
+      font-size: 42px;
+      color: #00e0ff;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+    }
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .committee-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+
+    .committee-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 224, 255, 0.2);
+    }
+
+    .member-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      border: 4px solid #00e0ff;
+    }
+
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .member-info h3 {
+      color: #00e0ff;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .member-info h4 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .member-info p {
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ---------- Animations ---------- */
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00e0ff; }
+      to { text-shadow: 0 0 20px #00ffff; }
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(0,0,0,0.3);
+      color: #ccc;
+    }
+
+    /* ---------- Mobile Responsive Styles ---------- */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .logo-section {
+        margin-bottom: 15px;
+      }
+
+      .logo-section h1 {
+        font-size: 20px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: 5px 10px;
+      }
+
+      .intro h2 {
+        font-size: 32px;
+      }
+
+      .intro p {
+        font-size: 16px;
+      }
+
+      .registration h2,
+      .history h2,
+      .sponsors h2,
+      .committee h2 {
+        font-size: 28px;
+        padding: 0 10px;
+      }
+
+      .sponsor-grid,
+      .committee-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+
+      .video-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .member-photo {
+        width: 150px;
+        height: 150px;
+      }
+
+      .member-info h3 {
+        font-size: 18px;
+      }
+
+      .member-info h4 {
+        font-size: 16px;
+      }
+
+      /* Adjust section padding for mobile */
+      .intro,
+      .registration,
+      .history,
+      .sponsors,
+      .committee {
+        padding: 60px 10px;
+      }
+
+      /* Fix header spacing on mobile */
+      body {
+        padding-top: 120px;
+      }
+
+      /* Improve button touch targets */
+      .download-btn {
+        padding: 12px 30px;
+        margin: 20px 10px;
+        width: 80%;
+        max-width: 300px;
+      }
+
+      /* Improve card readability */
+      .sponsor-card,
+      .committee-card,
+      .video-card {
+        margin: 10px;
+        padding: 15px;
+      }
+    }
+
+    /* Small mobile devices */
+    @media (max-width: 480px) {
+      .logo-section h1 {
+        font-size: 18px;
+      }
+
+      header img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .intro h2 {
+        font-size: 26px;
+      }
+
+      nav ul li a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo-section">
+      <img src="/assets/dvp.jpg" alt="Tournament Logo">
+      <h1>DVP T10 Cricket Tournament 2026</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#registration">Registration</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#sponsor">Sponsors</a></li>
+        <li><a href="#Committee">Committee</a></li>
+        <li><a href="#about">About</a></li>
+ 
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Intro Section -->
+  <section class="intro">
+    <h2>Welcome to the Champions Trophy 2026</h2>
+    <p style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">🏏 We warmly invite everyone to be part of the **Devudu Vellam Palli T10 Cricket League!** Get ready to experience the excitement of village cricket like never before. Cheer for your favorite teams as talented local players compete with passion, teamwork, and determination. Enjoy thrilling matches, powerful performances, and the true spirit of sportsmanship that brings our community together. This event promises fun, entertainment, and unforgettable cricketing moments for all ages. Bring your friends and family, support your teams, and celebrate the joy of cricket in our village. Don’t miss this exciting tournament filled with energy and enthusiasm!
+</p>
+  </section>
+
+  <!-- Registration Section -->
+  <section class="registration" id="registration">
+    <h2>🏏 Team Registration – Devudu Vellam Palli T10 Cricket League</h2>
+    <img src="/assets/registration.png" alt="Registration Form" />
+    <a href="registration-form.xlsx" download class="download-btn">
+      📥 Click to Register
+    </a>
+  </section>
+
+  <!-- History Section -->
+  <section class="history" id="history">
+    <h2>Tournament History</h2>
+    <div class="video-gallery">
+      <!-- Video Card 1 -->
+      <div class="video-card">
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Xrfz6EXMZpo?si=AVSwkPHGdKav8jG-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Finals 2025</h3>
+          <p>Exciting final match highlights from last year's tournament</p>
+        </div>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="video-card">
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Xrfz6EXMZpo?si=AVSwkPHGdKav8jG-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Best Moments 2025</h3>
+          <p>Collection of best catches and wickets from 2025</p>
+        </div>
+      </div>
+
+      <!-- Video Card 3 -->
+      <div class="video-card">
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Xrfz6EXMZpo?si=AVSwkPHGdKav8jG-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Tournament Opening 2025</h3>
+          <p>Inaugural ceremony and opening match highlights</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsors Section -->
+  <section class="sponsors" id="sponsor">
+    <h2>Our Sponsors</h2>
+    <div class="sponsor-grid">
+      <div class="sponsor-card">
+        <div class="sponsor-logo">
+          <img src="/assets/sponsor1.jpg" alt="Platinum Sponsor">
+        </div>
+        <div class="sponsor-info">
+          <h3>Name 1</h3>
+        </div>
+      </div>
+      <div class="sponsor-card">
+        <div class="sponsor-logo">
+          <img src="sponsor2.jpg" alt="Gold Sponsor">
+        </div>
+        <div class="sponsor-info">
+          <h3>Name 2</h3>
+        </div>
+      </div>
+
+      <div class="sponsor-card">
+        <div class="sponsor-logo">
+          <img src="sponsor3.jpg" alt="Silver Sponsor">
+        </div>
+        <div class="sponsor-info">
+          <h3>Name 3</h3>
+        </div>
+      </div>
+
+      <div class="sponsor-card">
+        <div class="sponsor-logo">
+          <img src="sponsor4.jpg" alt="Bronze Sponsor">
+        </div>
+        <div class="sponsor-info">
+          <h3>Name 4</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committee Section -->
+  <section class="committee" id="Committee">
+    <h2>Our Committee Members</h2>
+    <div class="committee-grid">
+      <!-- President -->
+      <div class="committee-card">
+        <div class="member-photo">
+          <img src="president.jpg" alt="President">
+        </div>
+        <div class="member-info">
+          <h3>John Doe</h3>
+          <h4>President</h4>
+          <p>Tournament Director & Chief Coordinator</p>
+        </div>
+      </div>
+
+      <!-- Secretary -->
+      <div class="committee-card">
+        <div class="member-photo">
+          <img src="secretary.jpg" alt="Secretary">
+        </div>
+        <div class="member-info">
+          <h3>Jane Smith</h3>
+          <h4>Secretary</h4>
+          <p>Administrative Head & Event Manager</p>
+        </div>
+      </div>
+
+      <!-- Treasurer -->
+      <div class="committee-card">
+        <div class="member-photo">
+          <img src="treasurer.jpg" alt="Treasurer">
+        </div>
+        <div class="member-info">
+          <h3>Mike Johnson</h3>
+          <h4>Treasurer</h4>
+          <p>Financial Controller & Resource Manager</p>
+        </div>
+      </div>
+
+      <!-- Technical Head -->
+      <div class="committee-card">
+        <div class="member-photo">
+          <img src="tech-head.jpg" alt="Technical Head">
+        </div>
+        <div class="member-info">
+          <h3>Sarah Wilson</h3>
+          <h4>Technical Head</h4>
+          <p>Match Coordinator & Rules Committee Head</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 DVP T10 Cricket Tournament. All rights reserved.</p>
+  </footer>
+</body>
+</html>

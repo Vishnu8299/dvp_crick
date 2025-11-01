@@ -284,10 +284,48 @@
     }
 
     /* ---------- Sponsors Section ---------- */
+    .committee {
+      min-height: 100vh;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.6); /* Changed from rgba(0, 0, 0, 0.7) */
+    }
+
+    .committee h2 {
+      font-size: 42px;
+      color: #00e0ff;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+    }
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Changed from minmax(200px, 1fr) to minmax(160px, 1fr) */
+      gap: 20px; /* Existing gap */
+      max-width: 1200px; /* Existing max-width */
+      margin: 0 auto; /* Existing margin */
+      padding: 20px; /* Existing padding */
+    }
+
+    .committee-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+
+    .committee-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 224, 255, 0.2);
+    }
+
+    /* ---------- Committee Section ---------- */
     .sponsors {
       min-height: 100vh;
       padding: 100px 20px;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7); /* Changed from rgba(0, 0, 0, 0.6) */
     }
 
     .sponsors h2 {
@@ -320,37 +358,11 @@
       transform: translateY(-10px);
     }
 
-    .sponsor-logo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      overflow: hidden;
-      border: 3px solid #00e0ff;
-    }
-
-    .sponsor-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .sponsor-info h3 {
-      color: #00e0ff;
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .sponsor-info p {
-      color: #fff;
-      font-size: 14px;
-    }
-
     /* ---------- Committee Section ---------- */
     .committee {
       min-height: 100vh;
       padding: 100px 20px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.6);
     }
 
     .committee h2 {
@@ -363,8 +375,8 @@
 
     .committee-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
@@ -819,6 +831,105 @@
     .social-links a:hover {
       color: #00e0ff;
     }
+
+    /* ---------- Slideshow Styles ---------- */
+    .history-slideshow {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+      height: 350px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,224,255,0.15);
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+    }
+
+    .slide-img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    }
+
+    .slide-img.active {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 1;
+    }
+
+    .slide-controls {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .slide-controls button {
+      background: rgba(0,224,255,0.7);
+      border: none;
+      color: #000;
+      font-size: 28px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: background 0.2s;
+      outline: none;
+    }
+
+    .slide-controls button:focus {
+      box-shadow: 0 0 0 2px #00e0ff;
+    }
+
+    .slide-controls button:hover {
+      background: #00e0ff;
+    }
+
+    .slide-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+
+    .slide-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(0,224,255,0.5);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      outline: none;
+    }
+
+    .slide-dot.active,
+    .slide-dot:focus {
+      background: #00e0ff;
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+    @media (max-width: 768px) {
+      .history-slideshow, .slide-img { height: 180px; }
+    }
   </style>
 </head>
 <body>
@@ -896,6 +1007,22 @@
   <!-- History Section -->
   <section class="history" id="history">
     <h2>Tournament History</h2>
+    <!-- Slideshow Start -->
+    <div class="history-slideshow" tabindex="0" aria-label="Tournament photo slideshow">
+      <img class="slide-img" src="assets/2025/p1.jpg" alt="Team celebrating victory" />
+      <img class="slide-img" src="assets/2025/p2.jpg" alt="Batsman hitting a six" />
+      <img class="slide-img" src="assets/2025/p3.jpg" alt="Bowler in action" />
+      <img class="slide-img" src="assets/2025/p4.jpg" alt="Crowd cheering" />
+      <img class="slide-img" src="assets/2025/p6.jpg" alt="Award ceremony" />
+      <img class="slide-img" src="assets/2025/p7.jpg" alt="Team huddle" />
+      <img class="slide-img" src="assets/2025/p8.jpg" alt="Night match under lights" />
+      <div class="slide-controls">
+        <button class="slide-prev" aria-label="Previous slide">&#10094;</button>
+        <button class="slide-next" aria-label="Next slide">&#10095;</button>
+      </div>
+      <div class="slide-dots"></div>
+    </div>
+    <!-- Slideshow End -->
     <div class="video-gallery">
       <!-- Video Card 1 -->
       <div class="video-card">
@@ -980,48 +1107,40 @@
       <!-- President -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="president.jpg" alt="President" loading="lazy" decoding="async">
+          <img src="assets/committee/ashok.jpg" alt="President Photo">
         </div>
         <div class="member-info">
           <h3>John Doe</h3>
-          <h4>President</h4>
-          <p>Tournament Director & Chief Coordinator</p>
         </div>
       </div>
 
       <!-- Secretary -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="secretary.jpg" alt="Secretary" loading="lazy" decoding="async">
+          <img src="assets/committee/paresh.jpg" alt="Secretary Photo">
         </div>
         <div class="member-info">
           <h3>Jane Smith</h3>
-          <h4>Secretary</h4>
-          <p>Administrative Head & Event Manager</p>
         </div>
       </div>
 
       <!-- Treasurer -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="treasurer.jpg" alt="Treasurer" loading="lazy" decoding="async">
+          <img src="assets/committee/balu.jpg" alt="Treasurer Photo">
         </div>
         <div class="member-info">
           <h3>Mike Johnson</h3>
-          <h4>Treasurer</h4>
-          <p>Financial Controller & Resource Manager</p>
         </div>
       </div>
 
       <!-- Technical Head -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="tech-head.jpg" alt="Technical Head" loading="lazy" decoding="async">
+          <img src="assets/committee/vishnu.png" alt="Technical Head Photo">
         </div>
         <div class="member-info">
-          <h3>Sarah Wilson</h3>
-          <h4>Technical Head</h4>
-          <p>Match Coordinator & Rules Committee Head</p>
+          <h3>Emily Davis</h3>
         </div>
       </div>
     </div>
@@ -1135,7 +1254,7 @@
 
     // Countdown Timer
     function updateCountdown() {
-      const tournamentDate = new Date('March 15, 2026 00:00:00').getTime();
+      const tournamentDate = new Date('January 10, 2026 00:00:00').getTime();
       const now = new Date().getTime();
       const distance = tournamentDate - now;
 
@@ -1169,6 +1288,64 @@
       form.reset();
       return false;
     }
+
+    // Improved Slideshow Script
+    (function() {
+      const slides = document.querySelectorAll('.slide-img');
+      const prevBtn = document.querySelector('.slide-prev');
+      const nextBtn = document.querySelector('.slide-next');
+      const dotsContainer = document.querySelector('.slide-dots');
+      let current = 0, timer = null, paused = false;
+
+      // Create dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'slide-dot';
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Go to slide ${i+1}`);
+        dot.addEventListener('click', () => showSlide(i));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('.slide-dot');
+
+      function showSlide(idx) {
+        slides.forEach((img, i) => {
+          img.classList.toggle('active', i === idx);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === idx);
+        });
+        current = idx;
+      }
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+      function prevSlide() {
+        showSlide((current - 1 + slides.length) % slides.length);
+      }
+      function startAuto() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(() => { if (!paused) nextSlide(); }, 4000);
+      }
+      // Pause on hover/focus
+      const slideshow = document.querySelector('.history-slideshow');
+      slideshow.addEventListener('mouseenter', () => paused = true);
+      slideshow.addEventListener('mouseleave', () => paused = false);
+      slideshow.addEventListener('focusin', () => paused = true);
+      slideshow.addEventListener('focusout', () => paused = false);
+
+      // Keyboard navigation
+      slideshow.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') { prevSlide(); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { nextSlide(); e.preventDefault(); }
+      });
+
+      prevBtn.onclick = prevSlide;
+      nextBtn.onclick = nextSlide;
+
+      showSlide(0);
+      startAuto();
+    })();
   </script>
 </body>
 </html>

@@ -2,11 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" type="image/png" href="assets/img/logo.png"/>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="DVP Cricket Tournament 2026 - The most exciting village cricket tournament">
+  <meta name="theme-color" content="#00e0ff">
+  <link rel="icon" type="image/png" href="assets/img/dvp.jpg"/>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"></noscript>
   <title>DVP Cricket Tournament 2026</title>
+
+  <!-- Enhanced SEO Meta Tags -->
+  <meta name="keywords" content="cricket tournament, DVP cricket, T10 cricket, village cricket">
+  <meta property="og:title" content="DVP Cricket Tournament 2026">
+  <meta property="og:description" content="The most exciting village cricket tournament">
+  <meta property="og:image" content="assets/img/dvp.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <style>
     /* ---------- General Styles ---------- */
     * {
@@ -134,6 +144,33 @@
     .intro button:hover {
       transform: scale(1.05);
       background-color: #02b8d7;
+    }
+
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .countdown-item {
+      background: rgba(0, 224, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .countdown-number {
+      font-size: 32px;
+      color: #00e0ff;
+      font-weight: bold;
+    }
+
+    .countdown-label {
+      font-size: 14px;
+      color: white;
     }
 
     /* ---------- Registration Section ---------- */
@@ -380,25 +417,70 @@
       line-height: 1.6;
     }
 
-    /* ---------- Animations ---------- */
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    /* ---------- About Section ---------- */
+    .about {
+      min-height: 100vh;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.6);
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .about h2 {
+      font-size: 42px;
+      color: #00e0ff;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .about-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00e0ff; }
-      to { text-shadow: 0 0 20px #00ffff; }
+    .about-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+
+    .about-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 224, 255, 0.2);
+    }
+
+    .about-icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .about-card h3 {
+      color: #00e0ff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .about-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-card ul li {
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 16px;
+    }
+
+    .about-card ul li:last-child {
+      border-bottom: none;
     }
 
     /* ---------- Footer ---------- */
@@ -478,7 +560,8 @@
       .registration,
       .history,
       .sponsors,
-      .committee {
+      .committee,
+      .about {
         padding: 60px 10px;
       }
 
@@ -498,7 +581,8 @@
       /* Improve card readability */
       .sponsor-card,
       .committee-card,
-      .video-card {
+      .video-card,
+      .about-card {
         margin: 10px;
         padding: 15px;
       }
@@ -523,15 +607,238 @@
         font-size: 14px;
       }
     }
+
+    /* Performance Optimizations */
+    img {
+      content-visibility: auto;
+      contain: paint style layout;
+    }
+
+    /* Enhanced Mobile Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      margin: 2px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px 0;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      /* Improve touch targets */
+      nav ul li a {
+        display: block;
+        padding: 10px 20px;
+      }
+
+      /* Better card layouts */
+      .sponsor-grid,
+      .committee-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        padding: 10px;
+      }
+
+      /* Optimize images for mobile */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    /* Tablet Optimizations */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .sponsor-grid,
+      .committee-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .intro h2 {
+        font-size: 36px;
+      }
+
+      .video-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Scroll To Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00e0ff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .scroll-top.visible {
+      display: flex;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Loading Spinner */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader.hidden {
+      display: none;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #00e0ff;
+      border-top: 5px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Social Share Buttons */
+    .social-share {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .share-btn {
+      padding: 10px 20px;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .share-btn.facebook { background: #3b5998; }
+    .share-btn.twitter { background: #1da1f2; }
+    .share-btn.whatsapp { background: #25d366; }
+
+    /* Contact Form Styles */
+    .contact-form {
+      max-width: 600px;
+      width: 90%;
+      margin: 30px auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(0, 224, 255, 0.3);
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+    }
+
+    /* Enhanced Footer */
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .footer-section h4 {
+      color: #00e0ff;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 24px;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #00e0ff;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Loading Spinner -->
+  <div class="loader">
+    <div class="spinner"></div>
+  </div>
 
   <!-- Header Section -->
   <header>
     <div class="logo-section">
       <img src="assets/img/dvp.jpg" alt="Tournament Logo">
       <h1>DVP T10 Cricket Tournament 2026</h1>
+    </div>
+
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <nav>
@@ -542,7 +849,6 @@
         <li><a href="#sponsor">Sponsors</a></li>
         <li><a href="#Committee">Committee</a></li>
         <li><a href="#about">About</a></li>
- 
       </ul>
     </nav>
   </header>
@@ -550,17 +856,41 @@
   <!-- Intro Section -->
   <section class="intro">
     <h2>Welcome to the Champions Trophy 2026</h2>
-    <p style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">🏏 We warmly invite everyone to be part of the **Devudu Vellam Palli T10 Cricket League!** Get ready to experience the excitement of village cricket like never before. Cheer for your favorite teams as talented local players compete with passion, teamwork, and determination. Enjoy thrilling matches, powerful performances, and the true spirit of sportsmanship that brings our community together. This event promises fun, entertainment, and unforgettable cricketing moments for all ages. Bring your friends and family, support your teams, and celebrate the joy of cricket in our village. Don’t miss this exciting tournament filled with energy and enthusiasm!
+    <p style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">🏏 We warmly invite everyone to be part of the "Devudu Vellam Palli T10 Cricket League!" Get ready to experience the excitement of village cricket like never before. Cheer for your favorite teams as talented local players compete with passion, teamwork, and determination. Enjoy thrilling matches, powerful performances, and the true spirit of sportsmanship that brings our community together. This event promises fun, entertainment, and unforgettable cricketing moments for all ages. Bring your friends and family, support your teams, and celebrate the joy of cricket in our village. Don’t miss this exciting tournament filled with energy and enthusiasm!
 </p>
+
+    <!-- Countdown Timer -->
+    <div class="countdown">
+      <div class="countdown-item">
+        <div class="countdown-number" id="days">00</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="minutes">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="seconds">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
   </section>
 
   <!-- Registration Section -->
   <section class="registration" id="registration">
     <h2>🏏 Team Registration – Devudu Vellam Palli T10 Cricket League</h2>
-    <img src="assets/img/registration.png" alt="Registration Form" />
+    <img src="assets/img/registration.png" alt="Registration Form" loading="lazy" decoding="async"/>
     <a href="registration-form.xlsx" download class="download-btn">
       📥 Click to Register
     </a>
+    <!-- Social Share -->
+    <div class="social-share">
+      <div class="share-btn whatsapp">Share on WhatsApp</div>
+    </div>
   </section>
 
   <!-- History Section -->
@@ -608,7 +938,7 @@
     <div class="sponsor-grid">
       <div class="sponsor-card">
         <div class="sponsor-logo">
-          <img src="assets/img/sponsor1.jpg" alt="Platinum Sponsor">
+          <img src="assets/img/sponsor1.jpg" alt="Platinum Sponsor" loading="lazy" decoding="async">
         </div>
         <div class="sponsor-info">
           <h3>Name 1</h3>
@@ -616,7 +946,7 @@
       </div>
       <div class="sponsor-card">
         <div class="sponsor-logo">
-          <img src="assets/img/sponsor2.jpg" alt="Gold Sponsor">
+          <img src="assets/img/sponsor2.jpg" alt="Gold Sponsor" loading="lazy" decoding="async">
         </div>
         <div class="sponsor-info">
           <h3>Name 2</h3>
@@ -625,7 +955,7 @@
 
       <div class="sponsor-card">
         <div class="sponsor-logo">
-          <img src="assets/img/sponsor3.jpg" alt="Silver Sponsor">
+          <img src="assets/img/sponsor3.jpg" alt="Silver Sponsor" loading="lazy" decoding="async">
         </div>
         <div class="sponsor-info">
           <h3>Name 3</h3>
@@ -634,7 +964,7 @@
 
       <div class="sponsor-card">
         <div class="sponsor-logo">
-          <img src="sponsor4.jpg" alt="Bronze Sponsor">
+          <img src="sponsor4.jpg" alt="Bronze Sponsor" loading="lazy" decoding="async">
         </div>
         <div class="sponsor-info">
           <h3>Name 4</h3>
@@ -650,7 +980,7 @@
       <!-- President -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="president.jpg" alt="President">
+          <img src="president.jpg" alt="President" loading="lazy" decoding="async">
         </div>
         <div class="member-info">
           <h3>John Doe</h3>
@@ -662,7 +992,7 @@
       <!-- Secretary -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="secretary.jpg" alt="Secretary">
+          <img src="secretary.jpg" alt="Secretary" loading="lazy" decoding="async">
         </div>
         <div class="member-info">
           <h3>Jane Smith</h3>
@@ -674,7 +1004,7 @@
       <!-- Treasurer -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="treasurer.jpg" alt="Treasurer">
+          <img src="treasurer.jpg" alt="Treasurer" loading="lazy" decoding="async">
         </div>
         <div class="member-info">
           <h3>Mike Johnson</h3>
@@ -686,7 +1016,7 @@
       <!-- Technical Head -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="tech-head.jpg" alt="Technical Head">
+          <img src="tech-head.jpg" alt="Technical Head" loading="lazy" decoding="async">
         </div>
         <div class="member-info">
           <h3>Sarah Wilson</h3>
@@ -697,9 +1027,148 @@
     </div>
   </section>
 
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About The Tournament</h2>
+    <div class="about-container">
+      <div class="about-card tournament-info">
+        <div class="about-icon">🏆</div>
+        <h3>Tournament Details</h3>
+        <ul>
+          <li>Tournament Duration: March 15 - April 10, 2026</li>
+          <li>Format: T10 Cricket</li>
+          <li>Total Teams: 16</li>
+          <li>Prize Pool: ₹1,00,000</li>
+          <li>Matches per Day: 4</li>
+        </ul>
+      </div>
+
+      <div class="about-card rules">
+        <div class="about-icon">📋</div>
+        <h3>Key Rules</h3>
+        <ul>
+          <li>10 overs per innings</li>
+          <li>3 overs max per bowler</li>
+          <li>Power Play: First 3 overs</li>
+          <li>DRS System Available</li>
+          <li>ICC Standard Rules Apply</li>
+        </ul>
+      </div>
+
+      <div class="about-card venue">
+        <div class="about-icon">📍</div>
+        <h3>Venue Information</h3>
+        <ul>
+          <li>DVP Cricket Ground</li>
+          <li>Seating Capacity: 2000+</li>
+          <li>Flood Lights Available</li>
+          <li>Digital Scoreboard</li>
+          <li>Food Court & Parking Available</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>📱 +91 9876543210</p>
+        <p>📧 admin@dvpcricket.com</p>
+        <p>📍 DVP Ground, Village Name</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <p><a href="#registration">Register Now</a></p>
+        <p><a href="#about">Tournament Details</a></p>
+        <p><a href="#sponsor">Become a Sponsor</a></p>
+      </div>
+    </div>
     <p>&copy; 2026 DVP T10 Cricket Tournament. All rights reserved.</p>
   </footer>
+
+  <!-- Scroll To Top Button -->
+  <div class="scroll-top">
+    <svg width="20" height="20" viewBox="0 0 24 24">
+      <path fill="#000" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </div>
+
+  <!-- Enhanced Scripts -->
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('active');
+    });
+
+    // Loading Spinner
+    window.addEventListener('load', () => {
+      document.querySelector('.loader').classList.add('hidden');
+    });
+
+    // Scroll To Top
+    window.addEventListener('scroll', () => {
+      const scrollBtn = document.querySelector('.scroll-top');
+      if (window.scrollY > 500) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+
+    document.querySelector('.scroll-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Social Share
+    const shareBtns = document.querySelectorAll('.share-btn');
+    shareBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent('Check out DVP Cricket Tournament 2026!');
+
+        if (btn.classList.contains('whatsapp')) {
+          window.open(`https://api.whatsapp.com/send?text=${text} ${url}`);
+        }
+      });
+    });
+
+    // Countdown Timer
+    function updateCountdown() {
+      const tournamentDate = new Date('March 15, 2026 00:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = tournamentDate - now;
+
+      document.getElementById('days').textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById('hours').textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById('minutes').textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById('seconds').textContent = Math.floor((distance % (1000 * 60)) / 1000);
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Form Validation
+    function validateForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      const phoneNumber = form.querySelector('input[type="tel"]').value;
+      const email = form.querySelector('input[type="email"]').value;
+
+      if (phoneNumber.length !== 10) {
+        alert('Please enter a valid 10-digit phone number');
+        return false;
+      }
+
+      if (!email.includes('@')) {
+        alert('Please enter a valid email address');
+        return false;
+      }
+
+      alert('Registration submitted successfully!');
+      form.reset();
+      return false;
+    }
+  </script>
 </body>
 </html>

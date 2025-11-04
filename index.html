@@ -963,6 +963,49 @@
       padding: 20px;
     }
 
+    /* Tournament History Section */
+    .tournament-history {
+      padding: 80px 5%;
+      background: rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    .history-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .history-year {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      padding: 25px;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 224, 255, 0.3);
+    }
+
+    .history-year:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 224, 255, 0.2);
+    }
+
+    .history-year h3 {
+      color: #00e0ff;
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .history-year p {
+      color: #ffffff;
+      font-size: 18px;
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
     .sponsor-card {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 15px;
@@ -1239,8 +1282,26 @@
       </div>
     </div>
   </section>
+  <section class="tournament-history" id="history">
+    <div class="history-container">
+      <div class="history-year">
+        <h3>2023</h3>
+        <p>🏆 Winners: D.Vaddipalli</p>
+        <p>🥈 Runner-up: D.Vellampalli</p>
+      </div>
+      <div class="history-year">
+        <h3>2024</h3>
+        <p>🏆 Winners: Mittavaddipalli</p>
+        <p>🥈 Runner-up: Lingasamudram</p>
+      </div>
+      <div class="history-year">
+        <h3>2025</h3>
+        <p>🏆 Winners: Mopur</p>
+        <p>🥈 Runner-up: D.Vellampalli</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Sponsors Section -->
   <section class="sponsors" id="sponsor">
     <h2>Our Valued Sponsors</h2>
     

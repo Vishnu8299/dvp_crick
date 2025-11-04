@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -288,82 +288,6 @@
         }, 300);
       }, 5000);
     }
-  });
-  </script>
-</body>
-</html> -->
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Cricket Team Registration</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #e6f7ff;
-      text-align: center;
-      padding: 40px;
-    }
-    form {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: inline-block;
-    }
-    input, button {
-      padding: 10px;
-      margin: 10px;
-      width: 80%;
-    }
-  </style>
-</head>
-<body>
-  <h2>🏏 Cricket Team Registration</h2>
-  <form id="regForm">
-    <input name="Village_Name" placeholder="Village Name" required><br>
-    <input name="Team_Name" placeholder="Team Name" required><br>
-    <input name="Captain_Name" placeholder="Captain Name" required><br>
-    <input name="Phone" placeholder="Phone Number" required><br>
-    <label>Upload Payment Proof:</label><br>
-    <input id="file" type="file" accept="image/*" required><br>
-    <button type="submit">Submit</button>
-  </form>
-
-  <script>
-  document.getElementById("regForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const fileInput = document.getElementById("file");
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = function() {
-      const base64Data = reader.result.split(",")[1];
-      const fileType = file.type;
-      const fileExtension = file.name.split('.').pop();
-
-      const data = {
-        Village_Name: document.querySelector("[name='Village_Name']").value,
-        Team_Name: document.querySelector("[name='Team_Name']").value,
-        Captain_Name: document.querySelector("[name='Captain_Name']").value,
-        Phone: document.querySelector("[name='Phone']").value,
-        fileData: base64Data,
-        fileType: fileType,
-        fileExtension: fileExtension
-      };
-
-      fetch("https://script.google.com/macros/s/AKfycbySaN-bbmhdcDKVFNFcWWoaj2rpeIf270FHhidjPlqevpwJNZSZj9pj2sPPky5z7yjC/exec", {
-        method: "POST",
-        body: JSON.stringify(data)
-      })
-      .then(res => res.text())
-      .then(txt => alert(txt === "Success" ? "✅ Registered Successfully!" : "❌ " + txt))
-      .catch(err => alert("Error: " + err));
-    };
-
-    reader.readAsDataURL(file);
   });
   </script>
 </body>

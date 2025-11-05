@@ -149,28 +149,65 @@
     /* Countdown Timer */
     .countdown {
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
       justify-content: center;
-      margin-top: 30px;
+      margin: 30px 10px 0;
+      max-width: 100%;
+      padding: 0 10px;
     }
 
     .countdown-item {
-      background: rgba(0, 224, 255, 0.1);
-      padding: 15px;
-      border-radius: 10px;
-      min-width: 100px;
+      background: rgba(0, 224, 255, 0.15);
+      padding: 12px 8px;
+      border-radius: 12px;
+      min-width: 70px;
       text-align: center;
+      flex: 1;
+      max-width: 90px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 224, 255, 0.2);
     }
 
     .countdown-number {
-      font-size: 32px;
+      font-size: 28px;
       color: #00e0ff;
-      font-weight: bold;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+      margin-bottom: 4px;
+      display: block;
+      line-height: 1;
     }
 
     .countdown-label {
-      font-size: 14px;
-      color: white;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .countdown {
+        gap: 8px;
+        padding: 0 5px;
+      }
+      
+      .countdown-item {
+        min-width: 60px;
+        padding: 10px 5px;
+        border-radius: 10px;
+      }
+      
+      .countdown-number {
+        font-size: 22px;
+      }
+      
+      .countdown-label {
+        font-size: 10px;
+      }
     }
 
     /* ---------- Registration Section ---------- */
@@ -928,8 +965,8 @@
     }
 
     .slide-dot {
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: rgba(0,224,255,0.5);
       border: none;
@@ -1205,7 +1242,16 @@
   <!-- Intro Section -->
   <section class="intro">
     <h2>Welcome to the Champions Trophy 2026</h2>
-    <p style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">🏏 We warmly invite everyone to be part of the "Devudu Vellam Palli T10 Cricket League!" Get ready to experience the excitement of village cricket like never before. Cheer for your favorite teams as talented local players compete with passion, teamwork, and determination. Enjoy thrilling matches, powerful performances, and the true spirit of sportsmanship that brings our community together. This event promises fun, entertainment, and unforgettable cricketing moments for all ages. Bring your friends and family, support your teams, and celebrate the joy of cricket in our village. Don’t miss this exciting tournament filled with energy and enthusiasm!
+    <p style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">We warmly invite everyone to be a part of the “Devudu Vellam Palli T10 Cricket League”! 🎉
+
+🔥 Get ready to witness the excitement of village cricket like never before!
+👏 Cheer for your favorite teams as talented local players compete with passion, teamwork, and determination.
+
+🤝 Enjoy thrilling matches, outstanding performances, and the true spirit of sportsmanship that unites our community.
+🎊 This event promises fun, entertainment, and unforgettable cricketing moments for all ages.
+
+👨‍👩‍👧‍👦 Bring your friends and family, support your teams, and celebrate the joy of cricket in our village.
+🚩 Don’t miss this exciting tournament filled with energy, enthusiasm, and community spirit! 🏆
 </p>
 
     <!-- Countdown Timer -->
@@ -1231,15 +1277,19 @@
 
   <!-- Registration Section -->
   <section class="registration" id="registration">
-    <h2>🏏 Team Registration – Devudu Vellam Palli T10 Cricket League</h2>
+    <h2>Team Registration – Devudu Vellam Palli T10 Cricket League</h2>
     <img src="assets/img/registration.png" alt="Registration Form" loading="lazy" decoding="async"/>
     <a href="registration.html" class="download-btn">
       🏏 Register Your Team
     </a>
     <!-- Social Share -->
-    <div class="social-share">
-      <a href="https://chat.whatsapp.com/CCbh4Sz4mKQKQYhiMRk2r5?mode=wwt" class="share-btn whatsapp" target="_blank" rel="noopener noreferrer">
-        Join with us on WhatsApp
+    <div class="social-share" style="margin: 20px 0; text-align: center;">
+      <a href="https://chat.whatsapp.com/CCbh4Sz4mKQKQYhiMRk2r5?mode=wwt" class="whatsapp-join-btn" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; background: #25D366; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 10px; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));">
+          <path d="M17.5 14.5c-.3-.2-1.8-.9-2-.9-.3 0-.5.1-.7.3-.2.3-.7.9-.9 1.1-.2.2-.4.2-.7.1-.3-.1-1.3-.4-2.4-1.5-.9-1-1.5-2.2-1.7-2.6-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.2-.1.2-.2.3-.4 0-.2 0-.3-.1-.4-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5-.2 0-.5.2-.6.2l-.4.4c-.5.5-1 1.2-.7 2.1.3.9 1.5 3.4 3.3 5.5 2.2 2.7 5.3 4.3 6 4.5.4.1 1.1.2 1.5.1.4 0 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.1-.4-.2z"/>
+          <path d="M12 2.5c5.5 0 9.5 4.5 9.5 9.5s-4.5 9.5-9.5 9.5c-2 0-3.8-.6-5.4-1.6l-4.6 1.5 1.5-4.5c-1-1.5-1.6-3.3-1.6-5.4 0-5.5 4.5-9.5 10-9.5zm0 1.5c-4.4 0-8 3.6-8 8 0 1.8.6 3.4 1.6 4.7l-1.1 3.2 3.3-1.1c1.3.9 2.9 1.5 4.5 1.5 4.4 0 8-3.6 8-8s-3.6-8-8-8z"/>
+        </svg>
+        Join Our WhatsApp Group
       </a>
     </div>
   </section>
@@ -1284,22 +1334,107 @@
       </div>
     </div>
   </section>
-  <section class="tournament-history" id="history">
+  <style>
+    .tournament-history {
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    .history-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      padding: 20px 30px;
+      margin: 0 auto 30px;
+    }
+
+    .history-year {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px 25px;
+      margin: 10px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 224, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .history-year:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .history-year h3 {
+      color: #00e0ff;
+      font-size: 28px;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .history-year h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: #00e0ff;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .history-year p {
+      color: #fff;
+      margin: 12px 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .history-year p:first-of-type {
+      margin-top: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .history-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      
+      .history-year {
+        padding: 25px 20px;
+        margin: 8px 0;
+      }
+      
+      .history-year h3 {
+        font-size: 24px;
+      }
+      
+      .history-year p {
+        font-size: 15px;
+      }
+    }
+  </style>
+
+  <section class="tournament-history">
+    <h2 style="font-size: 36px; color: #00e0ff; margin-bottom: 40px; text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);">Tournament Champions</h2>
     <div class="history-container">
       <div class="history-year">
-        <h3>2023</h3>
-        <p>🏆 Winners: D.Vaddipalli</p>
-        <p>🥈 Runner-up: D.Vellampalli</p>
+        <h3>2025</h3>
+        <p>🏆 <strong>Champions:</strong> Mopur</p>
+        <p>🥈 <strong>Runner-up:</strong> D.Vellampalli</p>
       </div>
       <div class="history-year">
         <h3>2024</h3>
-        <p>🏆 Winners: Mittavaddipalli</p>
-        <p>🥈 Runner-up: Lingasamudram</p>
+        <p>🏆 <strong>Champions:</strong> Mittavaddipalli</p>
+        <p>🥈 <strong>Runner-up:</strong> Lingasamudram</p>
       </div>
       <div class="history-year">
-        <h3>2025</h3>
-        <p>🏆 Winners: Mopur</p>
-        <p>🥈 Runner-up: D.Vellampalli</p>
+        <h3>2023</h3>
+        <p>🏆 <strong>Champions:</strong> D.Vaddipalli</p>
+        <p>🥈 <strong>Runner-up:</strong> D.Vellampalli</p>
       </div>
     </div>
   </section>
@@ -1314,40 +1449,15 @@
           <img src="assets/committee/Sagar .JPG" alt="Sagar - Platinum Sponsor" loading="lazy" decoding="async" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 3px solid #e5e4e2;">
         </div>
         <div class="sponsor-info">
-          <h3 style="color: #00e0ff; margin: 10px 0 5px;">Sagar</h3>
-          <p style="color: #e5e4e2; font-size: 0.9em;">Platinum Sponsor</p>
+          <h3 style="color: #00e0ff; margin: 10px 0 5px;">Vidya Sagar</h3>
         </div>
       </div>
-
-      <!-- Gold Sponsors -->
       <div class="sponsor-card" style="text-align: center; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; backdrop-filter: blur(5px);">
         <div class="sponsor-logo">
-          <img src="assets/committee/ashok.jpg" alt="Ashok - Gold Sponsor" loading="lazy" decoding="async" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 3px solid #ffd700;">
-        </div>
-        <div class="sponsor-info">
-          <h3 style="color: #00e0ff; margin: 10px 0 5px;">Ashok</h3>
-          <p style="color: #ffd700; font-size: 0.9em;">Gold Sponsor</p>
-        </div>
-      </div>
-
-      <div class="sponsor-card" style="text-align: center; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; backdrop-filter: blur(5px);">
-        <div class="sponsor-logo">
-          <img src="assets/committee/Sathish.jpg" alt="Sathish - Gold Sponsor" loading="lazy" decoding="async" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 3px solid #ffd700;">
+          <img src="assets/committee/Sathish.jpg" alt="Sagar - Platinum Sponsor" loading="lazy" decoding="async" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 3px solid #e5e4e2;">
         </div>
         <div class="sponsor-info">
           <h3 style="color: #00e0ff; margin: 10px 0 5px;">Sathish</h3>
-          <p style="color: #ffd700; font-size: 0.9em;">Gold Sponsor</p>
-        </div>
-      </div>
-
-      <!-- Silver Sponsor -->
-      <div class="sponsor-card" style="text-align: center; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; backdrop-filter: blur(5px);">
-        <div class="sponsor-logo">
-          <img src="assets/committee/" alt=" - Silver Sponsor" loading="lazy" decoding="async" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 3px solid #c0c0c0;">
-        </div>
-        <div class="sponsor-info">
-          <h3 style="color: #00e0ff; margin: 10px 0 5px;"></h3>
-          <p style="color: #c0c0c0; font-size: 0.9em;">Silver Sponsor</p>
         </div>
       </div>
     </div>
@@ -1415,9 +1525,9 @@
         <div class="about-icon">🏆</div>
         <h3>Tournament Details</h3>
         <ul>
-          <li>Tournament Duration: March 15 - April 10, 2026</li>
+          <li>Tournament Duration: January 10 - 19, 2026</li>
           <li>Format: T10 Cricket</li>
-          <li>Total Teams: 16</li>
+          <li>Total Teams: 40</li>
           <li>Prize Pool: ₹1,00,000</li>
           <li>Matches per Day: 4</li>
         </ul>
@@ -1428,9 +1538,9 @@
         <h3>Key Rules</h3>
         <ul>
           <li>10 overs per innings</li>
-          <li>3 overs max per bowler</li>
+          <li>2 overs max per bowler</li>
           <li>Power Play: First 3 overs</li>
-          <li>DRS System Available</li>
+          <li>umpires decision final</li>
           <li>ICC Standard Rules Apply</li>
         </ul>
       </div>
@@ -1440,9 +1550,9 @@
         <h3>Venue Information</h3>
         <ul>
           <li>DVP Cricket Ground</li>
-          <li>Seating Capacity: 2000+</li>
-          <li>Flood Lights Available</li>
-          <li>Digital Scoreboard</li>
+          <li>Seating Capacity: 1000+</li>
+          <li>Separate Tents for Teams</li>
+          <li>Live Streaming Available</li>
           <li>Food Court & Parking Available</li>
         </ul>
       </div>
@@ -1454,9 +1564,9 @@
     <div class="footer-content">
       <div class="footer-section">
         <h4>Contact Us</h4>
-        <p>📱 +91 9876543210</p>
+        <p>📱 +91 8247219272</p>
         <p>📧 admin@dvpcricket.com</p>
-        <p>📍 DVP Ground, Village Name</p>
+        <p>📍 <a href="https://maps.app.goo.gl/yvJ8jQS2cjpoDDmS9" target="_blank" rel="noopener noreferrer" style="color: #00e0ff; text-decoration: none; transition: color 0.3s ease;">DVP Ground, Devudu Vellam Palli</a></p>
       </div>
       <div class="footer-section">
         <h4>Quick Links</h4>

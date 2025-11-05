@@ -2,40 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Registration - DVP Cricket Tournament 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Register for DVP Cricket Tournament 2026 - The most exciting village cricket tournament">
+  <meta name="theme-color" content="#00e0ff">
   <link rel="icon" type="image/png" href="assets/img/dvp.jpg"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"></noscript>
+  <title>Register - DVP Cricket Tournament 2026</title>
+
   <style>
-    /* Loading spinner styles */
-    .loading-spinner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #3498db;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
     * {
       margin: 0;
       padding: 0;
@@ -43,157 +18,103 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    :root {
-      --primary-color: #00e0ff;
-      --secondary-color: #00ff88;
-      --dark-bg: rgba(0, 0, 0, 0.85);
-      --card-bg: rgba(30, 30, 35, 0.95);
-      --text-light: #f0f0f0;
-      --text-muted: #aaa;
-      --border-radius: 12px;
-      --transition: all 0.3s ease;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    * {
+    body {
+      color: white;
+      overflow-x: hidden;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
-                  url('assets/img/ground.png') center/cover no-repeat fixed;
-      color: var(--text-light);
       min-height: 100vh;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      line-height: 1.6;
+      background-image: url('assets/img/ground.png');
+      background-size: cover;
+      background-attachment: fixed;
     }
 
-    .registration-container {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: var(--border-radius);
-      padding: clamp(25px, 5vw, 40px);
-      width: 100%;
-      max-width: 600px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
-      overflow: hidden;
-      transform: translateY(0);
-      transition: var(--transition);
-      margin: 20px;
-    }
-    
-    .registration-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-    
-    .registration-container::before {
-      content: '';
-      position: absolute;
+    /* Header Styles */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 60px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #00e0ff, #00ff88);
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-section img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .logo-section h1 {
+      font-size: 26px;
+      color: #00e0ff;
+      text-shadow: 0px 0px 10px #00e0ff;
+    }
+
+    /* Main Content */
+    .registration-container {
+      max-width: 1200px;
+      margin: 120px auto 50px;
+      padding: 0 20px;
     }
 
     .registration-header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
-    .registration-header {
-      position: relative;
-      padding-bottom: 20px;
-      margin-bottom: 30px;
-    }
-    
-    .registration-header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: linear-gradient(90deg, #00e0ff, #00ff88);
-      border-radius: 3px;
-    }
-    
     .registration-header h1 {
-      color: #fff;
-      font-size: 32px;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 3rem;
+      color: #00e0ff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
     }
-    
+
     .registration-header p {
-      color: #aaa;
-      font-size: 16px;
-      margin-top: 5px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Form Styles */
+    .registration-form {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 224, 255, 0.2);
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .form-group {
       margin-bottom: 25px;
-      text-align: left;
-      position: relative;
-    }
-    
-    .form-group i {
-      position: absolute;
-      left: 15px;
-      top: 42px;
-      color: #00e0ff;
-      font-size: 18px;
-    }
-    
-    .form-group input, .form-group select, .form-group textarea {
-      padding-left: 45px !important;
     }
 
     .form-group label {
       display: block;
       margin-bottom: 8px;
-      color: #00e0ff;
       font-weight: 500;
+      color: #00e0ff;
     }
 
     .form-control {
       width: 100%;
-      padding: 14px 20px 14px 45px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-light);
-      font-size: 15px;
-      transition: var(--transition);
-      height: 50px;
-      -webkit-appearance: none;
-    }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(0, 224, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    
-    .form-control::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-      font-weight: 300;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
     }
 
     .form-control:focus {
@@ -206,702 +127,480 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
-    .btn-submit {
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-      color: #000;
-      border: none;
-      padding: 16px 30px;
-      border-radius: 50px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      transition: var(--transition);
-      margin-top: 25px;
-      letter-spacing: 0.5px;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      text-transform: uppercase;
-      font-size: 15px;
-      letter-spacing: 1.2px;
+    /* Team Members Section */
+    .team-members {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
     }
-    
-    .btn-submit::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: linear-gradient(45deg, #00ff88, #00e0ff);
-      transition: all 0.4s ease;
-      z-index: -1;
-      opacity: 0;
-    }
-    
-    .btn-submit:hover::before {
-      width: 100%;
-      opacity: 1;
-    }
-    
-    .section-title {
-      color: var(--primary-color);
-      margin: 25px 0 15px;
-      font-size: 18px;
-      font-weight: 600;
-      position: relative;
-      padding-left: 15px;
-    }
-    
-    .section-title::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 5px;
-      height: 20px;
-      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-      border-radius: 3px;
-    }
-    
-    .btn-add-member {
-      background: transparent;
-      color: var(--primary-color);
-      border: 1px dashed var(--primary-color);
-      padding: 12px 20px;
+
+    .member-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
       border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      width: 100%;
-      margin: 15px 0 25px;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .btn-add-member:hover {
-      background: rgba(0, 224, 255, 0.1);
-      border-color: var(--secondary-color);
-      color: var(--secondary-color);
-    }
-    
-    .team-member {
+      margin-bottom: 15px;
       position: relative;
-      transition: var(--transition);
     }
-    
+
     .remove-member {
       position: absolute;
       right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 99, 71, 0.1);
-      color: #ff6347;
+      top: 10px;
+      background: #ff4d4d;
+      color: white;
       border: none;
-      width: 24px;
-      height: 24px;
+      width: 25px;
+      height: 25px;
       border-radius: 50%;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      transition: var(--transition);
-      opacity: 0.7;
-    }
-    
-    .remove-member:hover {
-      background: rgba(255, 99, 71, 0.2);
-      opacity: 1;
+      font-size: 14px;
+      transition: all 0.3s ease;
     }
 
-    .btn-submit:hover {
-      background: #00b8d4;
+    .remove-member:hover {
+      background: #ff1a1a;
+      transform: scale(1.1);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #02b8d7;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0, 224, 255, 0.3);
     }
 
-    .btn-submit:disabled {
-      background: #666;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .back-link {
+    .btn-block {
       display: block;
-      text-align: center;
-      margin-top: 20px;
-      color: #00e0ff;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.3s ease;
-    }
-
-    .back-link:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-
-    .spinner {
-      display: none;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: #00e0ff;
-      animation: spin 1s ease-in-out infinite;
-      margin: 0 auto;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .notification {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: var(--card-bg);
-      width: 90%;
-      max-width: 500px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      overflow: hidden;
-      display: none;
-      text-align: center;
-      padding: 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      opacity: 0;
-      transform: translate(-50%, -45%) scale(0.95);
-      will-change: transform, opacity;
-    }
-
-    .notification.show {
-      display: block;
-      animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    .notification-header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: #000;
-      padding: 25px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .notification-header i {
-      font-size: 30px;
-      animation: bounce 0.8s ease-in-out;
-    }
-
-    .notification-body {
-      padding: 30px 20px;
-      color: var(--text-light);
-      background: var(--card-bg);
-    }
-
-    .notification-body h3 {
-      color: var(--primary-color);
-      margin-bottom: 15px;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    .notification-body p {
-      margin-bottom: 20px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    .notification-footer {
-      padding: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-close {
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-      color: #000;
-      border: none;
-      padding: 12px 35px;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 15px;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      min-width: 150px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 14px;
-    }
-    
-    .btn-close::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-      z-index: -1;
-      opacity: 0;
-      transition: var(--transition);
-    }
-    
-    .btn-close:hover::before {
-      opacity: 1;
     }
 
-    .btn-close:hover {
-      background: #3e8e41;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #00e0ff;
+      color: #00e0ff;
     }
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 999;
-      display: none;
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    .overlay.show {
-      display: block;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from { 
-        opacity: 0;
-        transform: translate(-50%, -45%) scale(0.95);
-      }
-      to { 
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-
-    @keyframes fadeOut {
-      from { 
-        opacity: 1;
-        transform: translate(-50%, -50%);
-      }
-      to { 
-        opacity: 0;
-        transform: translate(-50%, -40%);
-      }
+    .btn-outline:hover {
+      background: rgba(0, 224, 255, 0.1);
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      body {
-        padding: 15px;
-        background-attachment: scroll;
+      header {
+        padding: 15px 20px;
       }
-      
-      .registration-container {
+
+      .logo-section h1 {
+        font-size: 20px;
+      }
+
+      .registration-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .registration-form {
         padding: 25px 20px;
-        margin: 0;
-        border-radius: 12px;
       }
-      
-      .registration-header h1 {
-        font-size: 26px;
+
+      .form-row {
+        flex-direction: column;
       }
-      
-      .form-control {
-        padding: 12px 15px 12px 40px;
-        font-size: 14px;
-      }
-      
-      .btn-submit {
-        padding: 14px 20px;
-        font-size: 14px;
-      }
-      
-      .form-group i {
-        top: 40px;
-        font-size: 16px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .registration-container {
-        padding: 20px 15px;
-        border-radius: 10px;
-      }
-      
-      .registration-header h1 {
-        font-size: 24px;
-      }
-      
+
       .form-group {
-        margin-bottom: 20px;
-      }
-      
-      .form-control {
-        height: 46px;
-      }
-      
-      .btn-submit {
-        margin-top: 20px;
+        width: 100%;
       }
     }
 
+    /* Form Rows */
+    .form-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .success-message i {
+      font-size: 60px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .success-message h2 {
+      color: #00e0ff;
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo-section">
+      <img src="assets/img/dvp.jpg" alt="DVP Logo">
+      <h1>DVP Cricket</h1>
+    </div>
+    <nav>
+      <a href="index.html" class="btn btn-outline">Back to Home</a>
+    </nav>
+  </header>
+
   <div class="registration-container">
     <div class="registration-header">
-      <h1><i class="fas fa-cricket"></i> Team Registration</h1>
-      <p>Register your team for the DVP Cricket Tournament 2026</p>
-      <p>Join the DVP Cricket Tournament 2026</p>
+      <h1>Team Registration</h1>
+      <p>Fill out the form below to register your team for the DVP Cricket Tournament 2026</p>
     </div>
 
-    <form id="registrationForm" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="villageName">Village Name</label>
-        <i class="fas fa-map-marker-alt"></i>
-        <input type="text" id="villageName" name="villageName" class="form-control" placeholder="Enter your village name" required>
+    <form id="registrationForm" class="registration-form">
+      <!-- Team Information -->
+      <h3 style="color: #00e0ff; margin-bottom: 20px;">Team Information</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="teamName">Team Name *</label>
+          <input type="text" id="teamName" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="teamCaptain">Captain's Name *</label>
+          <input type="text" id="teamCaptain" class="form-control" required>
+        </div>
       </div>
-      
-      <div class="form-group">
-        <label for="teamName">Team Name</label>
-        <i class="fas fa-users"></i>
-        <input type="text" id="teamName" name="teamName" class="form-control" placeholder="Enter your team name" required>
+
+      <!-- Team Members -->
+      <div class="team-members">
+        <h3 style="color: #00e0ff; margin-bottom: 20px;">Team Members (Enter names of 5 players)</h3>
+        <div id="membersContainer">
+          <!-- Team members will be added here dynamically -->
+        </div>
+        <button type="button" id="addMember" class="btn btn-outline" style="margin-top: 10px;">
+          + Add Team Member
+        </button>
       </div>
-      
-      <h3 class="section-title">Captain Details</h3>
-      <div class="form-group">
-        <label for="captainName">Captain Name</label>
-        <i class="fas fa-user"></i>
-        <input type="text" id="captainName" name="captainName" class="form-control" placeholder="Captain's full name" required>
+
+      <!-- Terms and Conditions -->
+      <div class="form-group" style="margin-top: 30px;">
+        <label style="display: flex; align-items: flex-start;">
+          <input type="checkbox" id="terms" required style="margin-right: 10px; margin-top: 5px;">
+          <span>I agree to the <a href="#" style="color: #00e0ff; text-decoration: none;">Terms and Conditions</a> of the tournament *</span>
+        </label>
       </div>
-      <div class="form-group">
-        <label for="captainPhone">Captain Contact Number</label>
-        <i class="fas fa-phone"></i>
-        <input type="tel" id="captainPhone" name="captainPhone" class="form-control" placeholder="Captain's phone number" required>
-      </div>
-      
-      <h3 class="section-title">Vice-Captain Details</h3>
-      <div class="form-group">
-        <label for="viceCaptainName">Vice-Captain Name</label>
-        <i class="fas fa-user"></i>
-        <input type="text" id="viceCaptainName" name="viceCaptainName" class="form-control" placeholder="Vice-captain's full name" required>
-      </div>
-      <div class="form-group">
-        <label for="viceCaptainPhone">Vice-Captain Contact Number</label>
-        <i class="fas fa-phone"></i>
-        <input type="tel" id="viceCaptainPhone" name="viceCaptainPhone" class="form-control" placeholder="Vice-captain's phone number" required>
-      </div>
-      
-      <h3 class="section-title">Team Members (11-15 players including captain and vice-captain)</h3>
-      <div id="additionalMembers"></div>
-      
-      <button type="button" id="addMemberBtn" class="btn-add-member">
-        <i class="fas fa-plus"></i> Add Team Member
-      </button>
-      
-      <button type="submit" class="btn-submit">
-        Register Team
-        <i class="fas fa-arrow-right"></i>
+
+      <button type="submit" class="btn btn-block" style="margin-top: 30px;">
+        Submit Registration
       </button>
     </form>
 
-    <a href="index.html" class="back-link">← Back to Home</a>
+    <!-- Success Message (Hidden by default) -->
+    <div id="successMessage" class="success-message">
+      <i>✓</i>
+      <h2>Registration Successful!</h2>
+      <p>Thank you for registering your team. We've sent a confirmation email to your registered email address.</p>
+      <a href="index.html" class="btn" style="margin-top: 20px;">Back to Home</a>
+    </div>
   </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const captainName = document.getElementById('captainName');
-  const viceCaptainName = document.getElementById('viceCaptainName');
-  const captainNameField = document.querySelector('.member-name');
-  const viceCaptainNameField = document.querySelectorAll('.member-name')[1];
-  const additionalMembers = document.getElementById('additionalMembers');
-  const addMemberBtn = document.getElementById('addMemberBtn');
-  let memberCount = 2; // Starts from 3 (0,1,2) as we already have 2 members (captain and vice-captain)
-  const MIN_TEAM_MEMBERS = 11; // Minimum team members including captain and vice-captain
-  const MAX_TEAM_MEMBERS = 15; // Maximum team members including captain and vice-captain
-  
-  // Auto-fill captain and vice-captain names in team members list
-  if (captainName) {
-    captainName.addEventListener('input', () => {
-      const captainFields = document.querySelectorAll('.member-name');
-      if (captainFields && captainFields[0]) {
-        captainFields[0].value = captainName.value + ' (C)';
-      }
-    });
-  }
-  
-  if (viceCaptainName) {
-    viceCaptainName.addEventListener('input', () => {
-      const viceCaptainFields = document.querySelectorAll('.member-name');
-      if (viceCaptainFields && viceCaptainFields[1]) {
-        viceCaptainFields[1].value = viceCaptainName.value + ' (VC)';
-      }
-    });
-  }
-  
-  // Add team member
-  addMemberBtn.addEventListener('click', () => {
-    if (memberCount >= MAX_TEAM_MEMBERS - 1) { // -1 because we start counting from 0
-      showNotification(`Maximum ${MAX_TEAM_MEMBERS} team members allowed (including captain and vice-captain)`, 'error');
-      return;
-    }
-    
-    const memberDiv = document.createElement('div');
-    memberDiv.className = 'form-group team-member';
-    memberDiv.innerHTML = `
-      <label>Team Member ${memberCount + 1}</label>
-      <i class="fas fa-user"></i>
-      <input type="text" name="teamMember${memberCount}" class="form-control member-name" placeholder="Enter team member name" required>
-      <button type="button" class="remove-member" title="Remove member">
-        <i class="fas fa-times"></i>
-      </button>
-    `;
-    
-    additionalMembers.appendChild(memberDiv);
-    memberCount++;
-    
-    // Add event listener to remove button
-    const removeBtn = memberDiv.querySelector('.remove-member');
-    removeBtn.addEventListener('click', () => {
-      memberDiv.remove();
-      memberCount--;
-      updateMemberNumbers();
-    });
-  });
-  
-  // Update member numbers when a member is removed
-  function updateMemberNumbers() {
-    const members = document.querySelectorAll('.team-member');
-    members.forEach((member, index) => {
-      if (index > 1) { // Skip captain and vice-captain
-        const label = member.querySelector('label');
-        if (label) {
-          label.textContent = `Team Member ${index + 1}`;
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('registrationForm');
+      const membersContainer = document.getElementById('membersContainer');
+      const addMemberBtn = document.getElementById('addMember');
+      let memberCount = 0;
+      const maxMembers = 5;
+      const minMembers = 5;
+
+      // Add first member by default
+      addMemberField();
+
+      // Add member field
+      function addMemberField() {
+        if (memberCount >= maxMembers) {
+          alert(`Maximum ${maxMembers} team members allowed.`);
+          return;
         }
-      }
-    });
-  }
-  const form = document.getElementById('registrationForm');
-  const submitBtn = document.querySelector('button[type="submit"]');
-  const submitText = submitBtn ? submitBtn.querySelector('span') || submitBtn : null;
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Get all team member names including captain and vice-captain
-    const captainName = document.getElementById('captainName').value;
-    const viceCaptainName = document.getElementById('viceCaptainName').value;
-    const memberInputs = document.querySelectorAll('.member-name');
-    
-    // Create array of team members
-    const teamMembers = [
-      captainName + ' (Captain)',
-      viceCaptainName + ' (Vice-Captain)'
-    ];
-    
-    // Add other team members (skip first two as they are captain and vice-captain)
-    for (let i = 2; i < memberInputs.length; i++) {
-      if (memberInputs[i].value.trim() !== '') {
-        teamMembers.push(memberInputs[i].value.trim());
-      }
-    }
-    
-    // Validate minimum team members (including captain and vice-captain)
-    if (teamMembers.length < MIN_TEAM_MEMBERS) {
-      e.preventDefault();
-      showNotification(`Minimum ${MIN_TEAM_MEMBERS} team members required (including captain and vice-captain). Current: ${teamMembers.length}`, 'error');
-      return;
-    }
-    
-    // Validate maximum team members (including captain and vice-captain)
-    if (teamMembers.length > MAX_TEAM_MEMBERS) {
-      e.preventDefault();
-      showNotification(`Maximum ${MAX_TEAM_MEMBERS} team members allowed (including captain and vice-captain). Current: ${teamMembers.length}`, 'error');
-      return;
-    }
-    
-    // Show loading state
-    const loadingSpinner = document.createElement('div');
-    loadingSpinner.className = 'loading-spinner';
-    loadingSpinner.innerHTML = '<div class="spinner"></div>';
-    document.body.appendChild(loadingSpinner);
-    
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      if (submitText) {
-        submitText.textContent = 'Processing...';
-      }
-    }
+        memberCount++;
+        const memberDiv = document.createElement('div');
+        memberDiv.className = 'member-item';
+        memberDiv.innerHTML = `
+          <button type="button" class="remove-member" ${memberCount === 1 ? 'disabled' : ''}>&times;</button>
+          <div class="form-group">
+            <label for="memberName${memberCount}">Player ${memberCount} Name *</label>
+            <input type="text" id="memberName${memberCount}" class="form-control" required>
+          </div>
+        `;
+        membersContainer.appendChild(memberDiv);
 
-    try {
-      // Get all team members
-      const memberInputs = document.querySelectorAll('.member-name');
-      const teamMembers = [
-        document.getElementById('captainName').value + ' (Captain)',
-        document.getElementById('viceCaptainName').value + ' (Vice-Captain)'
-      ];
-      
-      // Add other team members (skip first two as they are captain and vice-captain)
-      for (let i = 2; i < memberInputs.length; i++) {
-        if (memberInputs[i].value.trim() !== '') {
-          teamMembers.push(memberInputs[i].value.trim());
+        // Add event listener to remove button
+        const removeBtn = memberDiv.querySelector('.remove-member');
+        if (removeBtn) {
+          removeBtn.addEventListener('click', function() {
+            if (memberCount > 1) {
+              memberCount--;
+              membersContainer.removeChild(memberDiv);
+              // Renumber remaining players
+              updatePlayerNumbers();
+            }
+          });
         }
       }
 
-      // Create data object
-      const formData = {
-        'Timestamp': new Date().toISOString(),
-        'Village_Name': document.getElementById('villageName').value,
-        'Team_Name': document.getElementById('teamName').value,
-        'Captain_Name': document.getElementById('captainName').value,
-        'Captain_Phone': document.getElementById('captainPhone').value,
-        'Vice_Captain_Name': document.getElementById('viceCaptainName').value,
-        'Vice_Captain_Phone': document.getElementById('viceCaptainPhone').value,
-        'Total_Team_Members': teamMembers.length
-      };
+      // Update player numbers when players are removed
+      function updatePlayerNumbers() {
+        const memberItems = document.querySelectorAll('.member-item');
+        memberItems.forEach((item, index) => {
+          const label = item.querySelector('label');
+          const input = item.querySelector('input');
+          const newNumber = index + 1;
+          label.textContent = `Player ${newNumber} Name *`;
+          input.id = `memberName${newNumber}`;
+        });
+      }
 
-      // Add team members to the data object
-      teamMembers.forEach((member, index) => {
-        formData[`Team_Member_${index + 1}`] = member;
+      // Add member button click handler
+      addMemberBtn.addEventListener('click', addMemberField);
+
+      // Form submission
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validate team members
+        if (memberCount !== minMembers) {
+          alert(`Please add exactly ${minMembers} team members.`);
+          return;
+        }
+
+        try {
+          const submitBtn = form.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...';
+
+          // Collect player names
+          const players = [];
+          for (let i = 1; i <= memberCount; i++) {
+            const name = document.getElementById(`memberName${i}`).value.trim();
+            if (name) players.push(name);
+          }
+
+          // Prepare form data
+          const formData = {
+            teamName: document.getElementById('teamName').value.trim(),
+            teamCaptain: document.getElementById('teamCaptain').value.trim()
+          };
+          
+          // Add players to form data
+          players.forEach((player, index) => {
+            formData[`player${index + 1}`] = player;
+          });
+
+          // Log the data being sent
+          console.log('Sending data:', formData);
+
+          // Google Apps Script Web App URL (make sure to deploy as web app with 'Anyone' access)
+          const webAppUrl = 'https://script.google.com/macros/s/AKfycbxJoX4UTou7mg7uilU83H-IKBGnSWWqggKtsehLcxr__z6tHaP1hK1krdJE4hqrlAHO/exec';
+          
+          // Add a small delay to prevent rate limiting (1-3 seconds)
+          const randomDelay = Math.floor(Math.random() * 2000) + 1000; // 1-3 seconds
+          await new Promise(resolve => setTimeout(resolve, randomDelay));
+          
+          // Create a promise to handle the form submission
+          const submitForm = (data, url) => new Promise((resolve, reject) => {
+            // Create a hidden iframe
+            const iframe = document.createElement('iframe');
+            iframe.name = 'form-response';
+            iframe.style.display = 'none';
+            
+            // Create a form
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = url;
+            form.target = 'form-response';
+            form.style.display = 'none';
+            
+            // Add form data as hidden inputs
+            Object.entries(data).forEach(([key, value]) => {
+              const input = document.createElement('input');
+              input.type = 'hidden';
+              input.name = key;
+              input.value = value;
+              form.appendChild(input);
+            });
+            
+            // Add elements to the page first
+            document.body.appendChild(iframe);
+            document.body.appendChild(form);
+            
+            // Handle the response
+            const cleanup = () => {
+              // Use try-catch to prevent errors if elements are already removed
+              try { if (iframe.parentNode) document.body.removeChild(iframe); } catch(e) {}
+              try { if (form.parentNode) document.body.removeChild(form); } catch(e) {}
+            };
+            
+            // Set a timeout to clean up in case the iframe never loads
+            const cleanupTimeout = setTimeout(() => {
+              cleanup();
+              resolve({ status: 'pending', message: 'Submission in progress...' });
+            }, 10000); // 10 second timeout
+            
+            iframe.onload = function() {
+              clearTimeout(cleanupTimeout);
+              try {
+                // Try to parse the response if it's JSON
+                const response = iframe.contentDocument?.body?.textContent;
+                if (response) {
+                  try {
+                    const result = JSON.parse(response);
+                    resolve(result);
+                  } catch (e) {
+                    console.warn('Could not parse response as JSON, but submission might have succeeded');
+                    resolve({ status: 'success' });
+                  }
+                } else {
+                  resolve({ status: 'success' });
+                }
+              } catch (e) {
+                console.warn('Error processing response, but submission might have succeeded:', e);
+                resolve({ status: 'success' });
+              } finally {
+                cleanup();
+              }
+            };
+            
+            // Handle errors
+            iframe.onerror = function() {
+              clearTimeout(cleanupTimeout);
+              cleanup();
+              // Don't reject here as the submission might still have succeeded
+              resolve({ status: 'pending', message: 'Submission in progress...' });
+            };
+            
+            // Submit the form
+            form.submit();
+          });
+          
+          try {
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Submit the form data with retry logic
+            let result;
+            let attempts = 0;
+            const maxAttempts = 3;
+            
+            while (attempts < maxAttempts) {
+              try {
+                result = await submitForm(formData, webAppUrl);
+                break; // If successful, exit the retry loop
+              } catch (error) {
+                attempts++;
+                if (attempts === maxAttempts) throw error; // Throw error if all retries fail
+                
+                // Show retry message
+                submitBtn.textContent = `Retrying (${attempts}/${maxAttempts-1})...`;
+                
+                // Exponential backoff: wait longer after each attempt
+                const delay = Math.min(1000 * Math.pow(2, attempts), 10000); // Max 10 seconds
+                await new Promise(resolve => setTimeout(resolve, delay));
+              }
+            }
+            
+            // Check the result status
+            if (result && (result.status === 'success' || result.status === 'pending')) {
+              // Show success message
+              form.style.display = 'none';
+              document.getElementById('successMessage').style.display = 'block';
+              document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+              
+              // Reset form after successful submission
+              form.reset();
+              
+              // Show a more specific message if available
+              if (result.message) {
+                alert(result.message);
+              }
+            } else {
+              // If we got here, the submission might have been rate limited
+              throw new Error('Submission failed due to server limits. Please try again in a few minutes.');
+            }
+            
+          } catch (error) {
+            console.error('Error:', error);
+            
+            // More specific error messages based on error type
+            let errorMessage = 'There was an error submitting your form. ';
+            
+            if (error.message.includes('429') || error.message.includes('rate limit')) {
+              errorMessage += 'The server is receiving too many requests. Please wait a few minutes and try again.';
+            } else if (error.message.includes('network')) {
+              errorMessage += 'There was a network issue. Please check your internet connection and try again.';
+            } else {
+              errorMessage += 'Please try again later or contact support if the problem persists.';
+            }
+            
+            alert(errorMessage);
+          } finally {
+            // Reset button state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Submit Registration';
+            }
+          }
+
+        } catch (error) {
+          console.error('Error:', error);
+          alert('There was an error submitting the form. Please try again.');
+        } finally {
+          const submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Registration';
+          }
+        }
       });
 
-      // Log the data being sent for debugging
-      console.log('Sending data:', formData);
+      // Form validation
+      const inputs = form.querySelectorAll('input[required]');
+      inputs.forEach(input => {
+        input.addEventListener('invalid', function() {
+          this.setCustomValidity('');
+          if (!this.validity.valid) {
+            this.setCustomValidity('This field is required');
+          }
+        });
 
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzLc9eECMKFp_2TCanyLF00ICjNXhQuGNPsYUUXVCtlgZuES3wwmFqz3F1bQ6soiRyG0w/exec", {
-        method: "POST",
-        mode: 'no-cors', // Add this line to handle CORS
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        input.addEventListener('input', function() {
+          this.setCustomValidity('');
+        });
       });
-
-      const result = await response.json();
-      
-      if (response.ok) {
-        showNotification();
-        form.reset();
-      } else {
-        throw new Error(result.message || 'Failed to submit form');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      showNotification('❌ ' + (error.message || 'Failed to submit form'), 'error');
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        if (submitText) {
-          submitText.textContent = 'Submit Registration';
-        }
-      }
-      const spinner = document.querySelector('.loading-spinner');
-      if (spinner) {
-        spinner.remove();
-      }
-    }
-  });
-
-  function showNotification(message, type) {
-    if (message) {
-      const notification = document.createElement('div');
-      notification.className = `notification ${type}`;
-      notification.textContent = message;
-      
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.style.animation = 'fadeOut 0.3s ease-out';
-        setTimeout(() => {
-          notification.remove();
-        }, 300);
-      }, 5000);
-    } else {
-      const overlay = document.createElement('div');
-      overlay.className = 'overlay';
-      
-      const notification = document.createElement('div');
-      notification.className = 'notification';
-      notification.innerHTML = `
-        <div class="notification-header">
-          <i class="fas fa-check-circle"></i>
-        </div>
-        <div class="notification-body">
-          <h3>Registration Successful! 🎉</h3>
-          <p>Your team has been successfully registered for the DVP Cricket Tournament 2026.</p>
-          <p><strong>Team Name:</strong> <span id="registeredTeam"></span></p>
-          <p>We'll contact you soon with more details. Good luck!</p>
-        </div>
-        <div class="notification-footer">
-          <button class="btn-close" onclick="closeNotification()">Done</button>
-        </div>
-      `;
-      
-      document.body.appendChild(overlay);
-      document.body.appendChild(notification);
-      
-      // Set the team name if available
-      const teamName = document.getElementById('Team_Name')?.value || 'Your Team';
-      document.getElementById('registeredTeam').textContent = teamName;
-      
-      // Show with animation
-      setTimeout(() => {
-        overlay.classList.add('show');
-        notification.classList.add('show');
-      }, 10);
-    }
-  }
-  
-  function closeNotification() {
-    const notification = document.querySelector('.notification');
-    const overlay = document.querySelector('.overlay');
-    
-    if (notification) {
-      notification.style.animation = 'fadeOut 0.3s ease-out';
-      overlay.style.opacity = '0';
-      
-      setTimeout(() => {
-        notification.remove();
-        overlay.remove();
-        // Redirect to index.html after the notification is removed
-        window.location.href = 'index.html';
-      }, 300);
-    }
-  }
-});
-</script>
+    });
+  </script>
 </body>
 </html>

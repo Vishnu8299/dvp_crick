@@ -1238,7 +1238,9 @@
     </a>
     <!-- Social Share -->
     <div class="social-share">
-      <div class="share-btn whatsapp">Share on WhatsApp</div>
+      <a href="https://chat.whatsapp.com/CCbh4Sz4mKQKQYhiMRk2r5?mode=wwt" class="share-btn whatsapp" target="_blank" rel="noopener noreferrer">
+        Join with us on WhatsApp
+      </a>
     </div>
   </section>
 
@@ -1496,19 +1498,6 @@
 
     document.querySelector('.scroll-top').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Social Share
-    const shareBtns = document.querySelectorAll('.share-btn');
-    shareBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const url = encodeURIComponent(window.location.href);
-        const text = encodeURIComponent('Check out DVP Cricket Tournament 2026!');
-
-        if (btn.classList.contains('whatsapp')) {
-          window.open(`https://api.whatsapp.com/send?text=${text} ${url}`);
-        }
-      });
     });
 
     // Countdown Timer

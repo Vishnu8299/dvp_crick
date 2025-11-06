@@ -281,32 +281,28 @@
       <h3 style="color: #00e0ff; margin-bottom: 20px;">Team Information</h3>
       <div class="form-row">
         <div class="form-group">
-          <label for="teamName">Team Name *</label>
+          <label for="teamName">Village Name *</label>
           <input type="text" id="teamName" class="form-control" required>
         </div>
         <div class="form-group">
           <label for="teamCaptain">Captain's Name *</label>
           <input type="text" id="teamCaptain" class="form-control" required>
         </div>
+        <div class="form-group">
+          <label for="captainPhone">Captain's Phone Number *</label>
+          <input type="tel" id="captainPhone" class="form-control" pattern="[0-9]{10}" required>
+        </div>
       </div>
 
       <!-- Team Members -->
       <div class="team-members">
-        <h3 style="color: #00e0ff; margin-bottom: 20px;">Team Members (Enter names of 5 players)</h3>
+        <h3 style="color: #00e0ff; margin-bottom: 20px;">Team Members (Enter names of 10 players)</h3>
         <div id="membersContainer">
           <!-- Team members will be added here dynamically -->
         </div>
         <button type="button" id="addMember" class="btn btn-outline" style="margin-top: 10px;">
           + Add Team Member
         </button>
-      </div>
-
-      <!-- Terms and Conditions -->
-      <div class="form-group" style="margin-top: 30px;">
-        <label style="display: flex; align-items: flex-start;">
-          <input type="checkbox" id="terms" required style="margin-right: 10px; margin-top: 5px;">
-          <span>I agree to the <a href="#" style="color: #00e0ff; text-decoration: none;">Terms and Conditions</a> of the tournament *</span>
-        </label>
       </div>
 
       <button type="submit" class="btn btn-block" style="margin-top: 30px;">
@@ -324,283 +320,153 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('registrationForm');
-      const membersContainer = document.getElementById('membersContainer');
-      const addMemberBtn = document.getElementById('addMember');
-      let memberCount = 0;
-      const maxMembers = 5;
-      const minMembers = 5;
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('registrationForm');
+  const membersContainer = document.getElementById('membersContainer');
+  const addMemberBtn = document.getElementById('addMember');
+  let memberCount = 0;
+  const maxMembers = 10;
+  const minMembers = 10;
 
-      // Add first member by default
-      addMemberField();
+  // Add first member by default
+  addMemberField();
 
-      // Add member field
-      function addMemberField() {
-        if (memberCount >= maxMembers) {
-          alert(`Maximum ${maxMembers} team members allowed.`);
-          return;
-        }
+  // Add member field
+  function addMemberField() {
+    if (memberCount >= maxMembers) {
+      alert(`Maximum of ${maxMembers} team members allowed.`);
+      return;
+    }
 
-        memberCount++;
-        const memberDiv = document.createElement('div');
-        memberDiv.className = 'member-item';
-        memberDiv.innerHTML = `
-          <button type="button" class="remove-member" ${memberCount === 1 ? 'disabled' : ''}>&times;</button>
-          <div class="form-group">
-            <label for="memberName${memberCount}">Player ${memberCount} Name *</label>
-            <input type="text" id="memberName${memberCount}" class="form-control" required>
-          </div>
-        `;
-        membersContainer.appendChild(memberDiv);
+    memberCount++;
+    const memberDiv = document.createElement('div');
+    memberDiv.className = 'member-item';
+    memberDiv.innerHTML = `
+      <button type="button" class="remove-member" ${memberCount === 1 ? 'disabled' : ''}>&times;</button>
+      <div class="form-group">
+        <label for="memberName${memberCount}">Player ${memberCount} Name *</label>
+        <input type="text" id="memberName${memberCount}" class="form-control" required>
+      </div>
+    `;
+    membersContainer.appendChild(memberDiv);
 
-        // Add event listener to remove button
-        const removeBtn = memberDiv.querySelector('.remove-member');
-        if (removeBtn) {
-          removeBtn.addEventListener('click', function() {
-            if (memberCount > 1) {
-              memberCount--;
-              membersContainer.removeChild(memberDiv);
-              // Renumber remaining players
-              updatePlayerNumbers();
-            }
-          });
-        }
-      }
-
-      // Update player numbers when players are removed
-      function updatePlayerNumbers() {
-        const memberItems = document.querySelectorAll('.member-item');
-        memberItems.forEach((item, index) => {
-          const label = item.querySelector('label');
-          const input = item.querySelector('input');
-          const newNumber = index + 1;
-          label.textContent = `Player ${newNumber} Name *`;
-          input.id = `memberName${newNumber}`;
-        });
-      }
-
-      // Add member button click handler
-      addMemberBtn.addEventListener('click', addMemberField);
-
-      // Form submission
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Validate team members
-        if (memberCount !== minMembers) {
-          alert(`Please add exactly ${minMembers} team members.`);
-          return;
-        }
-
-        try {
-          const submitBtn = form.querySelector('button[type="submit"]');
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Submitting...';
-
-          // Collect player names
-          const players = [];
-          for (let i = 1; i <= memberCount; i++) {
-            const name = document.getElementById(`memberName${i}`).value.trim();
-            if (name) players.push(name);
-          }
-
-          // Prepare form data
-          const formData = {
-            teamName: document.getElementById('teamName').value.trim(),
-            teamCaptain: document.getElementById('teamCaptain').value.trim()
-          };
-          
-          // Add players to form data
-          players.forEach((player, index) => {
-            formData[`player${index + 1}`] = player;
-          });
-
-          // Log the data being sent
-          console.log('Sending data:', formData);
-
-          // Google Apps Script Web App URL (make sure to deploy as web app with 'Anyone' access)
-          const webAppUrl = 'https://script.google.com/macros/s/AKfycbxJoX4UTou7mg7uilU83H-IKBGnSWWqggKtsehLcxr__z6tHaP1hK1krdJE4hqrlAHO/exec';
-          
-          // Add a small delay to prevent rate limiting (1-3 seconds)
-          const randomDelay = Math.floor(Math.random() * 2000) + 1000; // 1-3 seconds
-          await new Promise(resolve => setTimeout(resolve, randomDelay));
-          
-          // Create a promise to handle the form submission
-          const submitForm = (data, url) => new Promise((resolve, reject) => {
-            // Create a hidden iframe
-            const iframe = document.createElement('iframe');
-            iframe.name = 'form-response';
-            iframe.style.display = 'none';
-            
-            // Create a form
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = url;
-            form.target = 'form-response';
-            form.style.display = 'none';
-            
-            // Add form data as hidden inputs
-            Object.entries(data).forEach(([key, value]) => {
-              const input = document.createElement('input');
-              input.type = 'hidden';
-              input.name = key;
-              input.value = value;
-              form.appendChild(input);
-            });
-            
-            // Add elements to the page first
-            document.body.appendChild(iframe);
-            document.body.appendChild(form);
-            
-            // Handle the response
-            const cleanup = () => {
-              // Use try-catch to prevent errors if elements are already removed
-              try { if (iframe.parentNode) document.body.removeChild(iframe); } catch(e) {}
-              try { if (form.parentNode) document.body.removeChild(form); } catch(e) {}
-            };
-            
-            // Set a timeout to clean up in case the iframe never loads
-            const cleanupTimeout = setTimeout(() => {
-              cleanup();
-              resolve({ status: 'pending', message: 'Submission in progress...' });
-            }, 10000); // 10 second timeout
-            
-            iframe.onload = function() {
-              clearTimeout(cleanupTimeout);
-              try {
-                // Try to parse the response if it's JSON
-                const response = iframe.contentDocument?.body?.textContent;
-                if (response) {
-                  try {
-                    const result = JSON.parse(response);
-                    resolve(result);
-                  } catch (e) {
-                    console.warn('Could not parse response as JSON, but submission might have succeeded');
-                    resolve({ status: 'success' });
-                  }
-                } else {
-                  resolve({ status: 'success' });
-                }
-              } catch (e) {
-                console.warn('Error processing response, but submission might have succeeded:', e);
-                resolve({ status: 'success' });
-              } finally {
-                cleanup();
-              }
-            };
-            
-            // Handle errors
-            iframe.onerror = function() {
-              clearTimeout(cleanupTimeout);
-              cleanup();
-              // Don't reject here as the submission might still have succeeded
-              resolve({ status: 'pending', message: 'Submission in progress...' });
-            };
-            
-            // Submit the form
-            form.submit();
-          });
-          
-          try {
-            // Show loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-            
-            // Submit the form data with retry logic
-            let result;
-            let attempts = 0;
-            const maxAttempts = 3;
-            
-            while (attempts < maxAttempts) {
-              try {
-                result = await submitForm(formData, webAppUrl);
-                break; // If successful, exit the retry loop
-              } catch (error) {
-                attempts++;
-                if (attempts === maxAttempts) throw error; // Throw error if all retries fail
-                
-                // Show retry message
-                submitBtn.textContent = `Retrying (${attempts}/${maxAttempts-1})...`;
-                
-                // Exponential backoff: wait longer after each attempt
-                const delay = Math.min(1000 * Math.pow(2, attempts), 10000); // Max 10 seconds
-                await new Promise(resolve => setTimeout(resolve, delay));
-              }
-            }
-            
-            // Check the result status
-            if (result && (result.status === 'success' || result.status === 'pending')) {
-              // Show success message
-              form.style.display = 'none';
-              document.getElementById('successMessage').style.display = 'block';
-              document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-              
-              // Reset form after successful submission
-              form.reset();
-              
-              // Show a more specific message if available
-              if (result.message) {
-                alert(result.message);
-              }
-            } else {
-              // If we got here, the submission might have been rate limited
-              throw new Error('Submission failed due to server limits. Please try again in a few minutes.');
-            }
-            
-          } catch (error) {
-            console.error('Error:', error);
-            
-            // More specific error messages based on error type
-            let errorMessage = 'There was an error submitting your form. ';
-            
-            if (error.message.includes('429') || error.message.includes('rate limit')) {
-              errorMessage += 'The server is receiving too many requests. Please wait a few minutes and try again.';
-            } else if (error.message.includes('network')) {
-              errorMessage += 'There was a network issue. Please check your internet connection and try again.';
-            } else {
-              errorMessage += 'Please try again later or contact support if the problem persists.';
-            }
-            
-            alert(errorMessage);
-          } finally {
-            // Reset button state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Submit Registration';
-            }
-          }
-
-        } catch (error) {
-          console.error('Error:', error);
-          alert('There was an error submitting the form. Please try again.');
-        } finally {
-          const submitBtn = form.querySelector('button[type="submit"]');
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit Registration';
-          }
+    // Add event listener to remove button
+    const removeBtn = memberDiv.querySelector('.remove-member');
+    if (removeBtn) {
+      removeBtn.addEventListener('click', function() {
+        if (memberCount > 1) {
+          memberCount--;
+          membersContainer.removeChild(memberDiv);
+          // Renumber remaining players
+          updatePlayerNumbers();
         }
       });
+    }
+  }
 
-      // Form validation
-      const inputs = form.querySelectorAll('input[required]');
-      inputs.forEach(input => {
-        input.addEventListener('invalid', function() {
-          this.setCustomValidity('');
-          if (!this.validity.valid) {
-            this.setCustomValidity('This field is required');
-          }
-        });
-
-        input.addEventListener('input', function() {
-          this.setCustomValidity('');
-        });
-      });
+  // Update player numbers when players are removed
+  function updatePlayerNumbers() {
+    const memberItems = document.querySelectorAll('.member-item');
+    memberItems.forEach((item, index) => {
+      const label = item.querySelector('label');
+      const input = item.querySelector('input');
+      const newNumber = index + 1;
+      label.textContent = `Player ${newNumber} Name *`;
+      input.id = `memberName${newNumber}`;
     });
+  }
+
+  // Add member button click handler
+  addMemberBtn.addEventListener('click', addMemberField);
+
+  // Form submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validate team members
+    if (memberCount !== minMembers) {
+      alert(`Please add exactly ${minMembers} team members.`);
+      return;
+    }
+    
+    // Check if all player names are filled
+    const players = [];
+    for (let i = 1; i <= memberCount; i++) {
+      const name = document.getElementById(`memberName${i}`).value.trim();
+      if (!name) {
+        alert(`Please enter name for Player ${i}.`);
+        return;
+      }
+      players.push(name);
+    }
+
+    try {
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      // Prepare form data
+      const formData = {
+        teamName: document.getElementById('teamName').value.trim(),
+        teamCaptain: document.getElementById('teamCaptain').value.trim(),
+        captainPhone: document.getElementById('captainPhone').value.trim(),
+        // Add all 10 players to the form data
+        player1: players[0] || '',
+        player2: players[1] || '',
+        player3: players[2] || '',
+        player4: players[3] || '',
+        player5: players[4] || '',
+        player6: players[5] || '',
+        player7: players[6] || '',
+        player8: players[7] || '',
+        player9: players[8] || '',
+        player10: players[9] || ''
+      };
+
+      // Google Apps Script Web App URL (make sure to deploy with 'Anyone' access)
+      const webAppUrl = 'https://script.google.com/macros/s/AKfycby-yc2zJAzcZOhBhBQTKM-zr3Knxh7CieNKgk36O38-3EFxzXRCGNVeXno4mkRubYFD/exec';
+      // Submit the form data
+      const response = await fetch(webAppUrl, {
+        method: 'POST',
+        mode: 'no-cors', // Important for CORS
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      // Show success message
+      document.getElementById('registrationForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting the form. Please try again.');
+    } finally {
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Registration';
+      }
+    }
+  });
+
+  // Add validation styling
+  const inputs = form.querySelectorAll('input[required]');
+  inputs.forEach(input => {
+    input.addEventListener('invalid', function() {
+      this.setCustomValidity('');
+      if (!this.validity.valid) {
+        this.setCustomValidity('This field is required');
+      }
+    });
+
+    input.addEventListener('input', function() {
+      this.setCustomValidity('');
+    });
+  });
+});
   </script>
 </body>
 </html>

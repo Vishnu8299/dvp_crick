@@ -1074,7 +1074,6 @@
       width: 300px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid rgba(0, 224, 255, 0.3);
-      margin: 0 5px;
     }
 
     .history-year:hover {
@@ -1871,10 +1870,9 @@
   <style>
     /* Tournament Section */
     .tournament-section {
-      padding: 60px 15px;
+      padding: 80px 20px;
       background: linear-gradient(135deg, #0a192f 0%, #0a0f1a 100%);
       color: #fff;
-      overflow: hidden;
       position: relative;
       overflow: hidden;
     }
@@ -1918,47 +1916,41 @@
 
     .gallery-track {
       display: flex;
-      transition: transform 0.5s ease-out;
-      gap: 15px;
-      padding: 20px 10px;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -ms-overflow-style: none;
-      scrollbar-width: none; 
+      transition: transform 0.5s ease;
+      height: 400px;
     }
 
     .gallery-slide {
-      min-width: 280px;
-      height: 180px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      scroll-snap-align: start;
-      flex-shrink: 0;
+      min-width: 100%;
+      height: 100%;
+    }
+
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .slider-nav {
-      display: none; /* Hide arrows on mobile */
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 224, 255, 0.9);
-      border: none;
+      background: rgba(0, 224, 255, 0.2);
       color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 18px;
+      border: none;
+      padding: 15px;
       cursor: pointer;
+      font-size: 1.5rem;
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       z-index: 10;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      -webkit-tap-highlight-color: transparent;
     }
 
     .slider-nav:hover {
@@ -2028,17 +2020,16 @@
 
     /* YouTube CTA */
     .youtube-cta {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 25px 20px;
-      text-align: center;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      order: -1; /* Move CTA above video on mobile */
+      text-align: center;
+      border: 1px solid rgba(0, 224, 255, 0.1);
+      transition: all 0.3s ease;
     }
 
     .youtube-cta:hover {
@@ -2116,21 +2107,30 @@
 
     .champions-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0 10px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
     }
 
     .champion-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 12px;
-      padding: 20px 15px;
+      padding: 25px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      margin: 0 5px;
+      border: 1px solid rgba(0, 224, 255, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .champion-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00e0ff, #00ff9d);
     }
 
     .champion-card:hover {
@@ -2250,21 +2250,8 @@
   </style>
 
   <script>
-    // Touch support for gallery slider
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const touchThreshold = 50; // Minimum distance for swipe
-    
     // Gallery Slider Functionality
     document.addEventListener('DOMContentLoaded', function() {
-      const galleryTrack = document.querySelector('.gallery-track');
-      
-      // Touch event listeners for mobile swipe
-      if (galleryTrack) {
-        galleryTrack.addEventListener('touchstart', handleTouchStart, false);        
-        galleryTrack.addEventListener('touchmove', handleTouchMove, false);
-        galleryTrack.addEventListener('touchend', handleTouchEnd, false);
-      }
       const track = document.querySelector('.gallery-track');
       const slides = Array.from(track.children);
       const nextButton = document.querySelector('.slider-nav.next');
@@ -2313,22 +2300,8 @@
         }
       }
       
-      // Auto-advance slides (only on desktop)
-      let slideInterval;
-      
-      function startAutoSlide() {
-        if (window.innerWidth >= 768) { // Only auto-advance on desktop
-          slideInterval = setInterval(nextSlide, 5000);
-        }
-      }
-      
-      startAutoSlide();
-      
-      // Handle window resize
-      window.addEventListener('resize', function() {
-        clearInterval(slideInterval);
-        startAutoSlide();
-      });
+      // Auto-advance slides
+      let slideInterval = setInterval(nextSlide, 5000);
       
       // Pause on hover
       const slider = document.querySelector('.gallery-slider');

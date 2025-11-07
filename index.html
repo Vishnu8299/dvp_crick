@@ -1074,6 +1074,7 @@
       width: 300px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid rgba(0, 224, 255, 0.3);
+      margin: 0 5px;
     }
 
     .history-year:hover {
@@ -1291,60 +1292,448 @@
     </nav>
   </header>
 
-  <!-- Intro Section -->
-  <section class="intro">
-    <h2>Welcome to the Champions Trophy 2026</h2>
-    <p style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">We warmly invite everyone to be a part of the <b>“Devudu Vellam Palli T10 Cricket League”!</b> 🎉
- Get ready to witness the excitement of village cricket like never before!
-👏 Cheer for your favorite teams as talented local players compete with passion, teamwork, and determination.
-
-🤝 Enjoy thrilling matches, outstanding performances, and the true spirit of sportsmanship that unites our community.
-🎊 This event promises fun, entertainment, and unforgettable cricketing moments for all ages.
-
-👨‍👩‍👧‍👦 Bring your friends and family, support your teams, and celebrate the joy of cricket in our village.
-🚩 Don’t miss this exciting tournament filled with energy, enthusiasm, and community spirit! 🏆
-</p>
-
-    <!-- Countdown Timer -->
-    <div class="countdown">
-      <div class="countdown-item">
-        <div class="countdown-number" id="days">00</div>
-        <div class="countdown-label">Days</div>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Welcome to the <span class="highlight">Champions Trophy 2026</span></h1>
+        <p class="subtitle">Devudu Vellam Palli T10 Cricket League</p>
+        <p class="description">Witness the excitement of village cricket like never before! Cheer for your favorite teams as talented local players compete with passion, teamwork, and determination.</p>
+        
+        <div class="cta-buttons">
+          <a href="#registration" class="btn primary">Register Your Team</a>
+          <a href="#about" class="btn secondary">Learn More</a>
+        </div>
       </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="hours">00</div>
-        <div class="countdown-label">Hours</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="minutes">00</div>
-        <div class="countdown-label">Minutes</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="seconds">00</div>
-        <div class="countdown-label">Seconds</div>
+      
+      <!-- Countdown Timer -->
+      <div class="countdown-container">
+        <div class="countdown-header">
+          <h3>Tournament Starts In</h3>
+          <div class="countdown-divider"></div>
+        </div>
+        <div class="countdown">
+          <div class="countdown-item">
+            <span class="countdown-number" id="days">63</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="hours">22</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="minutes">32</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="seconds">44</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- Registration Section -->
-  <section class="registration" id="registration">
-    <h2>Team Registration – Devudu Vellam Palli T10 Cricket League</h2>
-    <img src="assets/img/registration.png" alt="Registration Form" loading="lazy" decoding="async"/>
-    <a href="registration.html" class="download-btn">
-      🏏 Register Your Team
-    </a>
-    <!-- Social Share -->
-    <div class="social-share" style="margin: 20px 0; text-align: center;">
-      <a href="https://chat.whatsapp.com/CCbh4Sz4mKQKQYhiMRk2r5?mode=wwt" class="whatsapp-join-btn" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; background: #25D366; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 10px; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));">
-          <path d="M17.5 14.5c-.3-.2-1.8-.9-2-.9-.3 0-.5.1-.7.3-.2.3-.7.9-.9 1.1-.2.2-.4.2-.7.1-.3-.1-1.3-.4-2.4-1.5-.9-1-1.5-2.2-1.7-2.6-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.2-.1.2-.2.3-.4 0-.2 0-.3-.1-.4-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5-.2 0-.5.2-.6.2l-.4.4c-.5.5-1 1.2-.7 2.1.3.9 1.5 3.4 3.3 5.5 2.2 2.7 5.3 4.3 6 4.5.4.1 1.1.2 1.5.1.4 0 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.1-.4-.2z"/>
-          <path d="M12 2.5c5.5 0 9.5 4.5 9.5 9.5s-4.5 9.5-9.5 9.5c-2 0-3.8-.6-5.4-1.6l-4.6 1.5 1.5-4.5c-1-1.5-1.6-3.3-1.6-5.4 0-5.5 4.5-9.5 10-9.5zm0 1.5c-4.4 0-8 3.6-8 8 0 1.8.6 3.4 1.6 4.7l-1.1 3.2 3.3-1.1c1.3.9 2.9 1.5 4.5 1.5 4.4 0 8-3.6 8-8s-3.6-8-8-8z"/>
-        </svg>
-        Join Our WhatsApp Group
-      </a>
+    
+    <!-- CTA Ribbon -->
+    <div class="cta-ribbon">
+      <p>🎉 Join us for an unforgettable cricket experience! 🏏</p>
     </div>
   </section>
-
+  
+  <style>
+    /* Hero Section Styling */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      background: linear-gradient(135deg, rgba(10, 25, 47, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%),
+                  url('assets/img/ground.png') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.366.005c1.855.072 3.64.412 5.007 1.014l.26.135c1.322.7 2.24 2.38 2.74 4.54l.046.2c.5 2.16.5 4.9.5 7.9v24c0 3-.083 5.74-.5 7.9l-.046.2c-.5 2.16-1.418 3.84-2.74 4.54l-.26.135c-1.322.7-3.152 1.06-5.007 1.014L54.627 48H5.373l-.366-.005c-1.855-.046-3.685-.314-5.007-1.014l-.26-.135C-1.582 46.146-2.5 44.466-3 42.306l-.046-.2C-3.462 39.946-3.5 37.206-3.5 34.206v-24c0-3 .038-5.74.454-7.9l.046-.2c.5-2.16 1.418-3.84 2.74-4.54l.26-.135C1.307-3.29 3.137-3.95 4.992-4.005L5.373-4h49.254zM0 10v24c0 2.8.06 5.2.4 7 .3 1.3.9 2.4 1.5 3 .6.6 1.7 1.1 3 1.5 1.8.3 4.2.4 7 .4h28c2.8 0 5.2-.1 7-.4 1.3-.3 2.4-.9 3-1.5.6-.6 1.1-1.7 1.5-3 .3-1.8.4-4.2.4-7v-24c0-2.8-.1-5.2-.4-7-.3-1.3-.9-2.4-1.5-3-.6-.6-1.7-1.1-3-1.5-1.8-.3-4.2-.4-7-.4h-28c-2.8 0-5.2.1-7 .4-1.3.3-2.4.9-3 1.5-.6.6-1.1 1.7-1.5 3-.3 1.8-.4 4.2-.4 7z' fill='%2300e0ff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.6;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-text {
+      max-width: 800px;
+      margin-bottom: 60px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero .highlight {
+      color: #00e0ff;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: rgba(0, 224, 255, 0.3);
+      z-index: -1;
+      border-radius: 4px;
+    }
+    
+    .hero .subtitle {
+      font-size: 1.5rem;
+      color: #00e0ff;
+      margin-bottom: 25px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    
+    .hero .description {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 40px;
+    }
+    
+    /* Buttons */
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .btn.primary {
+      background: #00e0ff;
+      color: #0a192f;
+      box-shadow: 0 4px 20px rgba(0, 224, 255, 0.3);
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(0, 224, 255, 0.4);
+      background: #00c8e6;
+    }
+    
+    .btn.secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Countdown Timer */
+    .countdown-container {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid rgba(0, 224, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+    
+    .countdown-header {
+      margin-bottom: 25px;
+      position: relative;
+    }
+    
+    .countdown-header h3 {
+      color: #fff;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    
+    .countdown-divider {
+      height: 3px;
+      width: 80px;
+      background: linear-gradient(90deg, #00e0ff, transparent);
+      margin: 0 auto;
+      border-radius: 3px;
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .countdown-item {
+      text-align: center;
+      min-width: 100px;
+      padding: 15px 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 224, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .countdown-item:hover {
+      transform: translateY(-5px);
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 5px 15px rgba(0, 224, 255, 0.1);
+    }
+    
+    .countdown-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #00e0ff;
+      margin-bottom: 5px;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+    }
+    
+    .countdown-label {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+    
+    .countdown-separator {
+      color: #00e0ff;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 5px;
+      animation: pulse 2s infinite;
+    }
+    
+    /* CTA Ribbon */
+    .cta-ribbon {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #00e0ff, #00a8ff);
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 -5px 20px rgba(0, 224, 255, 0.3);
+      animation: slideUp 0.5s ease-out;
+    }
+    
+    .cta-ribbon p {
+      color: #0a192f;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .hero .description {
+        font-size: 1.1rem;
+      }
+      
+      .countdown-item {
+        min-width: 80px;
+        padding: 12px 8px;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.8rem;
+      }
+      
+      .countdown-separator {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        padding: 100px 15px 70px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero .description {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+      
+      .countdown-container {
+        padding: 20px 15px;
+      }
+      
+      .countdown-header h3 {
+        font-size: 1.2rem;
+      }
+      
+      .countdown-item {
+        min-width: 70px;
+        padding: 10px 5px;
+      }
+      
+      .countdown-number {
+        font-size: 1.8rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.7rem;
+      }
+      
+      .countdown-separator {
+        font-size: 1.2rem;
+      }
+      
+      .cta-ribbon p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding: 80px 10px 60px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+      
+      .hero .description {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+      
+      .btn {
+        width: 100%;
+        padding: 12px;
+      }
+      
+      .countdown {
+        gap: 5px;
+      }
+      
+      .countdown-item {
+        min-width: 60px;
+        padding: 8px 3px;
+      }
+      
+      .countdown-number {
+        font-size: 1.5rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.6rem;
+      }
+      
+      .countdown-separator {
+        font-size: 1rem;
+      }
+      
+      .cta-ribbon p {
+        font-size: 0.8rem;
+      }
+      
+      .countdown-header h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
   <!-- Tournament History Section -->
   <section class="tournament-section" id="history">
     <div class="section-header">
@@ -1482,9 +1871,10 @@
   <style>
     /* Tournament Section */
     .tournament-section {
-      padding: 80px 20px;
+      padding: 60px 15px;
       background: linear-gradient(135deg, #0a192f 0%, #0a0f1a 100%);
       color: #fff;
+      overflow: hidden;
       position: relative;
       overflow: hidden;
     }
@@ -1528,41 +1918,47 @@
 
     .gallery-track {
       display: flex;
-      transition: transform 0.5s ease;
-      height: 400px;
+      transition: transform 0.5s ease-out;
+      gap: 15px;
+      padding: 20px 10px;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none; 
     }
 
     .gallery-slide {
-      min-width: 100%;
-      height: 100%;
-    }
-
-    .gallery-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      min-width: 280px;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-snap-align: start;
+      flex-shrink: 0;
     }
 
     .slider-nav {
+      display: none; /* Hide arrows on mobile */
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 224, 255, 0.2);
-      color: white;
+      background: rgba(0, 224, 255, 0.9);
       border: none;
-      padding: 15px;
-      cursor: pointer;
-      font-size: 1.5rem;
-      backdrop-filter: blur(5px);
+      color: white;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
+      font-size: 18px;
+      cursor: pointer;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      -webkit-tap-highlight-color: transparent;
     }
 
     .slider-nav:hover {
@@ -1632,16 +2028,17 @@
 
     /* YouTube CTA */
     .youtube-cta {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 12px;
-      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 25px 20px;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      border: 1px solid rgba(0, 224, 255, 0.1);
-      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      order: -1; /* Move CTA above video on mobile */
     }
 
     .youtube-cta:hover {
@@ -1719,30 +2116,21 @@
 
     .champions-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 10px;
     }
 
     .champion-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
-      padding: 25px;
+      padding: 20px 15px;
       text-align: center;
-      border: 1px solid rgba(0, 224, 255, 0.1);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .champion-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #00e0ff, #00ff9d);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 0 5px;
     }
 
     .champion-card:hover {
@@ -1862,8 +2250,21 @@
   </style>
 
   <script>
+    // Touch support for gallery slider
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const touchThreshold = 50; // Minimum distance for swipe
+    
     // Gallery Slider Functionality
     document.addEventListener('DOMContentLoaded', function() {
+      const galleryTrack = document.querySelector('.gallery-track');
+      
+      // Touch event listeners for mobile swipe
+      if (galleryTrack) {
+        galleryTrack.addEventListener('touchstart', handleTouchStart, false);        
+        galleryTrack.addEventListener('touchmove', handleTouchMove, false);
+        galleryTrack.addEventListener('touchend', handleTouchEnd, false);
+      }
       const track = document.querySelector('.gallery-track');
       const slides = Array.from(track.children);
       const nextButton = document.querySelector('.slider-nav.next');
@@ -1912,8 +2313,22 @@
         }
       }
       
-      // Auto-advance slides
-      let slideInterval = setInterval(nextSlide, 5000);
+      // Auto-advance slides (only on desktop)
+      let slideInterval;
+      
+      function startAutoSlide() {
+        if (window.innerWidth >= 768) { // Only auto-advance on desktop
+          slideInterval = setInterval(nextSlide, 5000);
+        }
+      }
+      
+      startAutoSlide();
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        clearInterval(slideInterval);
+        startAutoSlide();
+      });
       
       // Pause on hover
       const slider = document.querySelector('.gallery-slider');
@@ -1976,56 +2391,296 @@
   </section>
 
   <!-- Umpires Section -->
-  <section class="umpires" id="umpires" style="padding: 40px 10px; background: rgba(0, 0, 0, 0.7);">
-    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 30px; color: #00e0ff;">Our Umpires</h2>
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 1200px; margin: 0 auto; padding: 0 10px;">
-      <!-- Mobile-first: 2 columns -->
-      <style>
-        @media (min-width: 768px) {
-          #umpires .umpires-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            padding: 0 20px;
-          }
-        }
-      </style>
-      <!-- Umpire 1 -->
-      <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 15px; text-align: center; backdrop-filter: blur(5px); transition: transform 0.3s ease; margin: 0 auto; width: 90%;">
-        <div style="width: 100px; height: 100px; margin: 0 auto 10px; border-radius: 50%; overflow: hidden; border: 2px solid #00e0ff;">
-          <img src="assets/umpires/B.siva.jpg" alt="B. Siva - Umpire" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+  <section class="umpires-section" id="umpires">
+    <div class="section-header">
+      <h2>Our <span class="highlight">Umpires</span></h2>
+    </div>
+    
+    <div class="umpires-grid">
+      <div class="umpire-profile">
+        <div class="umpire-photo">
+          <img src="assets/umpires/B.siva.jpg" alt="B. Siva" loading="lazy">
         </div>
-        <h3 style="color: #fff; margin: 8px 0 3px; font-size: 1rem;">B. Siva</h3>
-        <p style="color: #ccc; margin: 0; font-size: 0.8rem;">Umpire</p>
+        <h3>B. Siva</h3>
       </div>
-
-      <!-- Umpire 2 -->
-      <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 15px; text-align: center; backdrop-filter: blur(5px); transition: transform 0.3s ease; margin: 0 auto; width: 90%;">
-        <div style="width: 100px; height: 100px; margin: 0 auto 10px; border-radius: 50%; overflow: hidden; border: 2px solid #00e0ff;">
-          <img src="assets/umpires/Dinesh.jpg" alt="Dinesh - Umpire" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+      
+      <div class="umpire-profile">
+        <div class="umpire-photo">
+          <img src="assets/umpires/Dinesh.jpg" alt="Dinesh" loading="lazy">
         </div>
-        <h3 style="color: #fff; margin: 8px 0 3px; font-size: 1rem;">Dinesh</h3>
-        <p style="color: #ccc; margin: 0; font-size: 0.8rem;">Umpire</p>
+        <h3>Dinesh</h3>
       </div>
-
-      <!-- Umpire 3 -->
-      <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 15px; text-align: center; backdrop-filter: blur(5px); transition: transform 0.3s ease; margin: 0 auto; width: 90%;">
-        <div style="width: 100px; height: 100px; margin: 0 auto 10px; border-radius: 50%; overflow: hidden; border: 2px solid #00e0ff;">
-          <img src="assets/umpires/PT.jpg" alt="P.T - Umpire" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+      
+      <div class="umpire-profile">
+        <div class="umpire-photo">
+          <img src="assets/umpires/PT.jpg" alt="Venky" loading="lazy">
         </div>
-        <h3 style="color: #fff; margin: 8px 0 3px; font-size: 1rem;">P.T</h3>
-        <p style="color: #ccc; margin: 0; font-size: 0.8rem;">Umpire</p>
+        <h3>Venky</h3>
       </div>
-
-      <!-- Umpire 4 -->
-      <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 15px; text-align: center; backdrop-filter: blur(5px); transition: transform 0.3s ease; margin: 0 auto; width: 90%;">
-        <div style="width: 100px; height: 100px; margin: 0 auto 10px; border-radius: 50%; overflow: hidden; border: 2px solid #00e0ff;">
-          <img src="assets/umpires/Sanjay.jpg" alt="Sanjay - Umpire" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+      
+      <div class="umpire-profile">
+        <div class="umpire-photo">
+          <img src="assets/umpires/Sanjay.jpg" alt="Sanjay" loading="lazy">
         </div>
-        <h3 style="color: #fff; margin: 8px 0 3px; font-size: 1rem;">Sanjay</h3>
-        <p style="color: #ccc; margin: 0; font-size: 0.8rem;">Umpire</p>
+        <h3>Sanjay</h3>
       </div>
     </div>
   </section>
+  
+  <style>
+    /* Umpires Section */
+    .umpires-section {
+      padding: 40px 20px 60px;
+      background: linear-gradient(135deg, #0a192f 0%, #1a1a2e 100%);
+      text-align: center;
+    }
+    
+    .umpires-section .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .umpires-section .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #00e0ff;
+      border-radius: 3px;
+    }
+    
+    .umpires-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .umpire-profile {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .umpire-profile:hover {
+      transform: translateY(-10px);
+    }
+    
+    .umpire-photo {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(0, 224, 255, 0.3);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .umpire-profile:hover .umpire-photo {
+      border-color: #00e0ff;
+      box-shadow: 0 15px 40px rgba(0, 224, 255, 0.3);
+    }
+    
+    .umpire-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .umpire-profile:hover .umpire-photo img {
+      transform: scale(1.1);
+    }
+    
+    .umpire-profile h3 {
+      color: #fff;
+      font-size: 1.3rem;
+      margin: 10px 0 0;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    @media (max-width: 768px) {
+      .umpires-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .umpire-photo {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .umpires-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+      
+      .umpires-section .section-header h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+      }
+      
+      .umpire-photo {
+        width: 130px;
+        height: 130px;
+      }
+    }
+  </style>
+  
+  <style>
+    /* Umpires Section Styling */
+    .umpires-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #0a192f 0%, #1a1a2e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .umpires-section::before {
+      content: '🏏';
+      position: absolute;
+      font-size: 300px;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+    
+    .umpires-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 50px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .umpire-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 224, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .umpire-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 224, 255, 0.1);
+      border-color: rgba(0, 224, 255, 0.3);
+    }
+    
+    .umpire-img-container {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+    }
+    
+    .umpire-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .umpire-card:hover .umpire-img-container img {
+      transform: scale(1.05);
+    }
+    
+    .umpire-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 20px;
+    }
+    
+    .umpire-badge {
+      background: rgba(0, 224, 255, 0.9);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transform: translateY(30px);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 224, 255, 0.3);
+    }
+    
+    .umpire-card:hover .umpire-badge {
+      transform: translateY(0);
+    }
+    
+    .umpire-info {
+      padding: 25px 20px;
+      text-align: center;
+    }
+    
+    .umpire-info h3 {
+      color: #fff;
+      font-size: 1.5rem;
+      margin: 0 0 8px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    .umpire-role {
+      color: #00e0ff;
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    
+    .umpires-cta {
+      max-width: 700px;
+      margin: 50px auto 0;
+      text-align: center;
+      color: #ccc;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .umpires-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .umpire-img-container {
+        height: 220px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .umpires-container {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+    }
+  </style>
 
   <!-- Committee Section -->
   <section class="committee" id="Committee">
@@ -2078,6 +2733,25 @@
           <h3>Vishnu</h3>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Registration Section -->
+  <section class="registration" id="registration">
+    <h2>Team Registration – Devudu Vellam Palli T10 Cricket League</h2>
+    <img src="assets/img/registration.png" alt="Registration Form" loading="lazy" decoding="async"/>
+    <a href="registration.html" class="download-btn">
+      🏏 Register Your Team
+    </a>
+    <!-- Social Share -->
+    <div class="social-share" style="margin: 20px 0; text-align: center;">
+      <a href="https://chat.whatsapp.com/CCbh4Sz4mKQKQYhiMRk2r5?mode=wwt" class="whatsapp-join-btn" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; background: #25D366; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 10px; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));">
+          <path d="M17.5 14.5c-.3-.2-1.8-.9-2-.9-.3 0-.5.1-.7.3-.2.3-.7.9-.9 1.1-.2.2-.4.2-.7.1-.3-.1-1.3-.4-2.4-1.5-.9-1-1.5-2.2-1.7-2.6-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.2-.1.2-.2.3-.4 0-.2 0-.3-.1-.4-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5-.2 0-.5.2-.6.2l-.4.4c-.5.5-1 1.2-.7 2.1.3.9 1.5 3.4 3.3 5.5 2.2 2.7 5.3 4.3 6 4.5.4.1 1.1.2 1.5.1.4 0 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.1-.4-.2z"/>
+          <path d="M12 2.5c5.5 0 9.5 4.5 9.5 9.5s-4.5 9.5-9.5 9.5c-2 0-3.8-.6-5.4-1.6l-4.6 1.5 1.5-4.5c-1-1.5-1.6-3.3-1.6-5.4 0-5.5 4.5-9.5 10-9.5zm0 1.5c-4.4 0-8 3.6-8 8 0 1.8.6 3.4 1.6 4.7l-1.1 3.2 3.3-1.1c1.3.9 2.9 1.5 4.5 1.5 4.4 0 8-3.6 8-8s-3.6-8-8-8z"/>
+        </svg>
+        Join Our WhatsApp Group
+      </a>
     </div>
   </section>
 

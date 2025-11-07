@@ -114,13 +114,21 @@
       background: rgba(255, 255, 255, 0.1);
       color: white;
       font-size: 16px;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-control:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(0, 224, 255, 0.4);
     }
 
     .form-control:focus {
       outline: none;
       border-color: #00e0ff;
-      box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+      box-shadow: 0 0 0 2px rgba(0, 224, 255, 0.3);
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .form-control::placeholder {
@@ -136,10 +144,18 @@
 
     .member-item {
       background: rgba(0, 0, 0, 0.3);
-      padding: 15px;
+      padding: 15px 20px;
       border-radius: 8px;
       margin-bottom: 15px;
       position: relative;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .member-item:hover {
+      background: rgba(0, 0, 0, 0.4);
+      border-left-color: #00e0ff;
+      transform: translateX(3px);
     }
 
     .remove-member {
@@ -205,27 +221,45 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       header {
-        padding: 15px 20px;
+        padding: 12px 15px;
+        flex-direction: column;
+        gap: 10px;
       }
 
       .logo-section h1 {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .registration-header h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+        margin-top: 10px;
+      }
+      
+      .registration-header p {
+        font-size: 1rem;
       }
 
       .registration-form {
-        padding: 25px 20px;
+        padding: 20px 15px;
       }
 
       .form-row {
         flex-direction: column;
+        gap: 15px;
       }
 
       .form-group {
         width: 100%;
+        margin-bottom: 15px;
+      }
+      
+      .registration-container {
+        margin-top: 100px;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 15px;
       }
     }
 
@@ -244,13 +278,38 @@
     .success-message {
       display: none;
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 30px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      margin: 30px auto;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 224, 255, 0.2);
+      animation: fadeIn 0.6s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .success-message i {
-      font-size: 60px;
+      font-size: 70px;
       color: #4CAF50;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      border-radius: 50%;
+      background: rgba(76, 175, 80, 0.1);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .success-message h2 {
@@ -263,7 +322,7 @@
   <header>
     <div class="logo-section">
       <img src="assets/img/dvp.jpg" alt="DVP Logo">
-      <h1>DVP Cricket</h1>
+      <h1>DEVUDU VELLAMPALLI T10 CRICKET TOURNAMENT REGISTRATION</h1>
     </div>
     <nav>
       <a href="index.html" class="btn btn-outline">Back to Home</a>
@@ -273,7 +332,7 @@
   <div class="registration-container">
     <div class="registration-header">
       <h1>Team Registration</h1>
-      <p>Fill out the form below to register your team for the DVP Cricket Tournament 2026</p>
+      <p>Fill out the form below to register your team for the DEVUDU VELLAMPALLI T10 CRICKET TOURNAMENT REGISTRATION</p>
     </div>
 
     <form id="registrationForm" class="registration-form">

@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="DVP Cricket Tournament 2026 - Achievements & Awards">
+  <meta name="theme-color" content="#00e0ff">
+  <link rel="icon" type="image/png" href="assets/img/dvp.jpg"/>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"></noscript>
+  <title>DVP Cricket Tournament 2026 - Achievements</title>
+
+  <style>
+    /* Modern CSS Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    /* Modern CSS Variables */
+    :root {
+      --primary: #00e0ff;
+      --primary-dark: #00b8d4;
+      --bg-dark: #0a192f;
+      --bg-darker: #071126;
+      --text-light: #e6f1ff;
+      --text-muted: #8892b0;
+      --card-bg: rgba(10, 25, 47, 0.85);
+      --card-hover: rgba(0, 224, 255, 0.1);
+      --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      --border-radius: 12px;
+      --box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    }
+    
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0e1a 0%, #0a192f 100%);
+      color: var(--text-light);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      background: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 5%;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .back-btn {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-btn:hover {
+      background: rgba(0, 224, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 224, 255, 0.2);
+    }
+
+    .back-btn i {
+      transition: transform 0.3s ease;
+    }
+
+    .back-btn:hover i {
+      transform: translateX(-3px);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 120px 20px 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Glow Effects */
+    .glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 224, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-1 {
+      top: -250px;
+      right: -250px;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(0, 150, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    }
+
+    .glow-2 {
+      bottom: -300px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(100, 0, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .page-title h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #fff, var(--primary), #00b8d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0, 224, 255, 0.2);
+    }
+
+    .page-title h1::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: -10px;
+      left: 0;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      border-radius: 3px;
+    }
+
+    .page-title p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Session Tabs */
+    .session-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .tab-btn {
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(100, 255, 255, 0.1);
+    }
+
+    .tab-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 224, 255, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: 0.5s;
+    }
+
+    .tab-btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    .tab-btn.active {
+      background: rgba(0, 224, 255, 0.1);
+      color: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 224, 255, 0.2);
+    }
+
+    .tab-btn .session-number {
+      display: inline-block;
+      background: rgba(0, 224, 255, 0.1);
+      color: var(--primary);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.8rem;
+      margin-right: 8px;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active .session-number {
+      background: var(--primary);
+      color: #000;
+    }
+
+    /* Awards Grid */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+      perspective: 1000px;
+    }
+
+    .award-card {
+      background: rgba(10, 25, 47, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(100, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transform: translateZ(0);
+      will-change: transform, box-shadow, border-color;
+      box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    }
+
+    .award-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(0, 224, 255, 0.05), transparent);
+      transform: translateY(100%);
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: -1;
+    }
+
+    .award-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px -15px rgba(0, 224, 255, 0.2);
+      border-color: rgba(0, 224, 255, 0.3);
+      background: rgba(10, 25, 47, 0.8);
+    }
+
+    .award-card:hover::before {
+      transform: translateY(0);
+    }
+
+    .award-card.mvp-card {
+      border: 2px solid #ffd700;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .award-card.mvp-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent,
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    .award-card.mvp-card .award-icon {
+      background: linear-gradient(135deg, #ffd700, #ffb700);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #ffd700;
+    }
+
+    .award-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 224, 255, 0.1);
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .award-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(45deg, var(--primary), transparent) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      -webkit-mask-composite: destination-out;
+      pointer-events: none;
+    }
+
+    .award-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+
+    .award-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .winner-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 1rem 0 0.5rem;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .winner-name::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      opacity: 0.5;
+    }
+
+    .winner-team {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+
+    .winner-stats {
+      font-size: 1rem;
+      color: #b8c2d8;
+      line-height: 1.8;
+      margin-top: 1rem;
+    }
+
+    .winner-stats p {
+      margin: 0.6rem 0;
+      position: relative;
+      padding: 0 10px;
+    }
+
+    .winner-stats p:not(:last-child)::after {
+      content: '';
+      display: block;
+      width: 30%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 1rem auto 0;
+    }
+
+    /* Session Content */
+    .session-content {
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .session-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Upcoming Session Styles */
+    .upcoming-session {
+      text-align: center;
+      padding: 50px 30px;
+      background: rgba(10, 25, 47, 0.8);
+      border-radius: var(--border-radius);
+      max-width: 700px;
+      margin: 2rem auto;
+      border: 1px solid rgba(0, 224, 255, 0.2);
+      box-shadow: var(--box-shadow), 0 0 30px rgba(0, 224, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+      transition: var(--transition);
+    }
+    
+    .upcoming-session::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle,
+        rgba(0, 224, 255, 0.1) 0%,
+        rgba(0, 0, 0, 0) 70%
+      );
+      animation: rotate 15s linear infinite;
+      z-index: -1;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .upcoming-icon {
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .upcoming-session h2 {
+      font-size: 3rem;
+      color: var(--primary);
+      margin: 1rem 0;
+      background: linear-gradient(90deg, #fff, var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .upcoming-session h3 {
+      font-size: 1.8rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .upcoming-session h3::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      background: var(--primary);
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+    
+    .upcoming-session p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 80%;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    
+    .pulse-animation {
+      margin-top: 2rem;
+    }
+    
+    .pulse-animation i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      animation: pulse 2s infinite;
+      text-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    
+    .pulse-animation i {
+      font-size: 2rem;
+      color: #00e0ff;
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: white;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a192f 0%, #0a0f1a 100%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    .page-header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #00e0ff, #00ff9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: #b8c1ec;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Session Tabs */
+    .session-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 30px 0 40px;
+      padding: 0 20px;
+    }
+
+    .tab-btn {
+      background: rgba(0, 224, 255, 0.1);
+      border: 1px solid #00e0ff;
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: #00e0ff;
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 224, 255, 0.3);
+    }
+
+    /* Awards Section */
+    .awards-section {
+      padding: 20px 0 80px;
+    }
+
+    .session-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .session-content.active {
+      display: block;
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .award-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 224, 255, 0.1);
+    }
+
+    .award-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      background: rgba(0, 224, 255, 0.05);
+      border-color: #00e0ff;
+    }
+
+    .award-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 224, 255, 0.1);
+      border-radius: 50%;
+      font-size: 2rem;
+      color: #00e0ff;
+    }
+
+    .award-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #00e0ff;
+    }
+
+    .winner-name {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 15px 0;
+      color: #fff;
+    }
+
+    .winner-stats {
+      color: #b8c1ec;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .winner-team {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 15px;
+      background: rgba(0, 224, 255, 0.1);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #00e0ff;
+    }
+
+    /* MVP Card Special Styling */
+    .mvp-card {
+      grid-column: 1 / -1;
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(0, 224, 255, 0.1) 0%, rgba(0, 255, 157, 0.1) 100%);
+      border: 1px solid rgba(0, 224, 255, 0.3);
+    }
+
+    .mvp-card .award-icon {
+      width: 100px;
+      height: 100px;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, rgba(0, 224, 255, 0.2) 0%, rgba(0, 255, 157, 0.2) 100%);
+    }
+
+    .mvp-card .award-title {
+      font-size: 2rem;
+    }
+
+    .mvp-card .winner-name {
+      font-size: 2.2rem;
+    }
+
+    .award-card.best-batsman .award-icon {
+      color: #4CAF50;
+      position: relative;
+    }
+    
+    .award-card.best-batsman .award-icon::before {
+      content: '\f6b3'; /* Font Awesome bat icon */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 2rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      z-index: 1;
+    }
+
+    .award-card.best-fielder .award-icon {
+      background: linear-gradient(135deg, rgba(255, 152, 0, 0.15) 0%, rgba(255, 193, 7, 0.1) 100%);
+      border: 2px solid rgba(255, 152, 0, 0.3);
+      color: #FF9800;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .award-card.best-fielder:hover .award-icon {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);
+    }
+    
+    .award-card.best-fielder .award-icon i {
+      display: none; /* Hide the default icon */
+    }
+    
+    .award-card.best-fielder .award-icon::before {
+      content: '\f45e'; /* Font Awesome baseball icon */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 2.2rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+      text-shadow: 0 2px 8px rgba(255, 152, 0, 0.4);
+      transition: all 0.3s ease;
+      transform: translate(-50%, -50%);
+      color: #FF9800;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3Cpath d='M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z'/%3E%3C/svg%3E") center/contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3Cpath d='M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z'/%3E%3C/svg%3E") center/contain no-repeat;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .award-card.best-bowler .award-icon {
+      color: #2196F3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .page-title h1 {
+        font-size: 2.8rem;
+      }
+      
+      .awards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+      }
+      
+      .tab-btn {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        margin: 0 4px 8px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .container {
+        padding: 90px 12px 30px;
+      }
+      
+      .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 8px;
+      }
+      
+      .award-card {
+        padding: 1.5rem;
+        margin: 0 auto;
+        max-width: 400px;
+        width: 100%;
+      }
+      
+      .winner-name {
+        font-size: 1.7rem;
+        margin: 1rem 0 0.5rem;
+      }
+      
+      .award-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.8rem;
+      }
+      
+      .tab-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .tab-btn {
+        flex: 0 0 auto;
+        padding: 12px 18px;
+        font-size: 1rem;
+        white-space: nowrap;
+        border-radius: 30px;
+        margin: 0 6px 10px 0;
+      }
+      
+      .award-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .container {
+        padding: 80px 10px 25px;
+      }
+      
+      .award-card {
+        padding: 1.25rem;
+        border-radius: 12px;
+      }
+      
+      .winner-name {
+        font-size: 1.5rem;
+      }
+      
+      .award-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+      }
+      
+      .tab-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        margin: 0 4px 8px 0;
+      }
+      
+      .back-to-home {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        margin: 15px auto 25px;
+        width: fit-content;
+        border-radius: 30px;
+        background: rgba(0, 224, 255, 0.1);
+      }
+      
+      .back-to-home:hover {
+        transform: translateX(-3px);
+      }
+      
+      .award-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation */
+    .back-to-home {
+      display: inline-block;
+      margin-top: 30px;
+      color: #00e0ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .back-to-home:hover {
+      color: #fff;
+      transform: translateX(-5px);
+    }
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .page-title h1 {
+        font-size: 2.8rem;
+      }
+      
+      .awards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-title h1 {
+        font-size: 2.4rem;
+      }
+      
+      .container {
+        padding: 100px 15px 40px;
+      }
+      
+      .award-card {
+        padding: 1.8rem 1.5rem;
+      }
+      
+      .winner-name {
+        font-size: 1.6rem;
+      }
+      
+      .award-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-title h1 {
+        font-size: 2rem;
+      }
+      
+      .awards-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .award-title {
+        font-size: 1.3rem;
+      }
+      
+      .winner-name {
+        font-size: 1.5rem;
+      }
+      
+      .winner-stats {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Glow Effects -->
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="container">
+    <a href="index.html" class="back-to-home">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+    
+    <header class="page-header">
+      <h1>Tournament Achievements</h1>
+      <p>Celebrating excellence and outstanding performances from each session of the DVP Cricket Tournament 2026</p>
+    </header>
+
+    <!-- Session Tabs -->
+    <div class="session-tabs" id="sessionTabs">
+      <button class="tab-btn active" data-session="session1">Session 1</button>
+      <button class="tab-btn" data-session="session2">Session 2</button>
+      <button class="tab-btn" data-session="session3">Session 3</button>
+      <button class="tab-btn" data-session="session4">Session 4</button>
+      <!-- Add more session buttons as needed -->
+    </div>
+
+    <!-- Session 1 Content -->
+    <section class="awards-section">
+      <div id="session1" class="session-content active">
+        <div class="awards-grid">
+          <!-- MVP Card -->
+          <div class="award-card mvp-card">
+            <div class="award-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3 class="award-title">Most Valuable Player</h3>
+            <div class="winner-name">Sravan</div>
+            <div class="winner-team">Mitta Vaddi Palli -A</div>
+            <div class="winner-stats">
+              <p>Total Points: 22.706</p>
+              <p>Batting: 17.477 | Bowling: 4.389 | Fielding: 0.840</p>
+            </div>
+          </div>
+
+          <!-- Best Batsman -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-baseball-bat-ball"></i>
+            </div>
+            <h3 class="award-title">Best Batsman</h3>
+            <div class="winner-name">Sravan</div>
+            <div class="winner-team">Mitta Vaddi Palli -A</div>
+            <div class="winner-stats">
+              <p>Runs: 171 | Average: 57.00 | SR: 183.87</p>
+              <p>HS: 61* (23b) | 4s: 18 | 6s: 11</p>
+            </div>
+          </div>
+
+          <!-- Best Bowler -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-baseball"></i>
+            </div>
+            <h3 class="award-title">Best Bowler</h3>
+            <div class="winner-name">Sathish</div>
+            <div class="winner-team">Vembuluru</div>
+            <div class="winner-stats">
+              <p>Wickets: 7 | Average: 2.71 | Econ: 4.75</p>
+              <p>Best: 4/14 | SR: 3.43 | Dots: 16</p>
+            </div>
+          </div>
+
+          <!-- Best Fielder -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-mitt"></i>
+            </div>
+            <h3 class="award-title">Best Fielder</h3>
+            <div class="winner-name">Polaiah</div>
+            <div class="winner-team">D. Vaddipalli -A</div>
+            <div class="winner-stats">
+              <p>Dismissals: 5 | Catches: 3 | Run Outs: 2</p>
+              <p>Matches: 4 | Catches per match: 0.75</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session 2 Content -->
+      <div id="session2" class="session-content">
+        <div class="awards-grid">
+          <!-- MVP Card -->
+          <div class="award-card mvp-card">
+            <div class="award-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3 class="award-title">Most Valuable Player</h3>
+            <div class="winner-name">Sravan</div>
+            <div class="winner-team">Mitta Vaddi Palli -A</div>
+            <div class="winner-stats">
+              <p>Total Points: 30.083</p>
+              <p>Batting: 16.080 | Bowling: 12.619 | Fielding: 1.384</p>
+            </div>
+          </div>
+
+          <!-- Best Batsman -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-baseball-bat-ball"></i>
+            </div>
+            <h3 class="award-title">Best Batsman</h3>
+            <div class="winner-name">Sravan</div>
+            <div class="winner-team">Mitta Vaddi Palli -A</div>
+            <div class="winner-stats">
+              <p>Runs: 159 | Average: 39.75 | SR: 145.87</p>
+              <p>HS: 66 | 4s: 19 | 6s: 7</p>
+            </div>
+          </div>
+
+          <!-- Best Bowler -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-baseball"></i>
+            </div>
+            <h3 class="award-title">Best Bowler</h3>
+            <div class="winner-name">Venkata Ranamana</div>
+            <div class="winner-team">Mitta Vaddi Palli -A</div>
+            <div class="winner-stats">
+              <p>Wickets: 12 | Average: 6.75 | Econ: 6.75</p>
+              <p>Best: 6/12 | SR: 6.00 | Dots: 36</p>
+            </div>
+          </div>
+
+          <!-- Best Fielder -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-mitt"></i>
+            </div>
+            <h3 class="award-title">Best Fielder</h3>
+            <div class="winner-name">Sai</div>
+            <div class="winner-team">Mittapalem Hunters</div>
+            <div class="winner-stats">
+              <p>Dismissals: 5 | Catches: 4 | Run Outs: 1</p>
+              <p>Matches: 4 | Catches per match: 0.75</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session 3 Content -->
+      <div id="session3" class="session-content">
+        <div class="awards-grid">
+          <!-- MVP Card -->
+          <div class="award-card mvp-card">
+            <div class="award-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3 class="award-title">Most Valuable Player</h3>
+            <div class="winner-name">Sai Srinivas</div>
+            <div class="winner-team">DAKKILI STRIKERS</div>
+            <div class="winner-stats">
+              <p>Total Points: 23.000</p>
+              <p>Batting: 8.869 | Bowling: 12.451 | Fielding: 1.680</p>
+            </div>
+          </div>
+
+          <!-- Best Batsman -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-baseball-bat-ball"></i>
+            </div>
+            <h3 class="award-title">Best Batsman</h3>
+            <div class="winner-name">Srikanth Reddy (Chinna)</div>
+            <div class="winner-team">Mopuru Raising Stars</div>
+            <div class="winner-stats">
+              <p>Runs: 100 | Average: 33.33 | SR: 156.25</p>
+              <p>HS: 42* | 4s: 11 | 6s: 0</p>
+            </div>
+          </div>
+
+          <!-- Best Bowler -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-baseball"></i>
+            </div>
+            <h3 class="award-title">Best Bowler</h3>
+            <div class="winner-name">Sai Srinivas</div>
+            <div class="winner-team">DAKKILI STRIKERS</div>
+            <div class="winner-stats">
+              <p>Wickets: 8 | Average: 5.75 | Econ: 5.75</p>
+              <p>Best: 3/17 | SR: 6.00 | Dots: 27</p>
+            </div>
+          </div>
+
+          <!-- Best Fielder -->
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-mitt"></i>
+            </div>
+            <h3 class="award-title">Best Fielder</h3>
+            <div class="winner-name">Mari</div>
+            <div class="winner-team">D. VADDIPALLI -B (TIGERS)</div>
+            <div class="winner-stats">
+              <p>Dismissals: 4 | Catches: 2 | Run Outs: 2</p>
+              <p>Matches: 2 | Catches per match: 1.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session 4 Content -->
+      <div id="session4" class="session-content">
+        <div class="upcoming-session">
+          <div class="upcoming-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3>Session 4</h3>
+          <h2>Coming Soon</h2>
+          <p>Stay tuned for the next exciting session of cricket action!</p>
+          <div class="pulse-animation">
+            <i class="fas fa-spinner fa-spin"></i>
+          </div>
+        </div>
+        <div class="awards-grid" style="display: none;">
+          <!-- MVP Card -->
+          <div class="award-card mvp-card">
+            <div class="award-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3 class="award-title">Most Valuable Player</h3>
+            <div class="winner-name">Player Name</div>
+            <div class="winner-team">Team Name</div>
+            <div class="winner-stats">
+              <p>Runs: 220 | Wickets: 3 | Catches: 6</p>
+              <p>Player of the Match: 2 times</p>
+            </div>
+          </div>
+          <!-- Add other award cards for session 4 -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const sessionContents = document.querySelectorAll('.session-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons and contents
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          sessionContents.forEach(content => content.classList.remove('active'));
+
+          // Add active class to clicked button
+          button.classList.add('active');
+
+          // Show corresponding content
+          const sessionId = button.getAttribute('data-session');
+          document.getElementById(sessionId).classList.add('active');
+        });
+      });
+
+      // Add smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

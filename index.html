@@ -1871,13 +1871,69 @@
     </div>
 
     <!-- Past Champions -->
-    <div class="champions-section">
-      <div class="section-title-container" style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
-        <h3 class="champions-title" style="margin: 0;">Past <span class="highlight">Champions</span></h3>
-        <a href="achievements.html" class="achievements-btn">
-          View Achievements
-          <i class="fas fa-arrow-right"></i>
-        </a>
+    <div class="champions-section" style="padding: 20px 0;">
+      <div class="section-header" style="text-align: center; margin-bottom: 15px;">
+        <h3 class="champions-title" style="margin: 0 0 5px 0; font-size: 2rem; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+          Past <span class="highlight" style="color: #ff4d4d;">Champions</span>
+        </h3>
+        <div class="section-divider" style="width: 80px; height: 3px; background: linear-gradient(90deg, #ff4d4d, #cc0000); margin: 10px auto 20px; border-radius: 3px;"></div>
+      </div>
+      <div class="section-title-container" style="display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 20px;">
+        <div class="session-stars-container" style="width: 100%; display: flex; justify-content: center; margin: 15px 0;">
+          <a href="achievements.html" class="session-stars-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.5, 1); box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3); position: relative; overflow: hidden; z-index: 1; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);">
+            <span class="btn-content" style="position: relative; z-index: 2; display: flex; align-items: center; gap: 10px;">
+              <i class="fas fa-trophy" style="font-size: 1em; color: #ffd700; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));"></i>
+              <span>Session Stars</span>
+              <i class="fas fa-arrow-right" style="font-size: 0.9em; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);"></i>
+            </span>
+            <span class="btn-shine" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent); transition: 0.6s ease; z-index: 2;"></span>
+          </a>
+        </div>
+        <style>
+          .session-stars-btn {
+            will-change: transform, box-shadow;
+          }
+          .session-stars-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 77, 77, 0.4);
+          }
+          .session-stars-btn:hover .fa-arrow-right {
+            transform: translateX(5px);
+          }
+          .session-stars-btn:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 3px 10px rgba(255, 77, 77, 0.3);
+          }
+          .session-stars-btn:hover .btn-shine {
+            left: 100%;
+          }
+          @media (max-width: 768px) {
+            .session-stars-container {
+              padding: 0 15px;
+            }
+            .session-stars-btn {
+              width: 100%;
+              max-width: 280px;
+              padding: 16px 24px;
+              font-size: 1rem;
+              margin: 15px 0 5px;
+              border-radius: 12px;
+            }
+            .session-stars-btn .btn-content {
+              gap: 8px;
+            }
+          }
+          @media (max-width: 480px) {
+            .session-stars-btn {
+              padding: 14px 20px;
+              font-size: 0.95rem;
+              border-radius: 10px;
+            }
+            .session-stars-btn i.fa-trophy {
+              font-size: 0.9em;
+            }
+          }
+        </style>
       </div>
       <div class="champions-grid">
         <div class="champion-card">
@@ -2474,7 +2530,7 @@
       </div>
       <div class="sponsor-card" style="text-align: center; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; backdrop-filter: blur(5px);">
         <div class="sponsor-logo">
-          <img src="assets/committee/Sathish.jpg" alt="Sagar - Platinum Sponsor" loading="lazy" decoding="async" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 3px solid #e5e4e2;">
+          <img src="assets/committee/Satish.jpg" alt="Sagar - Platinum Sponsor" loading="lazy" decoding="async" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 3px solid #e5e4e2;">
         </div>
         <div class="sponsor-info">
           <h3 style="color: #00e0ff; margin: 10px 0 5px;">Satish</h3>
@@ -2485,17 +2541,12 @@
 
   <!-- Umpires Section -->
   <section class="umpires-section" id="umpires">
-    <div class="section-header" style="position: relative; margin-bottom: 40px; padding: 0 20px;">
-      <div class="section-title-container" style="position: relative; display: flex; flex-direction: column; align-items: center;">
-        <div style="display: flex; align-items: center; justify-content: center; width: 100%; position: relative; z-index: 2; padding: 0 20px;">
-          <div class="icon-container" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; animation: float 3s ease-in-out infinite;">
-            <img src="assets/umpires/image.png" alt="Umpire Icon" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0, 224, 255, 0.6));">
-          </div>
+      <div class="section-header" style="position: relative; margin-bottom: 40px; padding: 0 20px;">
+        <div class="section-title-container" style="position: relative; display: flex; flex-direction: column; align-items: center;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; position: relative; z-index: 2; padding: 0 20px;">
           <h2 style="margin: 0 25px; font-size: 2.8rem; font-weight: 700; letter-spacing: 1px; background: linear-gradient(90deg, #00e0ff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
             Our <span class="highlight" style="background: linear-gradient(90deg, #00e0ff, #00a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; position: relative;">Umpires</span>
           </h2>
-          <div class="icon-container" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; animation: float 3s ease-in-out infinite 0.5s;">
-            <img src="assets/umpires/image.png" alt="Umpire Icon" style="width: 100%; height: 100%; object-fit: contain; transform: scaleX(-1); filter: drop-shadow(0 0 8px rgba(0, 224, 255, 0.6));">
           </div>
         </div>
         <div style="width: 100%; max-width: 500px; height: 3px; background: linear-gradient(90deg, transparent, #00e0ff, #00a8ff, #00e0ff, transparent); margin: 15px auto 0; border-radius: 3px; box-shadow: 0 0 15px rgba(0, 224, 255, 0.4);"></div>
@@ -2698,17 +2749,6 @@
       overflow: hidden;
     }
     
-    .umpires-section::before {
-      content: '🏏';
-      position: absolute;
-      font-size: 300px;
-      opacity: 0.05;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-    }
-    
     .umpires-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2841,6 +2881,15 @@
       <!-- Secretary -->
       <div class="committee-card">
         <div class="member-photo">
+          <img src="assets/committee/Siva.jpg" alt="Secretary Photo">
+        </div>
+        <div class="member-info">
+          <h3>Siva</h3>
+        </div>
+      </div> 
+
+      <div class="committee-card">
+        <div class="member-photo">
           <img src="assets/committee/paresh.jpg" alt="Secretary Photo">
         </div>
         <div class="member-info">
@@ -2888,7 +2937,7 @@
       <!-- Technical Head -->
       <div class="committee-card">
         <div class="member-photo">
-          <img src="assets/committee/vishnu.jpg" alt="Technical Head Photo">
+          <img src="assets/committee/vishnu.png" alt="Technical Head Photo">
         </div>
         <div class="member-info">
           <h3>Vishnu</h3>
@@ -2910,7 +2959,7 @@
           <li>Tournament Duration: January 10 - 19, 2026</li>
           <li>Format: T10 Cricket</li>
           <li>Total Teams: 40</li>
-          <li>Prize Pool: ₹1,00,000</li>
+          <li>Prize Pool: ₹50,000</li>
           <li>Matches per Day: 4</li>
         </ul>
       </div>

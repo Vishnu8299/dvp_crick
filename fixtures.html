@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="DVP Cricket Tournament 2026 - Fixtures & Schedule" />
+  <meta name="theme-color" content="#00e0ff" />
+  <link rel="icon" type="image/png" href="assets/img/dvp.jpg" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" /></noscript>
+  <title>Fixtures & Schedule - DVP Cricket</title>
+  <style>
+    :root {
+      --primary: #00e0ff;
+      --primary-dark: #00b4d8;
+      --bg1: #0a192f;
+      --bg2: #0a0f1a;
+      --text: #e6f1ff;
+      --muted: #b8c1ec;
+      --card: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px 40px; }
+
+    /* Header */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 22px; background: rgba(0,0,0,0.35); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    .brand h1 { font-size: 18px; font-weight: 600; color: var(--primary); letter-spacing: .3px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 14px; border: 1px solid rgba(255,255,255,0.12); color: var(--text); background: transparent; transition: all .25s ease; }
+    .btn:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+    .btn-primary { background: var(--primary); color: #0a192f; border-color: transparent; box-shadow: 0 6px 18px rgba(0,224,255,0.28); }
+    .btn-primary:hover { background: var(--primary-dark); box-shadow: 0 8px 22px rgba(0,224,255,0.35); }
+
+    /* Page title */
+    .page-header { text-align: center; margin-bottom: 26px; }
+    .page-title { font-size: 34px; line-height: 1.2; margin-bottom: 8px; }
+    .page-subtitle { color: var(--muted); font-size: 15px; }
+
+    /* Filters */
+    .filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 26px 0 18px; }
+    .input, select {
+      width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.05); color: var(--text); outline: none; font-size: 14px;
+    }
+    .input::placeholder { color: #9aa6c7; }
+
+    /* Fixtures */
+    .fixtures-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
+    .fixtures-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.12); padding-bottom: 10px; margin-bottom: 12px; }
+    .fixtures-header h3 { font-size: 16px; font-weight: 600; }
+    .fixtures-list { display: grid; gap: 10px; }
+
+    .fixture {
+      display: grid; grid-template-columns: 1.2fr 0.6fr 1.2fr 0.8fr 0.8fr; align-items: center; gap: 10px;
+      background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px;
+    }
+    .team { display: flex; align-items: center; gap: 10px; }
+    .team .badge { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.12); display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--primary); }
+    .team .name { font-weight: 600; }
+    .vs { text-align: center; color: #9aa6c7; font-weight: 600; }
+    .time, .venue { color: var(--muted); font-size: 13px; }
+
+    /* Empty state */
+    .empty {
+      text-align: center; padding: 40px 20px; color: var(--muted);
+      background: var(--card); border: 1px dashed var(--card-border); border-radius: 14px;
+    }
+
+    /* Table on desktop */
+    @media (min-width: 900px) {
+      .fixtures-list.header { display: grid; grid-template-columns: 1.2fr 0.6fr 1.2fr 0.8fr 0.8fr; gap: 10px; margin-bottom: 6px; color: #9aa6c7; font-size: 12px; }
+      .fixtures-list.header > div { padding: 6px 8px; }
+    }
+
+    /* Mobile cards */
+    @media (max-width: 899px) {
+      .filters { grid-template-columns: 1fr 1fr; }
+      .fixture { grid-template-columns: 1fr; gap: 6px; }
+      .vs { order: 2; }
+      .time, .venue { order: 3; }
+    }
+
+    /* Knockout Bracket */
+    .bracket-wrap { margin-top: 40px; position: relative; }
+    .bracket-title { text-align: center; margin: 10px 0 8px; font-size: 26px; font-weight: 700; }
+    .bracket-sub { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+
+    .bracket-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .btn-ghost { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+    .bracket {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .round { display: grid; gap: 16px; align-content: start; }
+    .round h4 { text-align: center; color: var(--muted); font-size: 13px; font-weight: 600; }
+    .match {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 10px;
+      min-height: 54px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .match:hover { border-color: rgba(0,224,255,0.35); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    .group-tag {
+      position: absolute;
+      top: 6px; right: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(0, 224, 255, 0.15);
+      border: 1px solid rgba(0, 224, 255, 0.35);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+    .seed { display: grid; grid-template-columns: auto 1fr 52px; align-items: center; gap: 8px; font-size: 13px; }
+    .seed .tag { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,0.08); color: var(--primary); font-weight: 700; font-size: 12px; }
+    .seed .name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .seed .score { color: var(--muted); font-weight: 600; text-align: right; }
+    .seed input.score-input {
+      width: 52px; height: 28px; padding: 2px 6px; border-radius: 8px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text);
+      outline: none; text-align: right; font-weight: 600;
+    }
+    .seed input.score-input:focus { border-color: rgba(0,224,255,0.5); box-shadow: 0 0 0 2px rgba(0,224,255,0.12); }
+
+    .seed.winner { background: rgba(0, 224, 255, 0.08); border-radius: 8px; }
+
+    .group-header {
+      text-align: left;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      margin: 6px 2px 2px;
+      opacity: .9;
+    }
+
+    /* connectors (desktop) */
+    @media (min-width: 900px) {
+      .round { position: relative; }
+      .round:not(:last-child) .match::after { /* horizontal line to next column */
+        content: '';
+        position: absolute;
+        right: -9px; top: 50%; width: 9px; height: 1px;
+        background: rgba(255,255,255,0.2);
+      }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 899px) {
+      .bracket { grid-template-columns: repeat(7, 240px); }
+    }
+
+    /* Corner group badges */
+    .corner-badge {
+      position: absolute;
+      width: 34px; height: 34px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: rgba(0, 224, 255, 0.15);
+      border: 1px solid rgba(0, 224, 255, 0.35);
+      color: var(--primary); font-weight: 800; font-size: 14px;
+      z-index: 2;
+    }
+    .corner-badge.tl { top: -6px; left: -6px; }
+    .corner-badge.tr { top: -6px; right: -6px; }
+    .corner-badge.bl { bottom: -6px; left: -6px; }
+    .corner-badge.br { bottom: -6px; right: -6px; }
+
+    /* Groups (A, B, C, D) */
+    .groups-wrap { margin-top: 40px; }
+    .groups-title { text-align: center; margin: 10px 0 18px; font-size: 24px; }
+    .groups-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .group-col { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; }
+    .group-col h4 { text-align: center; color: var(--muted); margin-bottom: 10px; font-size: 14px; letter-spacing: .5px; }
+    .group-matches { display: grid; gap: 12px; }
+    .group-col .match { background: rgba(0,0,0,0.18); }
+
+    @media (max-width: 1024px) {
+      .groups-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .groups-grid { grid-template-columns: 1fr; }
+    }
+    /* Connector lines overlay */
+    .bracket-lines {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+    .legend { text-align: center; color: var(--muted); font-size: 12px; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="assets/img/dvp.jpg" alt="DVP Logo" />
+      <h1>Fixtures & Schedule</h1>
+    </div>
+    <div class="nav-actions">
+      <a href="index.html" class="btn">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h2 class="page-title">Tournament Fixtures</h2>
+      <p class="page-subtitle">Match schedule and venues. Use filters to quickly find a fixture.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <input id="searchTeam" class="input" type="text" placeholder="Search team (e.g., D. Vellampalli)" />
+      <select id="dayFilter" aria-label="Day filter">
+        <option value="">All Days</option>
+        <option value="jan 10">jan 10</option>
+        <option value="jan 11">jan 11</option>
+        <option value="jan 12">jan 12</option>
+        <option value="jan 13">jan 13</option>
+        <option value="jan 14">jan 14</option>
+        <option value="jan 15">jan 15</option>
+        <option value="jan 16">jan 16</option>
+      </select>
+      <select id="groupFilter" aria-label="Group filter">
+        <option value="">All Groups</option>
+        <option value="Group A">Group A</option>
+        <option value="Group B">Group B</option>
+        <option value="Group C">Group C</option>
+        <option value="Group D">Group D</option>
+      </select>
+    </div>
+
+    <!-- Fixtures Card -->
+    <section class="fixtures-card">
+      <div class="fixtures-header">
+        <h3 id="fixturesTitle">Upcoming Fixtures</h3>
+        <button id="resetBtn" class="btn btn-primary" type="button">Reset Filters</button>
+      </div>
+
+      <!-- Table header (desktop) -->
+      <div class="fixtures-list header" aria-hidden="true">
+        <div>Team A</div>
+        <div></div>
+        <div>Team B</div>
+        <div>Time</div>
+        <div>Venue</div>
+      </div>
+
+      <div id="fixturesList" class="fixtures-list">
+        <!-- Items injected via JS -->
+      </div>
+
+      <div id="emptyState" class="empty" style="display:none;">
+        No fixtures found for the selected filters.
+      </div>
+    </section>
+
+    <!-- Knockout Bracket -->
+    <section class="bracket-wrap">
+      <h3 class="bracket-title">Knockout Bracket</h3>
+      <!-- Corner Group Badges -->
+      <span class="corner-badge tl" title="Top-Left Group">A</span>
+      <span class="corner-badge tr" title="Top-Right Group">C</span>
+      <span class="corner-badge bl" title="Bottom-Left Group">B</span>
+      <span class="corner-badge br" title="Bottom-Right Group">D</span>
+      <svg id="bracketLines" class="bracket-lines"></svg>
+      <div class="bracket" id="knockoutBracket" aria-label="Knockout Bracket">
+        <!-- Renders via JS -->
+      </div>
+    </section>
+
+    <!-- Group Knockouts -->
+    <section class="groups-wrap">
+      <h3 class="groups-title">Group Knockouts</h3>
+      <div class="groups-grid" id="groupsBracket" aria-label="Group Knockouts (A, B, C, D)">
+        <!-- Renders via JS -->
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Demo dataset (update with real schedule when available)
+    const FIXTURES = [
+      { day: 'jan 10', group: 'Group A', teamA: 'Mitta Vaddipalli - A', teamB: 'Sanganapalli', time: '02:00 PM'},
+      { day: 'jan 10', group: 'Group B', teamA: 'Velikalu village', teamB: 'Vembuluru - A', time: '10:00 AM' },
+      { day: 'jan 10', group: 'Group C', teamA: 'Amuduru', teamB: 'Mopuru YoungStars', time: '12:00 PM' },
+      { day: 'jan 10', group: 'Group D', teamA: 'D.vellampalli - A', teamB: 'Thirthampadu', time: '04:00 PM' },
+      { day: 'jan 11', group: 'Group A', teamA: 'Lingasamudram - A', teamB: 'Naidupalm', time: '11:00 AM' },
+      { day: 'jan 11', group: 'Group A', teamA: 'Mittapalem - A', teamB: 'D.vaddipalli - B(Hari)', time: '01:00 PM' },
+      { day: 'jan 11', group: 'Group B', teamA: 'Kammapalli - A', teamB: 'KPR Soldiers', time: '09:00 AM' },
+      { day: 'jan 11', group: 'Group B', teamA: 'Lingasamudram - B', teamB: 'Marlagunata - C', time: '03:00 PM' },
+      { day: 'jan 12', group: 'Group A', teamA: 'Mopuru Road', teamB: 'Kammapalli Stump Breakers', time: '11:00 AM' },
+      { day: 'jan 12', group: 'Group B', teamA: 'Matumadugu', teamB: 'Madhayatalem - A', time: '01:00 PM' },
+      { day: 'jan 12', group: 'Group C', teamA: 'Vemuluru (Samba Siva)', teamB: 'Kammapalli(Demon)', time: '09:00 AM' },
+      { day: 'jan 12', group: 'Group D', teamA: 'Lingasamudram - C', teamB: 'Kammapalli F&F', time: '03:00 PM' },
+      { day: 'jan 13', group: 'Group A', teamA: 'Mittapalem - B(Hari)', teamB: 'D.vaddipalli - B(Hari)', time: '11:00 AM' },
+    ];
+
+    const els = {
+      searchTeam: document.getElementById('searchTeam'),
+      day: document.getElementById('dayFilter'),
+      group: document.getElementById('groupFilter'),
+      list: document.getElementById('fixturesList'),
+      empty: document.getElementById('emptyState'),
+      title: document.getElementById('fixturesTitle'),
+      reset: document.getElementById('resetBtn')
+    };
+
+    function render(fixtures) {
+      els.list.innerHTML = '';
+      if (!fixtures.length) {
+        els.empty.style.display = 'block';
+        return;
+      }
+      els.empty.style.display = 'none';
+
+      fixtures.forEach(f => {
+        const row = document.createElement('div');
+        row.className = 'fixture';
+        row.innerHTML = `
+          <div class="team"><span class="badge">A</span><span class="name">${f.teamA}</span></div>
+          <div class="vs">VS</div>
+          <div class="team"><span class="badge">B</span><span class="name">${f.teamB}</span></div>
+          <div class="time">${f.day} • ${f.time}</div>
+          <div class="venue">${f.group ? ` • ${f.group}` : ''}</div>
+        `;
+        els.list.appendChild(row);
+      });
+    }
+
+    function applyFilters() {
+      const q = els.searchTeam.value.trim().toLowerCase();
+      const d = els.day.value;
+      const g = els.group.value;
+      let filtered = FIXTURES.slice();
+
+      if (q) {
+        filtered = filtered.filter(f => `${f.teamA} ${f.teamB}`.toLowerCase().includes(q));
+      }
+      if (d) filtered = filtered.filter(f => f.day === d);
+      if (g) filtered = filtered.filter(f => f.group === g);
+
+      render(filtered);
+      const suffix = [d||'All Days', g||'All Groups'].join(' • ');
+      els.title.textContent = `Upcoming Fixtures (${suffix})`;
+    }
+
+    els.searchTeam.addEventListener('input', applyFilters);
+    els.day.addEventListener('change', applyFilters);
+    els.group.addEventListener('change', applyFilters);
+    els.reset.addEventListener('click', () => {
+      els.searchTeam.value = '';
+      els.day.value = '';
+      els.group.value = '';
+      applyFilters();
+    });
+
+    // Initial render
+    render(FIXTURES);
+  </script>
+
+  <script>
+    // Simple Knockout bracket renderer
+    // Data format: array of rounds, each round is array of matches [{a:{name,score}, b:{name,score}}]
+    const BRACKET = [
+      // Round of 16 (Left 8 + Right 8)
+      [
+        // Group A (top-left under badge A)
+        { a:{ name:'Team 1' , score:''}, b:{ name:'Team 2' , score:''}, group:'Group A' },
+        { a:{ name:'Team 3' , score:''}, b:{ name:'Team 4' , score:''}, group:'Group A' },
+        // Group B (bottom-left under badge B)
+        { a:{ name:'Team 5' , score:''}, b:{ name:'Team 6' , score:''}, group:'Group B' },
+        { a:{ name:'Team 7' , score:''}, b:{ name:'Team 8' , score:''}, group:'Group B' },
+        // Group C (top-right under badge C)
+        { a:{ name:'Team 9' , score:''}, b:{ name:'Team 10', score:''}, group:'Group C' },
+        { a:{ name:'Team 11', score:''}, b:{ name:'Team 12', score:''}, group:'Group C' },
+        // Group D (bottom-right under badge D)
+        { a:{ name:'Team 13', score:''}, b:{ name:'Team 14', score:''}, group:'Group D' },
+        { a:{ name:'Team 15', score:''}, b:{ name:'Team 16', score:''}, group:'Group D' },
+      ],
+      // Quarterfinals (8)
+      new Array(8/2).fill(0).map(()=>({ a:{name:'TBD',score:''}, b:{name:'TBD',score:''} })),
+      // Semifinals (4)
+      new Array(4/2).fill(0).map(()=>({ a:{name:'TBD',score:''}, b:{name:'TBD',score:''} })),
+      // Final (2)
+      [{ a:{name:'TBD',score:''}, b:{name:'TBD',score:''} }],
+      // Champion (1) - use single box for winner
+      [{ a:{name:'Champion',score:''}, b:{name:'',score:''} }],
+    ];
+
+    function winnerFromScores(m) {
+      const a = parseFloat(m.a?.score);
+      const b = parseFloat(m.b?.score);
+      if (!isFinite(a) || !isFinite(b)) return null;
+      return a === b ? null : (a > b ? m.a?.name : m.b?.name);
+    }
+
+    function computeNextRounds(data) {
+      // Build QF from R16 winners (left 4 -> 2, right 4 -> 2)
+      const r16 = data[0] || [];
+      const qf  = data[1] || [{},{},{},{}].map(()=>({ a:{}, b:{} }));
+      const sf  = data[2] || [{},{}].map(()=>({ a:{}, b:{} }));
+      const fin = (data[3] && data[3][0]) || { a:{}, b:{} };
+      const win = (data[4] && data[4][0]) || { a:{name:'Champion'}, b:{} };
+
+      const getW = i => winnerFromScores(r16[i]) || r16[i]?.winner || '';
+      // QF Left
+      if (r16[0] && r16[1]) qf[0] = { a:{ name:getW(0) }, b:{ name:getW(1) } };
+      if (r16[2] && r16[3]) qf[1] = { a:{ name:getW(2) }, b:{ name:getW(3) } };
+      // QF Right
+      if (r16[4] && r16[5]) qf[2] = { a:{ name:getW(4) }, b:{ name:getW(5) } };
+      if (r16[6] && r16[7]) qf[3] = { a:{ name:getW(6) }, b:{ name:getW(7) } };
+
+      const getWQ = i => winnerFromScores(qf[i]) || qf[i]?.winner || '';
+      // SF
+      if (qf[0] && qf[1]) sf[0] = { a:{ name:getWQ(0) }, b:{ name:getWQ(1) } };
+      if (qf[2] && qf[3]) sf[1] = { a:{ name:getWQ(2) }, b:{ name:getWQ(3) } };
+
+      const getWS = i => winnerFromScores(sf[i]) || sf[i]?.winner || '';
+      // Final
+      const fA = getWS(0); const fB = getWS(1);
+      fin.a = { name: fA };
+      fin.b = { name: fB };
+
+      // Winner
+      const finalWinner = winnerFromScores(fin) || fin.winner || '';
+      win.a = { name: finalWinner || (fA && fB ? 'Champion' : 'Champion') };
+
+      data[1] = qf; data[2] = sf; data[3] = [fin]; data[4] = [win];
+      return data;
+    }
+
+    function attachClickToPick(card, match) {
+      // Allow click on A or B line to pick a winner when scores are not present
+      const seeds = card.querySelectorAll('.seed');
+      seeds.forEach((seed, idx) => {
+        seed.style.cursor = 'pointer';
+        seed.addEventListener('click', () => {
+          match.winner = idx === 0 ? match.a?.name : match.b?.name;
+          renderBracket(BRACKET); // re-render to advance
+        });
+      });
+    }
+
+    function renderBracket(data) {
+      const root = document.getElementById('knockoutBracket');
+      root.innerHTML = '';
+      // Compute advancement before render
+      computeNextRounds(data);
+
+      const r16 = data[0] || [];         // 8 matches
+      const qf  = data[1] || [];         // 4 matches
+      const sf  = data[2] || [];         // 2 matches
+      const fin = (data[3] && data[3][0]) || { a:{}, b:{} }; // 1 match
+      const win = (data[4] && data[4][0]) || { a:{name:'Champion'}, b:{} };
+
+      // Split left/right
+      const r16L = r16.slice(0, 4); // A+B
+      const r16R = r16.slice(4);    // C+D
+      const qfL  = qf.slice(0, 2);
+      const qfR  = qf.slice(2);
+      const sfL  = sf.slice(0, 1);
+      const sfR  = sf.slice(1, 2);
+
+      // Helper to render a column
+      const makeCol = (titleText, matches, withGroupHeaders=false) => {
+        const col = document.createElement('div');
+        col.className = 'round';
+        const title = document.createElement('h4');
+        title.textContent = titleText;
+        col.appendChild(title);
+        let prevGroup = '';
+        matches.forEach(m => {
+          if (withGroupHeaders && m.group && m.group !== prevGroup) {
+            const gh = document.createElement('div');
+            gh.className = 'group-header';
+            gh.textContent = m.group;
+            col.appendChild(gh);
+            prevGroup = m.group;
+          }
+          const card = document.createElement('div');
+          card.className = 'match';
+          card.innerHTML = `
+            <div class="seed"><span class="tag">A</span><span class="name">${m.a?.name||''}</span><span class="score">${m.a?.score||''}</span></div>
+            <div class="seed"><span class="tag">B</span><span class="name">${m.b?.name||''}</span><span class="score">${m.b?.score||''}</span></div>
+          `;
+          if (withGroupHeaders && m.group) {
+            const badge = document.createElement('span');
+            badge.className = 'group-tag';
+            badge.textContent = m.group;
+            card.appendChild(badge);
+          }
+          // enable manual pick if no scores
+          if (!winnerFromScores(m)) attachClickToPick(card, m);
+          col.appendChild(card);
+        });
+        return col;
+      };
+
+      // Build 7 columns: R16(L), QF(L), SF(L), Final+Winner, SF(R), QF(R), R16(R)
+      const col0 = makeCol('Groups A/B', r16L, true);
+      const col1 = makeCol('Quarterfinals', qfL, false);
+      const col2 = makeCol('Semifinal', sfL, false);
+
+      const col3 = document.createElement('div');
+      col3.className = 'round';
+      const c3title = document.createElement('h4');
+      c3title.textContent = 'Final & Winner';
+      col3.appendChild(c3title);
+      // Final card
+      const finalCard = document.createElement('div');
+      finalCard.className = 'match';
+      finalCard.innerHTML = `
+        <div class="seed"><span class="tag">A</span><span class="name">${fin.a?.name||'TBD'}</span><span class="score">${fin.a?.score||''}</span></div>
+        <div class="seed"><span class="tag">B</span><span class="name">${fin.b?.name||'TBD'}</span><span class="score">${fin.b?.score||''}</span></div>
+      `;
+      col3.appendChild(finalCard);
+      // Winner card
+      const winnerCard = document.createElement('div');
+      winnerCard.className = 'match';
+      winnerCard.innerHTML = `
+        <div class="seed"><span class="tag">🏆</span><span class="name">${win.a?.name||'Champion'}</span></div>
+      `;
+      col3.appendChild(winnerCard);
+
+      const col4 = makeCol('Semifinal', sfR, false);
+      const col5 = makeCol('Quarterfinals', qfR, false);
+      const col6 = makeCol('Groups C/D', r16R, true);
+
+      [col0,col1,col2,col3,col4,col5,col6].forEach(c => root.appendChild(c));
+
+      // After DOM ready, draw connectors
+      requestAnimationFrame(drawConnectors);
+    }
+
+    renderBracket(BRACKET);
+
+    function drawConnectors() {
+      const wrap = document.querySelector('.bracket-wrap');
+      const svg = document.getElementById('bracketLines');
+      if (!wrap || !svg) return;
+      const root = document.getElementById('knockoutBracket');
+      const cols = Array.from(root.children);
+      if (cols.length !== 7) return;
+      svg.setAttribute('viewBox', `0 0 ${wrap.clientWidth} ${wrap.clientHeight}`);
+      svg.innerHTML = '';
+
+      const getCenters = col => Array.from(col.querySelectorAll('.match')).map(m => {
+        const r = m.getBoundingClientRect();
+        const w = wrap.getBoundingClientRect();
+        return { x: r.left - w.left + r.width, y: r.top - w.top + r.height/2, left: r.left - w.left, rwidth: r.width };
+      });
+
+      const src0 = getCenters(cols[0]); // R16 L
+      const dst1 = getCenters(cols[1]); // QF L
+      const dst2 = getCenters(cols[2]); // SF L
+      const src6 = getCenters(cols[6]); // R16 R
+      const dst5 = getCenters(cols[5]); // QF R
+      const dst4 = getCenters(cols[4]); // SF R
+      const cen3 = getCenters(cols[3]); // Final + Winner (first card is final)
+
+      function connect(a, b) {
+        if (!a || !b) return;
+        const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+        const x1 = a.x, y1 = a.y; const x2 = (b.left), y2 = b.y;
+        const mx = (x1 + x2) / 2;
+        const d = `M ${x1},${y1} C ${mx},${y1} ${mx},${y2} ${x2},${y2}`;
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', 'rgba(0,224,255,0.35)');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-width', '1.5');
+        svg.appendChild(path);
+      }
+
+      // R16 L -> QF L pairings: 0-1->0, 2-3->1
+      if (src0.length >= 4 && dst1.length >= 2) {
+        connect(src0[0], dst1[0]); connect(src0[1], dst1[0]);
+        connect(src0[2], dst1[1]); connect(src0[3], dst1[1]);
+      }
+      // QF L -> SF L: 0-1->0
+      if (dst1.length >= 2 && dst2.length >= 1) { connect(dst1[0], dst2[0]); connect(dst1[1], dst2[0]); }
+      // SF L -> Final[0]
+      if (dst2.length >= 1 && cen3.length >= 1) connect(dst2[0], cen3[0]);
+
+      // R16 R -> QF R pairings: 0-1->0, 2-3->1 (indices inside their own columns)
+      if (src6.length >= 4 && dst5.length >= 2) {
+        connect(src6[0], dst5[0]); connect(src6[1], dst5[0]);
+        connect(src6[2], dst5[1]); connect(src6[3], dst5[1]);
+      }
+      // QF R -> SF R: 0-1->0
+      if (dst5.length >= 2 && dst4.length >= 1) { connect(dst5[0], dst4[0]); connect(dst5[1], dst4[0]); }
+      // SF R -> Final[1]
+      if (dst4.length >= 1 && cen3.length >= 1) connect(dst4[0], cen3[0]);
+    }
+
+    window.addEventListener('resize', () => requestAnimationFrame(drawConnectors));
+    window.addEventListener('scroll', () => requestAnimationFrame(drawConnectors), true);
+  </script>
+
+  <script>
+    // Group-wise matches (A, B, C, D) - placeholder data
+    // For each group, list initial knockout matches. Add scores as needed.
+    const GROUP_BRACKETS = {
+      'Group A': [
+        { a:{name:'Mitta Vaddipalli - A', score:''}, b:{name:'Sanganapalli', score:''} },
+        { a:{name:'Lingasamudram - A', score:''}, b:{name:'Naidupalm', score:''} },
+      ],
+      'Group B': [
+        { a:{name:'Velikalu village', score:''}, b:{name:'Vembuluru - A', score:''} },
+        { a:{name:'Kammapalli - A', score:''}, b:{name:'KPR Soldiers', score:''} },
+      ],
+      'Group C': [
+        { a:{name:'Amuduru', score:''}, b:{name:'Mopuru YoungStars', score:''} },
+        { a:{name:'Vemuluru (Samba Siva)', score:''}, b:{name:'Kammapalli (Demon)', score:''} },
+      ],
+      'Group D': [
+        { a:{name:'D. Vellampalli - A', score:''}, b:{name:'Thirthampadu', score:''} },
+        { a:{name:'Lingasamudram - C', score:''}, b:{name:'Kammapalli F&F', score:''} },
+      ],
+    };
+
+    function renderGroups(groups) {
+      const root = document.getElementById('groupsBracket');
+      root.innerHTML = '';
+      Object.keys(groups).forEach(groupName => {
+        const col = document.createElement('div');
+        col.className = 'group-col';
+        const title = document.createElement('h4');
+        title.textContent = groupName;
+        col.appendChild(title);
+
+        const list = document.createElement('div');
+        list.className = 'group-matches';
+
+        groups[groupName].forEach(m => {
+          const card = document.createElement('div');
+          card.className = 'match';
+          card.innerHTML = `
+            <div class="seed"><span class="tag">A</span><span class="name">${m.a.name||''}</span><span class="score">${m.a.score||''}</span></div>
+            <div class="seed"><span class="tag">B</span><span class="name">${m.b.name||''}</span><span class="score">${m.b.score||''}</span></div>
+          `;
+          list.appendChild(card);
+        });
+
+        col.appendChild(list);
+        root.appendChild(col);
+      });
+    }
+
+    renderGroups(GROUP_BRACKETS);
+  </script>
+</body>
+</html>

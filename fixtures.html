@@ -284,32 +284,9 @@
         No fixtures found for the selected filters.
       </div>
     </section>
-
-    <!-- Knockout Bracket -->
-    <section class="bracket-wrap">
-      <h3 class="bracket-title">Knockout Bracket</h3>
-      <!-- Corner Group Badges -->
-      <span class="corner-badge tl" title="Top-Left Group">A</span>
-      <span class="corner-badge tr" title="Top-Right Group">C</span>
-      <span class="corner-badge bl" title="Bottom-Left Group">B</span>
-      <span class="corner-badge br" title="Bottom-Right Group">D</span>
-      <svg id="bracketLines" class="bracket-lines"></svg>
-      <div class="bracket" id="knockoutBracket" aria-label="Knockout Bracket">
-        <!-- Renders via JS -->
-      </div>
-    </section>
-
-    <!-- Group Knockouts -->
-    <section class="groups-wrap">
-      <h3 class="groups-title">Group Knockouts</h3>
-      <div class="groups-grid" id="groupsBracket" aria-label="Group Knockouts (A, B, C, D)">
-        <!-- Renders via JS -->
-      </div>
-    </section>
   </main>
 
   <script>
-    // Demo dataset (update with real schedule when available)
     const FIXTURES = [
       { day: 'jan 10', group: 'Group A', teamA: 'Mitta Vaddipalli - A', teamB: 'Sanganapalli', time: '02:00 PM'},
       { day: 'jan 10', group: 'Group B', teamA: 'Velikalu village', teamB: 'Vembuluru - A', time: '10:00 AM' },
@@ -323,7 +300,19 @@
       { day: 'jan 12', group: 'Group B', teamA: 'Matumadugu', teamB: 'Madhayatalem - A', time: '01:00 PM' },
       { day: 'jan 12', group: 'Group C', teamA: 'Vemuluru (Samba Siva)', teamB: 'Kammapalli(Demon)', time: '09:00 AM' },
       { day: 'jan 12', group: 'Group D', teamA: 'Lingasamudram - C', teamB: 'Kammapalli F&F', time: '03:00 PM' },
-      { day: 'jan 13', group: 'Group A', teamA: 'Mittapalem - B(Hari)', teamB: 'D.vaddipalli - B(Hari)', time: '11:00 AM' },
+      { day: 'jan 13', group: 'Group C', teamA: 'Mittapalem - B', teamB: 'Maralagunata(Anji)', time: '09:00 AM' },
+      { day: 'jan 13', group: 'Group C', teamA: 'Kuppayalem B', teamB: 'Mopuruvellampalli', time: '03:00 PM' },
+      { day: 'jan 13', group: 'Group A', teamA: 'Madhayatalem Reddy', teamB: 'vadipalli D', time: '01:00 PM' },
+      { day: 'jan 13', group: 'Group A', teamA: 'ALTHURUPADU(MOHAN)', teamB: 'MARLAGUNTA B', time: '11:00 AM' },
+      { day: 'jan 14', group: 'Group A', teamA: 'ALTHURUPADU(HARINADH)', teamB: 'DIGUVA MARLAGUNTA', time: '01:00 PM' },
+      { day: 'jan 14', group: 'Group A', teamA: 'VADDIPALLI A', teamB: 'DAKKILI SPIRIT 11S', time: '11:00 AM' },
+      { day: 'jan 14', group: 'Group D', teamA: 'VEMBULURU C', teamB: 'PALUGODU', time: '09:00 AM' },
+      { day: 'jan 14', group: 'Group D', teamA: 'DVP B', teamB: 'KUPPAYAPALEM D', time: '03:00 PM' },
+      { day: 'jan 15', group: 'Group D', teamA: 'KUPPAYAPALEM(SANJAY)', teamB: 'MITTA VADDIPALLI B', time: '09:00 AM' },
+      { day: 'jan 15', group: 'Group B', teamA: 'KUPPAYAPALEM A', teamB: 'MADHAYAPALEM B', time: '03:00 PM' },
+      { day: 'jan 15', group: 'Group B', teamA: 'MARLAGUNTA A', teamB: 'MOPURU RAISING STARS', time: '11:00 AM' },
+      { day: 'jan 15', group: 'Group A', teamA: 'DEVALAPALLI', teamB: 'VELIKALLU(BALU)', time: '01:00 PM' },
+      { day: 'jan 16', group: 'Group C', teamA: 'YELLAVAJJULA PALLI', teamB: 'ALTHURUPADU VELLAMPALLI', time: '09:00 AM' },
     ];
 
     const els = {

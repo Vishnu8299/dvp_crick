@@ -1,8 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Enhanced Splash Screen Styles -->
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) translateZ(0); }
+      50% { transform: translateY(-10px) translateZ(0); }
+      100% { transform: translateY(0) translateZ(0); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.98) translateZ(0); opacity: 0.9; }
+      50% { transform: scale(1.02) translateZ(0); opacity: 1; }
+    }
+    
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+    
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      overflow: hidden;
+      will-change: opacity, visibility;
+    }
+    
+    @media (prefers-reduced-motion: no-preference) {
+      #splash-screen {
+        background: linear-gradient(-45deg, #0a192f, #112240, #1a3a5f, #0a192f);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+      }
+    }
+    
+    #splash-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+    }
+    
+    .splash-content {
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .splash-logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-bottom: 2rem;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    @media (prefers-reduced-motion: no-preference) {
+      .splash-logo {
+        animation: float 6s ease-in-out infinite, pulse 3s ease-in-out infinite;
+      }
+    }
+    
+    .splash-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 1.5rem 0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(90deg, #fff, #00e0ff, #00a8ff, #fff);
+      background-size: 200% auto;
+      color: #000;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    @media (prefers-reduced-motion: no-preference) {
+      .splash-title {
+        animation: shine 3s linear infinite;
+      }
+    }
+    
+    .splash-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    
+    .loading-bar {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 2rem auto;
+      position: relative;
+    }
+    
+    .loading-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00e0ff, #00a8ff);
+      transition: width 0.3s ease;
+    }
+    
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+    }
+    
+    @media (max-width: 768px) {
+      .splash-logo {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .splash-title {
+        font-size: 2rem;
+      }
+      
+      .splash-subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a192f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="DVP Cricket Tournament 2026 - Fixtures & Schedule" />
   <meta name="theme-color" content="#00e0ff" />
   <link rel="icon" type="image/png" href="assets/img/dvp.jpg" />
@@ -13,40 +175,128 @@
     :root {
       --primary: #00e0ff;
       --primary-dark: #00b4d8;
+      --secondary: #ff6b6b;
+      --accent: #ffd166;
+      --primary-gradient: linear-gradient(135deg, #00e0ff 0%, #00a8ff 100%);
       --bg1: #0a192f;
+      --bg2: #112240;
+      --text-light: rgba(255, 255, 255, 0.9);
+      --text-lighter: rgba(255, 255, 255, 0.7);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       --bg2: #0a0f1a;
       --text: #e6f1ff;
-      --muted: #b8c1ec;
-      --card: rgba(255,255,255,0.06);
-      --card-border: rgba(255,255,255,0.12);
+      --text-muted: #b8c1ec;
+      --card: rgba(255, 255, 255, 0.03);
+      --card-hover: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --success: #2ecc71;
+      --danger: #ff4757;
+      --warning: #ff9f43;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
     body {
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
-      color: var(--text);
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #0a192f;
+      color: #e6f1ff;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
     a { color: var(--primary); text-decoration: none; }
     .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px 40px; }
 
     /* Header */
     header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 22px; background: rgba(0,0,0,0.35); backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px;
+      background: rgba(10, 25, 47, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+    
+    header.scrolled {
+      padding: 10px 22px;
+      background: rgba(10, 25, 47, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
     .brand { display: flex; align-items: center; gap: 12px; }
     .brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
     .brand h1 { font-size: 18px; font-weight: 600; color: var(--primary); letter-spacing: .3px; }
     .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 14px; border: 1px solid rgba(255,255,255,0.12); color: var(--text); background: transparent; transition: all .25s ease; }
-    .btn:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); transform: translateY(-1px); }
-    .btn-primary { background: var(--primary); color: #0a192f; border-color: transparent; box-shadow: 0 6px 18px rgba(0,224,255,0.28); }
-    .btn-primary:hover { background: var(--primary-dark); box-shadow: 0 8px 22px rgba(0,224,255,0.35); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: -1;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .btn:hover::before {
+      opacity: 1;
+    }
+    
+    .btn-primary {
+      background: var(--primary-gradient);
+      color: #0a192f;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(0, 224, 255, 0.3);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 224, 255, 0.4);
+      background: linear-gradient(135deg, #00d0ff 0%, #0098ff 100%);
+    }
 
     /* Page title */
     .page-header { text-align: center; margin-bottom: 26px; }
@@ -62,16 +312,207 @@
     .input::placeholder { color: #9aa6c7; }
 
     /* Fixtures */
-    .fixtures-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
+    .fixtures-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    .fixtures-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(0, 224, 255, 0.2);
+    }
     .fixtures-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.12); padding-bottom: 10px; margin-bottom: 12px; }
     .fixtures-header h3 { font-size: 16px; font-weight: 600; }
     .fixtures-list { display: grid; gap: 10px; }
 
-    .fixture {
-      display: grid; grid-template-columns: 1.2fr 0.6fr 1.2fr 0.8fr 0.8fr; align-items: center; gap: 10px;
-      background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px;
+    .fixture-date {
+      padding: 10px 20px;
+      background: linear-gradient(90deg, rgba(0, 224, 255, 0.1) 0%, rgba(0, 224, 255, 0.05) 100%);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-left: 4px solid var(--primary);
+      margin: 20px 0 10px;
+      border-radius: 0 6px 6px 0;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      transform: translateZ(0);
+      will-change: transform;
     }
-    .team { display: flex; align-items: center; gap: 10px; }
+    
+    .fixture-date::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+      transform: translateX(-100%);
+      transition: var(--transition);
+    }
+    
+    .fixture-date:hover::after {
+      transform: translateX(100%);
+    }
+
+    .fixtures-list .fixture {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px 20px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      margin: 8px 0;
+      transition: var(--transition);
+      box-sizing: border-box;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    .fixture::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 224, 255, 0.03) 0%, transparent 100%);
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+    
+    .fixture:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(0, 224, 255, 0.2);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .fixture:hover::before {
+      opacity: 1;
+    }
+
+    .fixture.live {
+      border-left: 4px solid var(--danger);
+      background: linear-gradient(90deg, rgba(255, 71, 87, 0.08) 0%, rgba(255, 71, 87, 0.03) 100%);
+      animation: pulse-border 2s infinite;
+    }
+    
+    @keyframes pulse-border {
+      0% { border-left-color: var(--danger); }
+      50% { border-left-color: rgba(255, 71, 87, 0.5); }
+      100% { border-left-color: var(--danger); }
+    }
+
+    .fixture-teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .team {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      text-align: center;
+      min-width: 0; /* Allows text truncation to work */
+    }
+
+    .team-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.2s ease;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .team-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--bg1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+    }
+
+    .team-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .vs {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 600;
+      padding: 0 12px;
+    }
+
+    .fixture-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 10px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .fixture-time, .fixture-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-badge {
+      background: #ff4757;
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
     .team .badge { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.12); display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--primary); }
     .team .name { font-weight: 600; }
     .vs { text-align: center; color: #9aa6c7; font-weight: 600; }
@@ -90,11 +531,154 @@
     }
 
     /* Mobile cards */
-    @media (max-width: 899px) {
-      .filters { grid-template-columns: 1fr 1fr; }
-      .fixture { grid-template-columns: 1fr; gap: 6px; }
-      .vs { order: 2; }
-      .time, .venue { order: 3; }
+    /* Mobile Styles */
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 80px 12px 30px;
+      }
+      
+      .team-logo {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+      }
+      
+      .vs {
+        margin: 0 15px;
+        padding: 5px 15px;
+        font-size: 1.2rem;
+      }
+      
+      .fixture-card {
+        padding: 20px 15px;
+      }
+      
+      .page-title {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+      
+      .page-subtitle {
+        font-size: 14px;
+      }
+      
+      .fixtures-card {
+        padding: 12px;
+        border-radius: 12px;
+      }
+      
+      .fixtures-header h3 {
+        font-size: 18px;
+      }
+      
+      .fixture {
+        padding: 14px 12px;
+        margin: 6px 0;
+      }
+      
+      .team-badge {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+      }
+      
+      .team-name {
+        font-size: 14px;
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .vs {
+        font-size: 14px;
+        padding: 0 8px;
+      }
+      
+      .fixture-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding-top: 10px;
+      }
+      
+      .fixture-time, .fixture-group {
+        width: 100%;
+        justify-content: space-between;
+        padding: 4px 0;
+      }
+      
+      .live-badge {
+        font-size: 11px;
+        padding: 1px 6px;
+        margin-left: auto;
+      }
+      
+      .fixture-date {
+        margin: 12px 0 6px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      
+      /* Hide desktop header on mobile */
+      .fixtures-list.header {
+        display: none;
+      }
+      
+      /* Adjust header for mobile */
+      header {
+        padding: 10px 16px;
+      }
+      
+      .brand h1 {
+        font-size: 16px;
+      }
+      
+      .btn {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+    }
+    
+    /* Small mobile devices */
+    @media (max-width: 400px) {
+      .team-name {
+        max-width: 100px;
+        font-size: 13px;
+      }
+      
+      .vs {
+        font-size: 13px;
+        padding: 0 6px;
+      }
+      
+      .fixture {
+        padding: 12px 10px;
+      }
+      
+      .fixture-time span,
+      .fixture-group span {
+        font-size: 12px;
+      }
     }
 
     /* Knockout Bracket */
@@ -222,6 +806,18 @@
   </style>
 </head>
 <body>
+  <!-- Enhanced Splash Screen -->
+  <div id="splash-screen">
+    <div class="particles" id="particles"></div>
+    <div class="splash-content">
+      <img src="assets/img/dvp.jpg" alt="DVP Cricket Tournament" class="splash-logo">
+      <h1 class="splash-title">DVP CRICKET TOURNAMENT 2k26</h1>
+      <p class="splash-subtitle">Loading Fixtures...</p>
+      <div class="loading-bar">
+        <div class="loading-progress" id="loadingProgress"></div>
+      </div>
+    </div>
+  </div>
   <header>
     <div class="brand">
       <img src="assets/img/dvp.jpg" alt="DVP Logo" />
@@ -235,36 +831,13 @@
   <main class="container">
     <div class="page-header">
       <h2 class="page-title">Tournament Fixtures</h2>
-      <p class="page-subtitle">Match schedule and venues. Use filters to quickly find a fixture.</p>
+      <p class="page-subtitle">Match schedule and venues.</p>
     </div>
-
-    <!-- Filters -->
-    <div class="filters">
-      <input id="searchTeam" class="input" type="text" placeholder="Search team (e.g., D. Vellampalli)" />
-      <select id="dayFilter" aria-label="Day filter">
-        <option value="">All Days</option>
-        <option value="jan 10">jan 10</option>
-        <option value="jan 11">jan 11</option>
-        <option value="jan 12">jan 12</option>
-        <option value="jan 13">jan 13</option>
-        <option value="jan 14">jan 14</option>
-        <option value="jan 15">jan 15</option>
-        <option value="jan 16">jan 16</option>
-      </select>
-      <select id="groupFilter" aria-label="Group filter">
-        <option value="">All Groups</option>
-        <option value="Group A">Group A</option>
-        <option value="Group B">Group B</option>
-        <option value="Group C">Group C</option>
-        <option value="Group D">Group D</option>
-      </select>
-    </div>
-
+    
     <!-- Fixtures Card -->
     <section class="fixtures-card">
       <div class="fixtures-header">
         <h3 id="fixturesTitle">Upcoming Fixtures</h3>
-        <button id="resetBtn" class="btn btn-primary" type="button">Reset Filters</button>
       </div>
 
       <!-- Table header (desktop) -->
@@ -281,49 +854,135 @@
       </div>
 
       <div id="emptyState" class="empty" style="display:none;">
-        No fixtures found for the selected filters.
+        No fixtures available at the moment.
       </div>
     </section>
   </main>
 
   <script>
+    // Enhanced splash screen with particles and loading animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const splash = document.getElementById('splash-screen');
+      const loadingProgress = document.getElementById('loadingProgress');
+      const particlesContainer = document.getElementById('particles');
+      
+      // Create particles
+      function createParticles() {
+        const particleCount = 20;
+        for (let i = 0; i <particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          // Random size between 2px and 6px
+          const size = Math.random() * 4 + 2;
+          
+          // Random position
+          const posX = Math.random() * 100;
+          const posY = Math.random() * 100;
+          
+          // Random animation
+          const duration = Math.random() * 20 + 10; // 10-30s
+          const delay = Math.random() * -20; // Start at random point
+          
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${posX}%`;
+          particle.style.top = `${posY}%`;
+          particle.style.opacity = Math.random() * 0.5 + 0.1;
+          particle.style.animation = `float ${duration}s linear ${delay}s infinite`;
+          
+          particlesContainer.appendChild(particle);
+        }
+      }
+      
+      // Simulate loading progress
+      function simulateLoading() {
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += Math.random() * 15;
+          if (progress > 100) progress = 100;
+          loadingProgress.style.width = `${progress}%`;
+          
+          if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+              if (splash) {
+                splash.classList.add('hidden');
+                splash.addEventListener('transitionend', function() {
+                  if (splash.classList.contains('hidden')) {
+                    splash.style.display = 'none';
+                  }
+                }, { once: true });
+              }
+            }, 300);
+          }
+        }, 200);
+      }
+      
+      // Initialize
+      createParticles();
+      setTimeout(simulateLoading, 500);
+    });
     const FIXTURES = [
-      { day: 'jan 10', group: 'Group A', teamA: 'Mitta Vaddipalli - A', teamB: 'Sanganapalli', time: '02:00 PM'},
-      { day: 'jan 10', group: 'Group B', teamA: 'Velikalu village', teamB: 'Vembuluru - A', time: '10:00 AM' },
-      { day: 'jan 10', group: 'Group C', teamA: 'Amuduru', teamB: 'Mopuru YoungStars', time: '12:00 PM' },
-      { day: 'jan 10', group: 'Group D', teamA: 'D.vellampalli - A', teamB: 'Thirthampadu', time: '04:00 PM' },
-      { day: 'jan 11', group: 'Group A', teamA: 'Lingasamudram - A', teamB: 'Naidupalm', time: '11:00 AM' },
-      { day: 'jan 11', group: 'Group A', teamA: 'Mittapalem - A', teamB: 'D.vaddipalli - B(Hari)', time: '01:00 PM' },
-      { day: 'jan 11', group: 'Group B', teamA: 'Kammapalli - A', teamB: 'KPR Soldiers', time: '09:00 AM' },
-      { day: 'jan 11', group: 'Group B', teamA: 'Lingasamudram - B', teamB: 'Marlagunata - C', time: '03:00 PM' },
-      { day: 'jan 12', group: 'Group A', teamA: 'Mopuru Road', teamB: 'Kammapalli Stump Breakers', time: '11:00 AM' },
-      { day: 'jan 12', group: 'Group B', teamA: 'Matumadugu', teamB: 'Madhayatalem - A', time: '01:00 PM' },
-      { day: 'jan 12', group: 'Group C', teamA: 'Vemuluru (Samba Siva)', teamB: 'Kammapalli(Demon)', time: '09:00 AM' },
-      { day: 'jan 12', group: 'Group D', teamA: 'Lingasamudram - C', teamB: 'Kammapalli F&F', time: '03:00 PM' },
-      { day: 'jan 13', group: 'Group C', teamA: 'Mittapalem - B', teamB: 'Maralagunata(Anji)', time: '09:00 AM' },
-      { day: 'jan 13', group: 'Group C', teamA: 'Kuppayalem B', teamB: 'Mopuruvellampalli', time: '03:00 PM' },
-      { day: 'jan 13', group: 'Group A', teamA: 'Madhayatalem Reddy', teamB: 'vadipalli D', time: '01:00 PM' },
-      { day: 'jan 13', group: 'Group A', teamA: 'ALTHURUPADU(MOHAN)', teamB: 'MARLAGUNTA B', time: '11:00 AM' },
-      { day: 'jan 14', group: 'Group A', teamA: 'ALTHURUPADU(HARINADH)', teamB: 'DIGUVA MARLAGUNTA', time: '01:00 PM' },
-      { day: 'jan 14', group: 'Group A', teamA: 'VADDIPALLI A', teamB: 'DAKKILI SPIRIT 11S', time: '11:00 AM' },
-      { day: 'jan 14', group: 'Group D', teamA: 'VEMBULURU C', teamB: 'PALUGODU', time: '09:00 AM' },
-      { day: 'jan 14', group: 'Group D', teamA: 'DVP B', teamB: 'KUPPAYAPALEM D', time: '03:00 PM' },
-      { day: 'jan 15', group: 'Group D', teamA: 'KUPPAYAPALEM(SANJAY)', teamB: 'MITTA VADDIPALLI B', time: '09:00 AM' },
-      { day: 'jan 15', group: 'Group B', teamA: 'KUPPAYAPALEM A', teamB: 'MADHAYAPALEM B', time: '03:00 PM' },
-      { day: 'jan 15', group: 'Group B', teamA: 'MARLAGUNTA A', teamB: 'MOPURU RAISING STARS', time: '11:00 AM' },
-      { day: 'jan 15', group: 'Group A', teamA: 'DEVALAPALLI', teamB: 'VELIKALLU(BALU)', time: '01:00 PM' },
-      { day: 'jan 16', group: 'Group C', teamA: 'YELLAVAJJULA PALLI', teamB: 'ALTHURUPADU VELLAMPALLI', time: '09:00 AM' },
+      { day: 'Jan 10', group: 'Group A', teamA: 'Mitta Vaddipalli - A', teamB: 'Sanganapalli', time: '02:00 PM'},
+      { day: 'Jan 10', group: 'Group B', teamA: 'Velikalu village', teamB: 'Vembuluru - A', time: '10:00 AM' },
+      { day: 'Jan 10', group: 'Group C', teamA: 'Amuduru', teamB: 'Mopuru YoungStars', time: '12:00 PM' },
+      { day: 'Jan 10', group: 'Group D', teamA: 'D.vellampalli - A', teamB: 'Thirthampadu', time: '04:00 PM' },
+      { day: 'Jan 11', group: 'Group A', teamA: 'Lingasamudram - A', teamB: 'Naidupalm', time: '11:00 AM' },
+      { day: 'Jan 11', group: 'Group A', teamA: 'Mittapalem - A', teamB: 'D.vaddipalli - B(Hari)', time: '01:00 PM' },
+      { day: 'Jan 11', group: 'Group B', teamA: 'Kammapalli - A', teamB: 'KPR Soldiers', time: '09:00 AM' },
+      { day: 'Jan 11', group: 'Group B', teamA: 'Lingasamudram - B', teamB: 'Marlagunata - C', time: '03:00 PM' },
+      { day: 'Jan 12', group: 'Group A', teamA: 'Mopuru Road', teamB: 'Kammapalli Stump Breakers', time: '11:00 AM' },
+      { day: 'Jan 12', group: 'Group B', teamA: 'Matumadugu', teamB: 'Madhayatalem - A', time: '01:00 PM' },
+      { day: 'Jan 12', group: 'Group C', teamA: 'Vemuluru (Samba Siva)', teamB: 'Kammapalli(Demon)', time: '09:00 AM' },
+      { day: 'Jan 12', group: 'Group D', teamA: 'Lingasamudram - C', teamB: 'Kammapalli F&F', time: '03:00 PM' },
+      { day: 'Jan 13', group: 'Group C', teamA: 'Mittapalem - B', teamB: 'Maralagunata(Anji)', time: '09:00 AM' },
+      { day: 'Jan 13', group: 'Group C', teamA: 'Kuppayalem B', teamB: 'Mopuruvellampalli', time: '03:00 PM' },
+      { day: 'Jan 13', group: 'Group A', teamA: 'Madhayatalem Reddy', teamB: 'vadipalli D', time: '01:00 PM' },
+      { day: 'Jan 13', group: 'Group A', teamA: 'ALTHURUPADU(MOHAN)', teamB: 'MARLAGUNTA B', time: '11:00 AM' },
+      { day: 'Jan 14', group: 'Group A', teamA: 'ALTHURUPADU(HARINADH)', teamB: 'DIGUVA MARLAGUNTA', time: '01:00 PM' },
+      { day: 'Jan 14', group: 'Group A', teamA: 'VADDIPALLI A', teamB: 'DAKKILI SPIRIT 11S', time: '11:00 AM' },
+      { day: 'Jan 14', group: 'Group D', teamA: 'VEMBULURU C', teamB: 'PALUGODU', time: '09:00 AM' },
+      { day: 'Jan 14', group: 'Group D', teamA: 'DVP B', teamB: 'KUPPAYAPALEM D', time: '03:00 PM' },
+      { day: 'Jan 15', group: 'Group D', teamA: 'KUPPAYAPALEM(SANJAY)', teamB: 'MITTA VADDIPALLI B', time: '09:00 AM' },
+      { day: 'Jan 15', group: 'Group B', teamA: 'KUPPAYAPALEM A', teamB: 'MADHAYAPALEM B', time: '03:00 PM' },
+      { day: 'Jan 15', group: 'Group B', teamA: 'MARLAGUNTA A', teamB: 'MOPURU RAISING STARS', time: '11:00 AM' },
+      { day: 'Jan 15', group: 'Group A', teamA: 'DEVALAPALLI', teamB: 'VELIKALLU(BALU)', time: '01:00 PM' },
+      { day: 'Jan 16', group: 'Group C', teamA: 'YELLAVAJJULA PALLI', teamB: 'ALTHURUPADU VELLAMPALLI', time: '09:00 AM' },
     ];
 
     const els = {
-      searchTeam: document.getElementById('searchTeam'),
-      day: document.getElementById('dayFilter'),
-      group: document.getElementById('groupFilter'),
       list: document.getElementById('fixturesList'),
       empty: document.getElementById('emptyState'),
-      title: document.getElementById('fixturesTitle'),
-      reset: document.getElementById('resetBtn')
+      title: document.getElementById('fixturesTitle')
     };
+
+    function getTeamInitials(teamName) {
+      return teamName
+        .split(' ')
+        .map(word => word[0])
+        .join('')
+        .toUpperCase()
+        .substring(0, 3);
+    }
+
+    function formatTime(timeStr) {
+     if (!timeStr) return '';
+     // Split into time and period if already in 12-hour format
+     const [timePart, period] = timeStr.split(' ');
+     
+     // If already has AM/PM, return as is
+     if (period && (period.toUpperCase() === 'AM' || period.toUpperCase() === 'PM')) {
+       return timeStr;
+     }
+     
+     // Otherwise, convert from 24-hour to 12-hour format
+     const [hours, minutes] = timePart.split(':');
+     const hour = parseInt(hours, 10);
+     const ampm = hour >= 12 ? 'PM' : 'AM';
+     const hour12 = hour % 12 || 12;
+     return `${hour12}:${minutes} ${ampm}`;
+   }
 
     function render(fixtures) {
       els.list.innerHTML = '';
@@ -333,69 +992,122 @@
       }
       els.empty.style.display = 'none';
 
-      fixtures.forEach(f => {
-        const row = document.createElement('div');
-        row.className = 'fixture';
-        row.innerHTML = `
-          <div class="team"><span class="badge">A</span><span class="name">${f.teamA}</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><span class="badge">B</span><span class="name">${f.teamB}</span></div>
-          <div class="time">${f.day} • ${f.time}</div>
-          <div class="venue">${f.group ? ` • ${f.group}` : ''}</div>
-        `;
-        els.list.appendChild(row);
+      // Group fixtures by date
+      const fixturesByDate = fixtures.reduce((acc, fixture) => {
+        if (!acc[fixture.day]) {
+          acc[fixture.day] = [];
+        }
+        acc[fixture.day].push(fixture);
+        return acc;
+      }, {});
+
+      // Create a section for each date
+      Object.entries(fixturesByDate).forEach(([date, dateFixtures]) => {
+        const dateHeader = document.createElement('div');
+        dateHeader.className = 'fixture-date';
+        dateHeader.textContent = date;
+        els.list.appendChild(dateHeader);
+
+        dateFixtures.forEach((f, index) => {
+          const row = document.createElement('div');
+          row.className = 'fixture';
+          
+          row.innerHTML = `
+            <div class="fixture-teams">
+              <div class="team">
+                <div class="team-badge">${getTeamInitials(f.teamA)}</div>
+                <div class="team-name">${f.teamA}</div>
+              </div>
+              <div class="vs">VS</div>
+              <div class="team">
+                <div class="team-badge">${getTeamInitials(f.teamB)}</div>
+                <div class="team-name">${f.teamB}</div>
+              </div>
+            </div>
+            <div class="fixture-details">
+              <div class="fixture-time">
+                <span>${formatTime(f.time)}</span>
+              </div>
+              <div class="fixture-group">
+                <span>${f.group}</span>
+              </div>
+            </div>
+          `;
+          
+          els.list.appendChild(row);
+        });
       });
     }
 
-    function applyFilters() {
-      const q = els.searchTeam.value.trim().toLowerCase();
-      const d = els.day.value;
-      const g = els.group.value;
-      let filtered = FIXTURES.slice();
-
-      if (q) {
-        filtered = filtered.filter(f => `${f.teamA} ${f.teamB}`.toLowerCase().includes(q));
-      }
-      if (d) filtered = filtered.filter(f => f.day === d);
-      if (g) filtered = filtered.filter(f => f.group === g);
-
-      render(filtered);
-      const suffix = [d||'All Days', g||'All Groups'].join(' • ');
-      els.title.textContent = `Upcoming Fixtures (${suffix})`;
-    }
-
-    els.searchTeam.addEventListener('input', applyFilters);
-    els.day.addEventListener('change', applyFilters);
-    els.group.addEventListener('change', applyFilters);
-    els.reset.addEventListener('click', () => {
-      els.searchTeam.value = '';
-      els.day.value = '';
-      els.group.value = '';
-      applyFilters();
+    // Initial render (filters removed)
+    document.addEventListener('DOMContentLoaded', function() {
+      render(FIXTURES);
+      
+      // Add scroll reveal animation
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.fixture-card, .fixture-date');
+        elements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elementTop < windowHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = element.classList.contains('fixture-date') 
+              ? 'translateX(0)' 
+              : 'translateY(0)';
+          }
+        });
+      };
+      
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll(); // Initial check
     });
-
-    // Initial render
-    render(FIXTURES);
   </script>
 
   <script>
-    // Simple Knockout bracket renderer
-    // Data format: array of rounds, each round is array of matches [{a:{name,score}, b:{name,score}}]
+    // Optimized animation frame handling
+    const requestFrame = (function() {
+      return window.requestAnimationFrame || 
+             window.webkitRequestAnimationFrame || 
+             window.mozRequestAnimationFrame || 
+             function(callback) { window.setTimeout(callback, 1000 / 60); };
+    })();
+    
+    // Check for reduced motion preference
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Optimized scroll handling
+    let ticking = false;
+    
+    function onScroll() {
+      if (!ticking) {
+        requestFrame(updateOnScroll);
+        ticking = true;
+      }
+    }
+
+    // Group teams by their groups
+    const teamsByGroup = allTeams.reduce((acc, team) => {
+      if (!acc[team.group]) acc[team.group] = [];
+      acc[team.group].push(team.name);
+      return acc;
+    }, {});
+
     const BRACKET = [
       // Round of 16 (Left 8 + Right 8)
       [
         // Group A (top-left under badge A)
-        { a:{ name:'Team 1' , score:''}, b:{ name:'Team 2' , score:''}, group:'Group A' },
-        { a:{ name:'Team 3' , score:''}, b:{ name:'Team 4' , score:''}, group:'Group A' },
+        { a: { name: teamsByGroup['Group A']?.[0] || 'TBD', score: '' }, b: { name: teamsByGroup['Group A']?.[1] || 'TBD', score: '' }, group: 'Group A' },
+        { a: { name: teamsByGroup['Group A']?.[2] || 'TBD', score: '' }, b: { name: teamsByGroup['Group A']?.[3] || 'TBD', score: '' }, group: 'Group A' },
         // Group B (bottom-left under badge B)
-        { a:{ name:'Team 5' , score:''}, b:{ name:'Team 6' , score:''}, group:'Group B' },
-        { a:{ name:'Team 7' , score:''}, b:{ name:'Team 8' , score:''}, group:'Group B' },
+        { a: { name: teamsByGroup['Group B']?.[0] || 'TBD', score: '' }, b: { name: teamsByGroup['Group B']?.[1] || 'TBD', score: '' }, group: 'Group B' },
+        { a: { name: teamsByGroup['Group B']?.[2] || 'TBD', score: '' }, b: { name: teamsByGroup['Group B']?.[3] || 'TBD', score: '' }, group: 'Group B' },
         // Group C (top-right under badge C)
-        { a:{ name:'Team 9' , score:''}, b:{ name:'Team 10', score:''}, group:'Group C' },
-        { a:{ name:'Team 11', score:''}, b:{ name:'Team 12', score:''}, group:'Group C' },
+        { a: { name: teamsByGroup['Group C']?.[0] || 'TBD', score: '' }, b: { name: teamsByGroup['Group C']?.[1] || 'TBD', score: '' }, group: 'Group C' },
+        { a: { name: teamsByGroup['Group C']?.[2] || 'TBD', score: '' }, b: { name: teamsByGroup['Group C']?.[3] || 'TBD', score: '' }, group: 'Group C' },
         // Group D (bottom-right under badge D)
-        { a:{ name:'Team 13', score:''}, b:{ name:'Team 14', score:''}, group:'Group D' },
-        { a:{ name:'Team 15', score:''}, b:{ name:'Team 16', score:''}, group:'Group D' },
+        { a: { name: teamsByGroup['Group D']?.[0] || 'TBD', score: '' }, b: { name: teamsByGroup['Group D']?.[1] || 'TBD', score: '' }, group: 'Group D' },
+        { a: { name: teamsByGroup['Group D']?.[2] || 'TBD', score: '' }, b: { name: teamsByGroup['Group D']?.[3] || 'TBD', score: '' }, group: 'Group D' },
       ],
       // Quarterfinals (8)
       new Array(8/2).fill(0).map(()=>({ a:{name:'TBD',score:''}, b:{name:'TBD',score:''} })),
@@ -617,26 +1329,19 @@
   </script>
 
   <script>
-    // Group-wise matches (A, B, C, D) - placeholder data
-    // For each group, list initial knockout matches. Add scores as needed.
-    const GROUP_BRACKETS = {
-      'Group A': [
-        { a:{name:'Mitta Vaddipalli - A', score:''}, b:{name:'Sanganapalli', score:''} },
-        { a:{name:'Lingasamudram - A', score:''}, b:{name:'Naidupalm', score:''} },
-      ],
-      'Group B': [
-        { a:{name:'Velikalu village', score:''}, b:{name:'Vembuluru - A', score:''} },
-        { a:{name:'Kammapalli - A', score:''}, b:{name:'KPR Soldiers', score:''} },
-      ],
-      'Group C': [
-        { a:{name:'Amuduru', score:''}, b:{name:'Mopuru YoungStars', score:''} },
-        { a:{name:'Vemuluru (Samba Siva)', score:''}, b:{name:'Kammapalli (Demon)', score:''} },
-      ],
-      'Group D': [
-        { a:{name:'D. Vellampalli - A', score:''}, b:{name:'Thirthampadu', score:''} },
-        { a:{name:'Lingasamudram - C', score:''}, b:{name:'Kammapalli F&F', score:''} },
-      ],
-    };
+    // Generate group brackets from FIXTURES
+    const GROUP_BRACKETS = FIXTURES.reduce((acc, match) => {
+      if (!acc[match.group]) {
+        acc[match.group] = [];
+      }
+      acc[match.group].push({
+        a: { name: match.teamA, score: '' },
+        b: { name: match.teamB, score: '' },
+        time: match.time,
+        day: match.day
+      });
+      return acc;
+    }, {});
 
     function renderGroups(groups) {
       const root = document.getElementById('groupsBracket');
@@ -655,6 +1360,10 @@
           const card = document.createElement('div');
           card.className = 'match';
           card.innerHTML = `
+            <div class="fixture-header">
+              <span class="fixture-date">${m.day || 'TBD'}</span>
+              <span class="fixture-time">${m.time || ''}</span>
+            </div>
             <div class="seed"><span class="tag">A</span><span class="name">${m.a.name||''}</span><span class="score">${m.a.score||''}</span></div>
             <div class="seed"><span class="tag">B</span><span class="name">${m.b.name||''}</span><span class="score">${m.b.score||''}</span></div>
           `;
@@ -666,7 +1375,7 @@
       });
     }
 
-    renderGroups(GROUP_BRACKETS);
+    // renderGroups(GROUP_BRACKETS); // This line is no longer needed as we removed the groups section
   </script>
 </body>
 </html>
